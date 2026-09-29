@@ -21,7 +21,7 @@ This is a working prototype, not deployed at Oil India.
 You need Node 22 or later, pnpm 10, [uv](https://docs.astral.sh/uv/) and Tesseract.
 
 ```
-make demo      # installs, builds the demo pack if missing, starts the API on :8121 and the web app on :3000
+make demo      # installs, builds the demo pack, opens on :3000
 ```
 
 The flight to the field needs a Google Maps key with the Maps JavaScript and Map Tiles APIs, set as `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` in `apps/web/.env.local`.
