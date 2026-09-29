@@ -1,0 +1,4485 @@
+[
+ {
+  "id": "KN-101-B01",
+  "wellId": "KN-101",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 1414.1,
+  "date": "2009-01-14",
+  "time": "12:13",
+  "mudWeightPpg": 9.6,
+  "nptHours": 4.2,
+  "narrative": "ROP fell to 6 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-101-2009-01-14",
+   "page": 1,
+   "bbox": [
+    51.4,
+    352.9,
+    315.1,
+    415.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-101-B02",
+  "wellId": "KN-101",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2114.5,
+  "date": "2009-01-18",
+  "time": "04:16",
+  "mudWeightPpg": 9.8,
+  "nptHours": 15.2,
+  "narrative": "Partial losses of 21 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 51 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-101-2009-01-18",
+   "page": 1,
+   "bbox": [
+    51.4,
+    302.5,
+    305.8,
+    364.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 21.0
+ },
+ {
+  "id": "KN-101-B03",
+  "wellId": "KN-101",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2331.7,
+  "date": "2009-01-19",
+  "time": "20:09",
+  "mudWeightPpg": 9.8,
+  "nptHours": 6.0,
+  "narrative": "Partial losses of 28 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 54 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-101-2009-01-19",
+   "page": 1,
+   "bbox": [
+    51.4,
+    343.3,
+    305.8,
+    405.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 28.0
+ },
+ {
+  "id": "KN-101-B04",
+  "wellId": "KN-101",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2819.8,
+  "date": "2009-01-21",
+  "time": "01:25",
+  "mudWeightPpg": 9.8,
+  "nptHours": 24.2,
+  "narrative": "Partial losses of 34 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 53 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-101-2009-01-21",
+   "page": 1,
+   "bbox": [
+    51.4,
+    279.3,
+    305.8,
+    341.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 34.0
+ },
+ {
+  "id": "KN-101-B05",
+  "wellId": "KN-101",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4109.2,
+  "date": "2009-02-01",
+  "time": "14:37",
+  "mudWeightPpg": 12.2,
+  "nptHours": 80.2,
+  "narrative": "Pit gain of 11 bbl at 12.2 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.6 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-101-2009-02-01",
+   "page": 1,
+   "bbox": [
+    51.4,
+    312.1,
+    349.4,
+    374.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-101-B06",
+  "wellId": "KN-101",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4146.2,
+  "date": "2009-02-05",
+  "time": "04:34",
+  "mudWeightPpg": 12.8,
+  "nptHours": 71.5,
+  "narrative": "Pit gain of 9 bbl at 12.8 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.5 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.5 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-101-2009-02-05",
+   "page": 1,
+   "bbox": [
+    51.4,
+    265.7,
+    349.4,
+    328.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-102-B01",
+  "wellId": "KN-102",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 1083.1,
+  "date": "2010-01-07",
+  "time": "14:20",
+  "mudWeightPpg": 9.6,
+  "nptHours": 2.8,
+  "narrative": "ROP fell to 5 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-102-2010-01-07",
+   "page": 1,
+   "bbox": [
+    51.5,
+    372.6,
+    314.6,
+    434.5
+   ],
+   "ocr": true
+  },
+  "confidence": 0.928,
+  "fieldConfidence": {
+   "kind": 0.928,
+   "title": 0.96,
+   "depth": 0.935,
+   "mudWeight": 0.935,
+   "npt": 0.935
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-102-B02",
+  "wellId": "KN-102",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2298.8,
+  "date": "2010-01-13",
+  "time": "16:05",
+  "mudWeightPpg": 9.8,
+  "nptHours": 11.9,
+  "narrative": "Partial losses of 27 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 51 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-102-2010-01-13",
+   "page": 1,
+   "bbox": [
+    51.4,
+    306.5,
+    305.8,
+    368.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 27.0
+ },
+ {
+  "id": "KN-102-B03",
+  "wellId": "KN-102",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3555.7,
+  "date": "2010-01-22",
+  "time": "19:38",
+  "mudWeightPpg": 10.4,
+  "nptHours": 56.6,
+  "narrative": "Coal-shale cavings over the shakers at 10.4 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 11.0 ppg.",
+  "remarks": "Caved at 10.4 ppg, hole stable at 11.0 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 11.0,
+    "evidence": "Caved at 10.4 ppg, hole stable at 11.0 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       426.1,
+       252.6,
+       434.5
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-102-2010-01-22",
+   "page": 1,
+   "bbox": [
+    51.4,
+    372.1,
+    397.8,
+    434.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-103-B01",
+  "wellId": "KN-103",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 530.7,
+  "date": "2010-10-31",
+  "time": "02:17",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.4,
+  "narrative": "Overpull of 20 t at 531 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-103-2010-10-31",
+   "page": 1,
+   "bbox": [
+    51.4,
+    372.1,
+    324.5,
+    434.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-103-B02",
+  "wellId": "KN-103",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1094.0,
+  "date": "2010-11-02",
+  "time": "02:14",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.1,
+  "narrative": "Overpull of 18 t at 1,094 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-103-2010-11-02",
+   "page": 1,
+   "bbox": [
+    51.5,
+    390.2,
+    324.0,
+    452.2
+   ],
+   "ocr": true
+  },
+  "confidence": 0.925,
+  "fieldConfidence": {
+   "kind": 0.94,
+   "title": 0.954,
+   "depth": 0.925,
+   "mudWeight": 0.925,
+   "npt": 0.925
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-103-B03",
+  "wellId": "KN-103",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1430.4,
+  "date": "2010-11-03",
+  "time": "15:48",
+  "mudWeightPpg": 9.6,
+  "nptHours": 9.1,
+  "narrative": "Overpull of 27 t at 1,430 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-103-2010-11-03",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    324.5,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-103-B04",
+  "wellId": "KN-103",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1470.2,
+  "date": "2010-11-04",
+  "time": "03:32",
+  "mudWeightPpg": 9.6,
+  "nptHours": 8.0,
+  "narrative": "Overpull of 29 t at 1,470 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-103-2010-11-04",
+   "page": 1,
+   "bbox": [
+    49.7,
+    369.0,
+    324.0,
+    434.9
+   ],
+   "ocr": true
+  },
+  "confidence": 0.918,
+  "fieldConfidence": {
+   "kind": 0.928,
+   "title": 0.934,
+   "depth": 0.918,
+   "mudWeight": 0.918,
+   "npt": 0.918
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-103-B05",
+  "wellId": "KN-103",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 1563.9,
+  "date": "2010-11-06",
+  "time": "19:45",
+  "mudWeightPpg": 9.8,
+  "nptHours": 9.9,
+  "narrative": "Partial losses of 34 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 57 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-103-2010-11-06",
+   "page": 1,
+   "bbox": [
+    51.4,
+    330.7,
+    305.8,
+    393.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 34.0
+ },
+ {
+  "id": "KN-103-B06",
+  "wellId": "KN-103",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 1759.6,
+  "date": "2010-11-07",
+  "time": "17:36",
+  "mudWeightPpg": 9.8,
+  "nptHours": 6.6,
+  "narrative": "Partial losses of 18 bbi/h at 9.8 ppg.",
+  "action": "Pumped a 60 bbi LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-103-2010-11-07",
+   "page": 1,
+   "bbox": [
+    49.7,
+    338.0,
+    305.3,
+    403.6
+   ],
+   "ocr": true
+  },
+  "confidence": 0.915,
+  "fieldConfidence": {
+   "kind": 0.915,
+   "title": 0.945,
+   "depth": 0.948,
+   "mudWeight": 0.948,
+   "npt": 0.948
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-103-B07",
+  "wellId": "KN-103",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3189.3,
+  "date": "2010-11-16",
+  "time": "02:44",
+  "mudWeightPpg": 10.4,
+  "nptHours": 13.5,
+  "narrative": "Coal-shale cavings over the shakers at 10.4 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 11.0 ppg.",
+  "remarks": "Caved at 10.4 ppg, hole stable at 11.0 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 11.0,
+    "evidence": "Caved at 10.4 ppg, hole stable at 11.0 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       379.7,
+       252.6,
+       388.1
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-103-2010-11-16",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    397.8,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-103-B08",
+  "wellId": "KN-103",
+  "kind": "differential-sticking",
+  "title": "Differential sticking in Main Sand",
+  "md": 3959.4,
+  "date": "2010-11-22",
+  "time": "10:36",
+  "mudWeightPpg": 11.0,
+  "nptHours": 26.8,
+  "narrative": "Differentially stuck across the Main Sand at 11.0 ppg after a 38 min survey.",
+  "action": "Spotted a pipe-freeing pill, worked the string and came free.",
+  "remarks": "Keep the string moving across the Main Sand.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-103-2010-11-22",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    381.9,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-104-B01",
+  "wellId": "KN-104",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1372.5,
+  "date": "2011-03-07",
+  "time": "10:56",
+  "mudWeightPpg": 9.6,
+  "nptHours": 6.9,
+  "narrative": "Overpull of 20 t at 1,373 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-104-2011-03-07",
+   "page": 1,
+   "bbox": [
+    51.4,
+    352.9,
+    324.5,
+    415.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-104-B02",
+  "wellId": "KN-104",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2129.1,
+  "date": "2011-03-11",
+  "time": "06:55",
+  "mudWeightPpg": 9.8,
+  "nptHours": 15.2,
+  "narrative": "Partial losses of 32 bbi/h at 9.8 ppg.",
+  "action": "Pumped a 44 bb! LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-104-2011-03-11",
+   "page": 1,
+   "bbox": [
+    51.5,
+    339.8,
+    305.3,
+    401.8
+   ],
+   "ocr": true
+  },
+  "confidence": 0.927,
+  "fieldConfidence": {
+   "kind": 0.94,
+   "title": 0.942,
+   "depth": 0.927,
+   "mudWeight": 0.927,
+   "npt": 0.927
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-104-B03",
+  "wellId": "KN-104",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2853.7,
+  "date": "2011-03-14",
+  "time": "00:14",
+  "mudWeightPpg": 9.8,
+  "nptHours": 12.4,
+  "narrative": "Partial losses of 22 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 33 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-104-2011-03-14",
+   "page": 1,
+   "bbox": [
+    51.4,
+    343.3,
+    305.8,
+    405.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 22.0
+ },
+ {
+  "id": "KN-104-E07",
+  "wellId": "KN-104",
+  "kind": "losses",
+  "title": "Partial losses at the Barail base",
+  "md": 3530.4,
+  "date": "2011-03-21",
+  "time": "18:34",
+  "mudWeightPpg": 10.6,
+  "nptHours": 11.0,
+  "narrative": "Partial losses of 28 bbl/h near the base of the coal-shale with ECD at 10.9 ppg.",
+  "action": "Pumped a 40 bbl calcium carbonate pill at 25 ppb and cut flow to 780 gpm. Losses cured after 6 h.",
+  "remarks": "Losses began with ECD above 10.8 ppg. Hold ECD under 10.8 ppg approaching the Main Sand.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-104-2011-03-21",
+   "page": 1,
+   "bbox": [
+    51.4,
+    381.7,
+    450.1,
+    444.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 28.0
+ },
+ {
+  "id": "KN-105-B01",
+  "wellId": "KN-105",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 628.5,
+  "date": "2011-07-25",
+  "time": "04:38",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.8,
+  "narrative": "Overpull of 13 t at 629 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-105-2011-07-25",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    324.5,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-105-B02",
+  "wellId": "KN-105",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1178.4,
+  "date": "2011-07-26",
+  "time": "18:27",
+  "mudWeightPpg": 9.6,
+  "nptHours": 9.4,
+  "narrative": "Overpull of 24 t at 1,178 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-105-2011-07-26",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    324.5,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-105-B03",
+  "wellId": "KN-105",
+  "kind": "stuck-pipe",
+  "title": "Stuck pipe in coal-shale",
+  "md": 3013.8,
+  "date": "2011-08-06",
+  "time": "22:23",
+  "mudWeightPpg": 10.4,
+  "nptHours": 36.3,
+  "narrative": "Could not pick up after 40 min static on a connection. Cavings packed off above the BHA.",
+  "action": "Jarred down, spotted a pipe-freeing pill and worked free after 16 h.",
+  "remarks": "Stuck after 40 min static on a connection. Keep the string static under 10 min in the coal-shale.",
+  "lessons": [
+   {
+    "kind": "limit-static-time",
+    "minutes": 10,
+    "evidence": "Stuck after 40 min static on a connection.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       91.4,
+       370.1,
+       245.2,
+       381.6
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-105-2011-08-06",
+   "page": 1,
+   "bbox": [
+    49.7,
+    315.7,
+    442.8,
+    381.6
+   ],
+   "ocr": true
+  },
+  "confidence": 0.912,
+  "fieldConfidence": {
+   "kind": 0.934,
+   "title": 0.912,
+   "depth": 0.925,
+   "mudWeight": 0.925,
+   "npt": 0.925
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-105-B04",
+  "wellId": "KN-105",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4254.9,
+  "date": "2011-08-17",
+  "time": "14:27",
+  "mudWeightPpg": 12.2,
+  "nptHours": 43.5,
+  "narrative": "Pit gain of 10 bbl at 12.2 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.4 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.4 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-105-2011-08-17",
+   "page": 1,
+   "bbox": [
+    51.4,
+    335.3,
+    349.4,
+    397.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-106-B01",
+  "wellId": "KN-106",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 856.7,
+  "date": "2012-06-04",
+  "time": "23:46",
+  "mudWeightPpg": 9.6,
+  "nptHours": 2.8,
+  "narrative": "Overpull of 15 t at 857 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-106-2012-06-04",
+   "page": 1,
+   "bbox": [
+    51.5,
+    359.3,
+    324.0,
+    421.2
+   ],
+   "ocr": true
+  },
+  "confidence": 0.942,
+  "fieldConfidence": {
+   "kind": 0.944,
+   "title": 0.956,
+   "depth": 0.942,
+   "mudWeight": 0.942,
+   "npt": 0.942
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-106-B02",
+  "wellId": "KN-106",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 1051.5,
+  "date": "2012-06-05",
+  "time": "14:13",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.6,
+  "narrative": "ROP fell to 5 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-106-2012-06-05",
+   "page": 1,
+   "bbox": [
+    51.5,
+    376.6,
+    314.6,
+    438.5
+   ],
+   "ocr": true
+  },
+  "confidence": 0.922,
+  "fieldConfidence": {
+   "kind": 0.922,
+   "title": 0.962,
+   "depth": 0.939,
+   "mudWeight": 0.939,
+   "npt": 0.939
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-106-B03",
+  "wellId": "KN-106",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 1774.9,
+  "date": "2012-06-10",
+  "time": "01:24",
+  "mudWeightPpg": 9.8,
+  "nptHours": 21.3,
+  "narrative": "Partial losses of 43 bbi/h at 9.8 ppg.",
+  "action": "Pumped a 46 bbi LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-106-2012-06-10",
+   "page": 1,
+   "bbox": [
+    49.7,
+    301.0,
+    305.3,
+    366.8
+   ],
+   "ocr": true
+  },
+  "confidence": 0.89,
+  "fieldConfidence": {
+   "kind": 0.89,
+   "title": 0.928,
+   "depth": 0.935,
+   "mudWeight": 0.935,
+   "npt": 0.935
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-106-B04",
+  "wellId": "KN-106",
+  "kind": "stuck-pipe",
+  "title": "Stuck pipe in coal-shale",
+  "md": 3294.5,
+  "date": "2012-06-19",
+  "time": "07:43",
+  "mudWeightPpg": 10.4,
+  "nptHours": 66.7,
+  "narrative": "Could not pick up after 25 min static on a connection. Cavings packed off above the BHA.",
+  "action": "Jarred down, spotted a pipe-freeing pill and worked free after 27 h.",
+  "remarks": "Stuck after 25 min static on a connection. Keep the string static under 10 min in the coal-shale.",
+  "lessons": [
+   {
+    "kind": "limit-static-time",
+    "minutes": 10,
+    "evidence": "Stuck after 25 min static on a connection.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       342.9,
+       245.6,
+       351.3
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-106-2012-06-19",
+   "page": 1,
+   "bbox": [
+    51.4,
+    288.9,
+    443.5,
+    351.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-106-B05",
+  "wellId": "KN-106",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4263.9,
+  "date": "2012-06-30",
+  "time": "00:56",
+  "mudWeightPpg": 12.2,
+  "nptHours": 33.7,
+  "narrative": "Pit gain of 15 bbl at 12.2 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.5 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.5 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-106-2012-06-30",
+   "page": 1,
+   "bbox": [
+    51.4,
+    279.3,
+    349.4,
+    341.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-107-B01",
+  "wellId": "KN-107",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 639.8,
+  "date": "2013-05-17",
+  "time": "03:03",
+  "mudWeightPpg": 9.6,
+  "nptHours": 1.9,
+  "narrative": "ROP fell to 6 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-107-2013-05-17",
+   "page": 1,
+   "bbox": [
+    51.4,
+    403.3,
+    315.1,
+    465.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-107-B02",
+  "wellId": "KN-107",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 726.3,
+  "date": "2013-05-17",
+  "time": "10:07",
+  "mudWeightPpg": 9.6,
+  "nptHours": 1.9,
+  "narrative": "Overpull of 18 t at 726 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-107-2013-05-17",
+   "page": 1,
+   "bbox": [
+    51.4,
+    472.1,
+    324.5,
+    534.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-107-B03",
+  "wellId": "KN-107",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 805.0,
+  "date": "2013-05-17",
+  "time": "16:42",
+  "mudWeightPpg": 9.6,
+  "nptHours": 2.6,
+  "narrative": "ROP fell to 6 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-107-2013-05-17",
+   "page": 1,
+   "bbox": [
+    51.4,
+    540.9,
+    315.1,
+    603.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-107-B04",
+  "wellId": "KN-107",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 1069.1,
+  "date": "2013-05-18",
+  "time": "11:04",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.4,
+  "narrative": "ROP fell to 5 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-107-2013-05-18",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    315.1,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-107-B05",
+  "wellId": "KN-107",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3502.7,
+  "date": "2013-06-01",
+  "time": "12:33",
+  "mudWeightPpg": 10.4,
+  "nptHours": 11.0,
+  "narrative": "Coal-shale cavings over the shakers at 10.4 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 10.8 ppg.",
+  "remarks": "Caved at 10.4 ppg, hole stable at 10.8 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 10.8,
+    "evidence": "Caved at 10.4 ppg, hole stable at 10.8 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       402.9,
+       252.6,
+       411.3
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-107-2013-06-01",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    397.8,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-107-B06",
+  "wellId": "KN-107",
+  "kind": "differential-sticking",
+  "title": "Differential Sticking",
+  "md": 3943.2,
+  "date": "2013-06-04",
+  "time": "13:30",
+  "mudWeightPpg": 10.8,
+  "nptHours": 25.5,
+  "narrative": "Differentially stuck across the Main Sand at 10.8 ppg after a 32 min survey.",
+  "action": "",
+  "remarks": "",
+  "lessons": [],
+  "source": {
+   "docId": "KN-107-2013-06-04",
+   "page": 1,
+   "bbox": [
+    49.7,
+    324.0,
+    381.2,
+    379.1
+   ],
+   "ocr": true
+  },
+  "confidence": 0.0,
+  "fieldConfidence": {
+   "kind": 0.94,
+   "title": 0.0,
+   "depth": 0.917,
+   "mudWeight": 0.917,
+   "npt": 0.917
+  },
+  "needsReview": true
+ },
+ {
+  "id": "KN-107-B07",
+  "wellId": "KN-107",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4477.5,
+  "date": "2013-06-11",
+  "time": "19:20",
+  "mudWeightPpg": 12.2,
+  "nptHours": 16.4,
+  "narrative": "Partial losses of 24 bbl/h at 12.2 ppg.",
+  "action": "Pumped a 57 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 12.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-107-2013-06-11",
+   "page": 1,
+   "bbox": [
+    51.4,
+    292.9,
+    305.8,
+    355.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 24.0
+ },
+ {
+  "id": "KN-108-B01",
+  "wellId": "KN-108",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 609.3,
+  "date": "2014-03-19",
+  "time": "04:56",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.7,
+  "narrative": "Overpull of 25 t at 609 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-108-2014-03-19",
+   "page": 1,
+   "bbox": [
+    51.4,
+    376.1,
+    324.5,
+    438.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-108-B02",
+  "wellId": "KN-108",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 697.0,
+  "date": "2014-03-19",
+  "time": "17:32",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.0,
+  "narrative": "Overpull of 26 t at 697 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-108-2014-03-19",
+   "page": 1,
+   "bbox": [
+    51.4,
+    444.9,
+    324.5,
+    507.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-108-B03",
+  "wellId": "KN-108",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1216.1,
+  "date": "2014-03-21",
+  "time": "17:56",
+  "mudWeightPpg": 9.6,
+  "nptHours": 2.9,
+  "narrative": "Overpull of 17 t at 1,216 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-108-2014-03-21",
+   "page": 1,
+   "bbox": [
+    51.5,
+    390.2,
+    324.0,
+    452.2
+   ],
+   "ocr": true
+  },
+  "confidence": 0.912,
+  "fieldConfidence": {
+   "kind": 0.934,
+   "title": 0.954,
+   "depth": 0.912,
+   "mudWeight": 0.912,
+   "npt": 0.912
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-108-B04",
+  "wellId": "KN-108",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4145.7,
+  "date": "2014-04-09",
+  "time": "22:48",
+  "mudWeightPpg": 12.2,
+  "nptHours": 65.9,
+  "narrative": "Pit gain of 13 bbl at 12.2 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.4 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.4 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-108-2014-04-09",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    349.4,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-109-B01",
+  "wellId": "KN-109",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1091.8,
+  "date": "2015-10-11",
+  "time": "09:09",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.1,
+  "narrative": "Overpull of 13 t at 1,092 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-109-2015-10-11",
+   "page": 1,
+   "bbox": [
+    51.4,
+    376.1,
+    324.5,
+    438.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-109-B02",
+  "wellId": "KN-109",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 1207.1,
+  "date": "2015-10-12",
+  "time": "06:43",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.4,
+  "narrative": "ROP fell to 3 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-109-2015-10-12",
+   "page": 1,
+   "bbox": [
+    51.4,
+    376.1,
+    315.1,
+    438.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-109-B03",
+  "wellId": "KN-109",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2360.4,
+  "date": "2015-10-17",
+  "time": "13:29",
+  "mudWeightPpg": 9.8,
+  "nptHours": 15.0,
+  "narrative": "Partial losses of 17 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 31 bb! LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-109-2015-10-17",
+   "page": 1,
+   "bbox": [
+    51.5,
+    316.8,
+    305.3,
+    378.7
+   ],
+   "ocr": true
+  },
+  "confidence": 0.931,
+  "fieldConfidence": {
+   "kind": 0.938,
+   "title": 0.938,
+   "depth": 0.931,
+   "mudWeight": 0.931,
+   "npt": 0.931
+  },
+  "needsReview": false,
+  "lossRateBblH": 17.0
+ },
+ {
+  "id": "KN-109-B04",
+  "wellId": "KN-109",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2472.0,
+  "date": "2015-10-18",
+  "time": "10:05",
+  "mudWeightPpg": 9.8,
+  "nptHours": 11.0,
+  "narrative": "Partial losses of 45 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 31 bb! LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-109-2015-10-18",
+   "page": 1,
+   "bbox": [
+    51.5,
+    316.8,
+    305.3,
+    378.7
+   ],
+   "ocr": true
+  },
+  "confidence": 0.835,
+  "fieldConfidence": {
+   "kind": 0.938,
+   "title": 0.948,
+   "depth": 0.835,
+   "mudWeight": 0.835,
+   "npt": 0.835
+  },
+  "needsReview": true,
+  "lossRateBblH": 45.0
+ },
+ {
+  "id": "KN-109-E06",
+  "wellId": "KN-109",
+  "kind": "stuck-pipe",
+  "title": "Stuck pipe after static survey",
+  "md": 3142.3,
+  "date": "2015-10-24",
+  "time": "05:06",
+  "mudWeightPpg": 10.2,
+  "nptHours": 36.5,
+  "narrative": "Could not pick up after 40 min static for a gyro survey. Circulation restricted, cavings bridged above the BHA.",
+  "action": "Jarred down 26 times, spotted a 60 bbl pipe-freeing pill, freed after 31 h and back-reamed to the shoe.",
+  "remarks": "Stuck after 40 min static for a survey. Keep the string static under 10 min in the coal-shale.",
+  "lessons": [
+   {
+    "kind": "limit-static-time",
+    "minutes": 10,
+    "evidence": "Stuck after 40 min static for a survey.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       352.5,
+       230.2,
+       360.9
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-109-2015-10-24",
+   "page": 1,
+   "bbox": [
+    51.4,
+    298.5,
+    507.0,
+    360.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-109-B05",
+  "wellId": "KN-109",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4151.6,
+  "date": "2015-11-02",
+  "time": "04:23",
+  "mudWeightPpg": 12.2,
+  "nptHours": 68.2,
+  "narrative": "Pit gain of 12 bbl at 12.2 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.5 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.5 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-109-2015-11-02",
+   "page": 1,
+   "bbox": [
+    51.4,
+    265.7,
+    349.4,
+    328.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-109-B06",
+  "wellId": "KN-109",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4214.0,
+  "date": "2015-11-05",
+  "time": "12:34",
+  "mudWeightPpg": 12.7,
+  "nptHours": 39.5,
+  "narrative": "Pit gain of 10 bbi at 12.7 ppg, well shut in.",
+  "action": "Circulated out by the driller\u2019s method and raised mud weight by 0.5 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.5 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-109-2015-11-05",
+   "page": 1,
+   "bbox": [
+    50.0,
+    323.6,
+    348.8,
+    389.9
+   ],
+   "ocr": true
+  },
+  "confidence": 0.89,
+  "fieldConfidence": {
+   "kind": 0.94,
+   "title": 0.927,
+   "depth": 0.89,
+   "mudWeight": 0.89,
+   "npt": 0.89
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-109-B07",
+  "wellId": "KN-109",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4396.9,
+  "date": "2015-11-08",
+  "time": "17:45",
+  "mudWeightPpg": 13.2,
+  "nptHours": 20.9,
+  "narrative": "Partial losses of 15 bbl/h at 13.2 ppg.",
+  "action": "Pumped a 51 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 13.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-109-2015-11-08",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    305.8,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 15.0
+ },
+ {
+  "id": "KN-110-B01",
+  "wellId": "KN-110",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 830.2,
+  "date": "2014-11-27",
+  "time": "01:38",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.8,
+  "narrative": "Overpull of 29 t at 830 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-110-2014-11-27",
+   "page": 1,
+   "bbox": [
+    51.4,
+    372.1,
+    324.5,
+    434.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-110-B02",
+  "wellId": "KN-110",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1256.5,
+  "date": "2014-11-29",
+  "time": "00:29",
+  "mudWeightPpg": 9.6,
+  "nptHours": 7.3,
+  "narrative": "Overpull of 24 t at 1,257 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-110-2014-11-29",
+   "page": 1,
+   "bbox": [
+    51.4,
+    376.1,
+    324.5,
+    438.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-110-B03",
+  "wellId": "KN-110",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2130.4,
+  "date": "2014-12-03",
+  "time": "13:14",
+  "mudWeightPpg": 9.8,
+  "nptHours": 26.8,
+  "narrative": "Partial losses of 33 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 57 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-110-2014-12-03",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    305.8,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 33.0
+ },
+ {
+  "id": "KN-110-B04",
+  "wellId": "KN-110",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3189.2,
+  "date": "2014-12-12",
+  "time": "09:06",
+  "mudWeightPpg": 10.4,
+  "nptHours": 12.7,
+  "narrative": "Coal-shale cavings over the shakers at 10.4 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 10.8 ppg.",
+  "remarks": "Caved at 10.4 ppg, hole stable at 10.8 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 10.8,
+    "evidence": "Caved at 10.4 ppg, hole stable at 10.8 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       402.9,
+       252.6,
+       411.3
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-110-2014-12-12",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    397.8,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-111-B01",
+  "wellId": "KN-111",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 910.1,
+  "date": "2015-10-08",
+  "time": "09:46",
+  "mudWeightPpg": 9.6,
+  "nptHours": 2.0,
+  "narrative": "Overpull of 18 t at 910 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-111-2015-10-08",
+   "page": 1,
+   "bbox": [
+    51.5,
+    372.6,
+    324.0,
+    434.5
+   ],
+   "ocr": true
+  },
+  "confidence": 0.94,
+  "fieldConfidence": {
+   "kind": 0.942,
+   "title": 0.958,
+   "depth": 0.94,
+   "mudWeight": 0.94,
+   "npt": 0.94
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-111-B02",
+  "wellId": "KN-111",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1328.6,
+  "date": "2015-10-10",
+  "time": "06:11",
+  "mudWeightPpg": 9.6,
+  "nptHours": 7.9,
+  "narrative": "Overpull of 21 t at 1,329 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-111-2015-10-10",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    324.5,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-111-B03",
+  "wellId": "KN-111",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 1922.5,
+  "date": "2015-10-14",
+  "time": "05:15",
+  "mudWeightPpg": 9.8,
+  "nptHours": 20.4,
+  "narrative": "Partial losses of 38 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 35 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-111-2015-10-14",
+   "page": 1,
+   "bbox": [
+    51.4,
+    279.3,
+    305.8,
+    341.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 38.0
+ },
+ {
+  "id": "KN-111-B04",
+  "wellId": "KN-111",
+  "kind": "stuck-pipe",
+  "title": "Stuck pipe in coal-shale",
+  "md": 3031.6,
+  "date": "2015-10-22",
+  "time": "02:59",
+  "mudWeightPpg": 10.4,
+  "nptHours": 20.2,
+  "narrative": "Could not pick up after 40 min static on a connection. Cavings packed off above the BHA.",
+  "action": "Jarred down, spotted a pipe-freeing pill and worked free after 16 h.",
+  "remarks": "Stuck after 40 min static on a connection. Keep the string static under 10 min in the coal-shale.",
+  "lessons": [
+   {
+    "kind": "limit-static-time",
+    "minutes": 10,
+    "evidence": "Stuck after 40 min static on a connection.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       356.5,
+       245.6,
+       364.9
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-111-2015-10-22",
+   "page": 1,
+   "bbox": [
+    51.4,
+    302.5,
+    443.5,
+    364.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-111-B05",
+  "wellId": "KN-111",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3509.7,
+  "date": "2015-10-26",
+  "time": "20:17",
+  "mudWeightPpg": 10.4,
+  "nptHours": 17.5,
+  "narrative": "Coal-shale cavings over the shakers at 10.4 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 10.9 ppg.",
+  "remarks": "Caved at 10.4 ppg, hole stable at 10.9 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 10.9,
+    "evidence": "Caved at 10.4 ppg, hole stable at 10.9 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       389.3,
+       252.6,
+       397.7
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-111-2015-10-26",
+   "page": 1,
+   "bbox": [
+    51.4,
+    335.3,
+    397.8,
+    397.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-111-B06",
+  "wellId": "KN-111",
+  "kind": "differential-sticking",
+  "title": "Differential sticking in Main Sand",
+  "md": 3929.0,
+  "date": "2015-10-30",
+  "time": "12:47",
+  "mudWeightPpg": 10.9,
+  "nptHours": 20.8,
+  "narrative": "Differentially stuck across the Main Sand at 10.9 ppg after a 32 min survey.",
+  "action": "Spotted a pipe-freeing pill, worked the string and came free.",
+  "remarks": "Keep the string moving across the Main Sand.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-111-2015-10-30",
+   "page": 1,
+   "bbox": [
+    51.5,
+    326.2,
+    381.2,
+    388.1
+   ],
+   "ocr": true
+  },
+  "confidence": 0.939,
+  "fieldConfidence": {
+   "kind": 0.94,
+   "title": 0.953,
+   "depth": 0.939,
+   "mudWeight": 0.939,
+   "npt": 0.939
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-111-B07",
+  "wellId": "KN-111",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4297.4,
+  "date": "2015-11-04",
+  "time": "02:15",
+  "mudWeightPpg": 12.2,
+  "nptHours": 25.7,
+  "narrative": "Pit gain of 16 bbl at 12.2 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.6 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-111-2015-11-04",
+   "page": 1,
+   "bbox": [
+    51.4,
+    279.3,
+    349.4,
+    341.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-112-B01",
+  "wellId": "KN-112",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1299.2,
+  "date": "2016-10-02",
+  "time": "09:52",
+  "mudWeightPpg": 9.6,
+  "nptHours": 4.3,
+  "narrative": "Overpull of 29 t at 1,299 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-112-2016-10-02",
+   "page": 1,
+   "bbox": [
+    51.4,
+    366.5,
+    324.5,
+    428.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-112-B02",
+  "wellId": "KN-112",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1368.4,
+  "date": "2016-10-02",
+  "time": "19:03",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.3,
+  "narrative": "Overpull of 28 t at 1,368 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-112-2016-10-02",
+   "page": 1,
+   "bbox": [
+    51.4,
+    435.3,
+    324.5,
+    497.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-112-B04",
+  "wellId": "KN-112",
+  "kind": "differential-sticking",
+  "title": "Differential sticking in Main Sand",
+  "md": 3728.1,
+  "date": "2016-10-18",
+  "time": "04:50",
+  "mudWeightPpg": 10.4,
+  "nptHours": 15.2,
+  "narrative": "Differentially stuck across the Main Sand at 10.4 ppg after a 41 min survey.",
+  "action": "Spotted a pipe-freeing pill, worked the string and came free.",
+  "remarks": "Keep the string moving across the Main Sand.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-112-2016-10-18",
+   "page": 1,
+   "bbox": [
+    51.4,
+    329.7,
+    381.9,
+    392.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-112-B05",
+  "wellId": "KN-112",
+  "kind": "differential-sticking",
+  "title": "Differential sticking in Main Sand",
+  "md": 3805.4,
+  "date": "2016-10-20",
+  "time": "02:41",
+  "mudWeightPpg": 10.4,
+  "nptHours": 34.1,
+  "narrative": "Differentially stuck across the Main Sand at 10.4 ppg after a 31 min survey.",
+  "action": "Spotted a pipe-freeing pill, worked the string and came free.",
+  "remarks": "Keep the string moving across the Main Sand.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-112-2016-10-20",
+   "page": 1,
+   "bbox": [
+    51.4,
+    279.3,
+    381.9,
+    341.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-112-B06",
+  "wellId": "KN-112",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4578.5,
+  "date": "2016-10-29",
+  "time": "14:02",
+  "mudWeightPpg": 12.2,
+  "nptHours": 16.9,
+  "narrative": "Partial losses of 19 bbl/h at 12.2 ppg.",
+  "action": "Pumped a 33 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 12.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-112-2016-10-29",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    305.8,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 19.0
+ },
+ {
+  "id": "KN-113-B01",
+  "wellId": "KN-113",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 800.1,
+  "date": "2017-06-30",
+  "time": "12:25",
+  "mudWeightPpg": 9.6,
+  "nptHours": 10.8,
+  "narrative": "Overpull of 26 t at 800 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-113-2017-06-30",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    324.5,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-113-B02",
+  "wellId": "KN-113",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 1361.2,
+  "date": "2017-07-02",
+  "time": "19:42",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.5,
+  "narrative": "ROP fell to 4 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-113-2017-07-02",
+   "page": 1,
+   "bbox": [
+    51.4,
+    389.7,
+    315.1,
+    452.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-113-B03",
+  "wellId": "KN-113",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4456.3,
+  "date": "2017-07-22",
+  "time": "12:15",
+  "mudWeightPpg": 12.2,
+  "nptHours": 12.1,
+  "narrative": "Partial losses of 38 bbl/h at 12.2 ppg.",
+  "action": "Pumped a 48 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 12.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-113-2017-07-22",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    305.8,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 38.0
+ },
+ {
+  "id": "KN-114-B01",
+  "wellId": "KN-114",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1018.4,
+  "date": "2018-04-18",
+  "time": "13:24",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.0,
+  "narrative": "Overpull of 29 t at 1,018 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-114-2018-04-18",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    324.5,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-115-B01",
+  "wellId": "KN-115",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 1039.2,
+  "date": "2019-03-14",
+  "time": "20:54",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.8,
+  "narrative": "ROP fell to 3 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-115-2019-03-14",
+   "page": 1,
+   "bbox": [
+    51.5,
+    349.6,
+    314.6,
+    411.5
+   ],
+   "ocr": true
+  },
+  "confidence": 0.924,
+  "fieldConfidence": {
+   "kind": 0.924,
+   "title": 0.96,
+   "depth": 0.942,
+   "mudWeight": 0.942,
+   "npt": 0.942
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-115-B02",
+  "wellId": "KN-115",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1162.4,
+  "date": "2019-03-15",
+  "time": "09:42",
+  "mudWeightPpg": 9.6,
+  "nptHours": 4.9,
+  "narrative": "Overpull of 17 t at 1,162 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-115-2019-03-15",
+   "page": 1,
+   "bbox": [
+    51.4,
+    380.1,
+    324.5,
+    442.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-115-B03",
+  "wellId": "KN-115",
+  "kind": "stuck-pipe",
+  "title": "Stuck pipe in coal-shale",
+  "md": 3453.8,
+  "date": "2019-03-30",
+  "time": "14:11",
+  "mudWeightPpg": 10.4,
+  "nptHours": 46.7,
+  "narrative": "Could not pick up after 25 min static on a connection. Cavings packed off above the BHA.",
+  "action": "Jarred down, spotted a pipe-freeing pill and worked free after 19 h.",
+  "remarks": "Stuck after 25 min static on a connection. Keep the string static under 10 min in the coal-shale.",
+  "lessons": [
+   {
+    "kind": "limit-static-time",
+    "minutes": 10,
+    "evidence": "Stuck after 25 min static on a connection.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       366.1,
+       245.6,
+       374.5
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-115-2019-03-30",
+   "page": 1,
+   "bbox": [
+    51.4,
+    312.1,
+    443.5,
+    374.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-115-B04",
+  "wellId": "KN-115",
+  "kind": "differential-sticking",
+  "title": "Differential sticking in Main Sand",
+  "md": 3934.9,
+  "date": "2019-04-04",
+  "time": "19:03",
+  "mudWeightPpg": 10.4,
+  "nptHours": 18.5,
+  "narrative": "Differentially stuck across the Main Sand at 10.4 ppg after a 39 min survey.",
+  "action": "Spotted a pipe-freeing pill, worked the string and came free.",
+  "remarks": "Keep the string moving across the Main Sand.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-115-2019-04-04",
+   "page": 1,
+   "bbox": [
+    51.5,
+    335.9,
+    381.2,
+    397.8
+   ],
+   "ocr": true
+  },
+  "confidence": 0.921,
+  "fieldConfidence": {
+   "kind": 0.942,
+   "title": 0.957,
+   "depth": 0.921,
+   "mudWeight": 0.921,
+   "npt": 0.921
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-116-B01",
+  "wellId": "KN-116",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1167.4,
+  "date": "2020-02-08",
+  "time": "16:33",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.5,
+  "narrative": "Overpull of 20 t at 1,167 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-116-2020-02-08",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    324.5,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-116-B02",
+  "wellId": "KN-116",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 1866.6,
+  "date": "2020-02-13",
+  "time": "03:13",
+  "mudWeightPpg": 9.8,
+  "nptHours": 23.9,
+  "narrative": "Partial losses of 41 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 52 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-116-2020-02-13",
+   "page": 1,
+   "bbox": [
+    51.4,
+    279.3,
+    305.8,
+    341.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 41.0
+ },
+ {
+  "id": "KN-116-B03",
+  "wellId": "KN-116",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 2765.1,
+  "date": "2020-02-16",
+  "time": "16:54",
+  "mudWeightPpg": 9.8,
+  "nptHours": 20.3,
+  "narrative": "Partial losses of 35 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 43 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-116-2020-02-16",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    305.8,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 35.0
+ },
+ {
+  "id": "KN-116-B04",
+  "wellId": "KN-116",
+  "kind": "stuck-pipe",
+  "title": "Stuck pipe in coal-shale",
+  "md": 3127.3,
+  "date": "2020-02-22",
+  "time": "08:53",
+  "mudWeightPpg": 10.4,
+  "nptHours": 20.3,
+  "narrative": "Could not pick up after 50 min static on a connection. Cavings packed off above the BHA.",
+  "action": "Jarred down, spotted a pipe-freeing pill and worked free after 21 h.",
+  "remarks": "Stuck after 50 min static on a connection. Keep the string static under 10 min in the coal-shale.",
+  "lessons": [
+   {
+    "kind": "limit-static-time",
+    "minutes": 10,
+    "evidence": "Stuck after 50 min static on a connection.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.2,
+       355.3,
+       244.8,
+       366.8
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-116-2020-02-22",
+   "page": 1,
+   "bbox": [
+    49.7,
+    301.0,
+    442.8,
+    366.8
+   ],
+   "ocr": true
+  },
+  "confidence": 0.884,
+  "fieldConfidence": {
+   "kind": 0.94,
+   "title": 0.936,
+   "depth": 0.884,
+   "mudWeight": 0.884,
+   "npt": 0.884
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-116-B05",
+  "wellId": "KN-116",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4348.8,
+  "date": "2020-03-03",
+  "time": "16:34",
+  "mudWeightPpg": 12.2,
+  "nptHours": 26.3,
+  "narrative": "Partial losses of 18 bbl/h at 12.2 ppg.",
+  "action": "Pumped a 56 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 12.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-116-2020-03-03",
+   "page": 1,
+   "bbox": [
+    51.4,
+    335.3,
+    305.8,
+    397.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 18.0
+ },
+ {
+  "id": "KN-117-B01",
+  "wellId": "KN-117",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 592.4,
+  "date": "2018-01-22",
+  "time": "02:08",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.8,
+  "narrative": "ROP fell to 4 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-117-2018-01-22",
+   "page": 1,
+   "bbox": [
+    49.7,
+    370.1,
+    314.6,
+    436.7
+   ],
+   "ocr": true
+  },
+  "confidence": 0.828,
+  "fieldConfidence": {
+   "kind": 0.828,
+   "title": 0.95,
+   "depth": 0.896,
+   "mudWeight": 0.896,
+   "npt": 0.896
+  },
+  "needsReview": true
+ },
+ {
+  "id": "KN-117-B02",
+  "wellId": "KN-117",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1273.7,
+  "date": "2018-01-24",
+  "time": "12:06",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.7,
+  "narrative": "Overpull of 23 t at 1,274 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-117-2018-01-24",
+   "page": 1,
+   "bbox": [
+    51.5,
+    343.8,
+    324.0,
+    405.7
+   ],
+   "ocr": true
+  },
+  "confidence": 0.932,
+  "fieldConfidence": {
+   "kind": 0.932,
+   "title": 0.952,
+   "depth": 0.938,
+   "mudWeight": 0.938,
+   "npt": 0.938
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-117-E04",
+  "wellId": "KN-117",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3047.5,
+  "date": "2018-02-03",
+  "time": "21:56",
+  "mudWeightPpg": 9.8,
+  "nptHours": 19.5,
+  "narrative": "Splintery coal-shale cavings over the shakers after 25 min static for a survey. String packed off on the next connection, pump pressure up 350 psi, torque erratic.",
+  "action": "Worked the string free with circulation, pumped two hi-vis sweeps, raised mud weight to 10.4 ppg and back-reamed the interval.",
+  "remarks": "Caved at 9.8 ppg, hole stable at 10.4 ppg. Packed off on the first connection after the cavings began, wiper trip before drilling on.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 10.4,
+    "evidence": "Caved at 9.8 ppg, hole stable at 10.4 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       424.5,
+       247.9,
+       432.9
+      ]
+     ]
+    }
+   },
+   {
+    "kind": "wiper-trip",
+    "evidence": "Packed off on the first connection after the cavings began, wiper trip before drilling on.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       250.3,
+       424.5,
+       529.0,
+       432.9
+      ],
+      [
+       51.4,
+       435.3,
+       89.6,
+       443.7
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-117-2018-02-03",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    543.0,
+    443.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-117-B03",
+  "wellId": "KN-117",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4301.0,
+  "date": "2018-02-13",
+  "time": "21:07",
+  "mudWeightPpg": 12.2,
+  "nptHours": 11.7,
+  "narrative": "Partial losses of 17 bbl/h at 12.2 ppg.",
+  "action": "Pumped a 46 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 12.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-117-2018-02-13",
+   "page": 1,
+   "bbox": [
+    51.4,
+    358.5,
+    305.8,
+    420.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 17.0
+ },
+ {
+  "id": "KN-118-B01",
+  "wellId": "KN-118",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 676.1,
+  "date": "2020-12-12",
+  "time": "11:04",
+  "mudWeightPpg": 9.6,
+  "nptHours": 2.2,
+  "narrative": "ROP fell to 3 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-118-2020-12-12",
+   "page": 1,
+   "bbox": [
+    51.4,
+    362.5,
+    315.1,
+    424.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-118-B02",
+  "wellId": "KN-118",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3436.8,
+  "date": "2020-12-28",
+  "time": "04:09",
+  "mudWeightPpg": 10.4,
+  "nptHours": 21.2,
+  "narrative": "Coal-shale cavings over the shakers at 10.4 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 10.8 ppg.",
+  "remarks": "Caved at 10.4 ppg, hole stable at 10.8 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 10.8,
+    "evidence": "Caved at 10.4 ppg, hole stable at 10.8 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.2,
+       334.1,
+       252.0,
+       342.0
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-118-2020-12-28",
+   "page": 1,
+   "bbox": [
+    51.5,
+    279.7,
+    397.1,
+    342.0
+   ],
+   "ocr": true
+  },
+  "confidence": 0.808,
+  "fieldConfidence": {
+   "kind": 0.935,
+   "title": 0.925,
+   "depth": 0.808,
+   "mudWeight": 0.808,
+   "npt": 0.808
+  },
+  "needsReview": true
+ },
+ {
+  "id": "KN-118-B03",
+  "wellId": "KN-118",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4526.5,
+  "date": "2021-01-08",
+  "time": "00:54",
+  "mudWeightPpg": 12.2,
+  "nptHours": 16.9,
+  "narrative": "Partial losses of 42 bbl/h at 12.2 ppg.",
+  "action": "Pumped a 53 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 12.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-118-2021-01-08",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    305.8,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 42.0
+ },
+ {
+  "id": "KN-119-B01",
+  "wellId": "KN-119",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 695.2,
+  "date": "2021-10-20",
+  "time": "14:24",
+  "mudWeightPpg": 9.6,
+  "nptHours": 9.0,
+  "narrative": "Overpull of 29 t at 695 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-119-2021-10-20",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    324.5,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-119-B02",
+  "wellId": "KN-119",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 955.8,
+  "date": "2021-10-21",
+  "time": "16:37",
+  "mudWeightPpg": 9.6,
+  "nptHours": 6.1,
+  "narrative": "Overpull of 21 t at 956 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-119-2021-10-21",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    324.5,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-119-B03",
+  "wellId": "KN-119",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 1310.1,
+  "date": "2021-10-23",
+  "time": "09:40",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.6,
+  "narrative": "ROP fell to 4 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-119-2021-10-23",
+   "page": 1,
+   "bbox": [
+    51.4,
+    362.5,
+    315.1,
+    424.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-119-B04",
+  "wellId": "KN-119",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 1931.7,
+  "date": "2021-10-27",
+  "time": "06:36",
+  "mudWeightPpg": 9.8,
+  "nptHours": 40.1,
+  "narrative": "Partial losses of 17 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 46 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-119-2021-10-27",
+   "page": 1,
+   "bbox": [
+    51.4,
+    302.5,
+    305.8,
+    364.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 17.0
+ },
+ {
+  "id": "KN-119-B05",
+  "wellId": "KN-119",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3255.7,
+  "date": "2021-11-06",
+  "time": "02:20",
+  "mudWeightPpg": 10.4,
+  "nptHours": 20.1,
+  "narrative": "Coal-shale cavings over the shakers at 10.4 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 10.9 ppg.",
+  "remarks": "Caved at 10.4 ppg, hole stable at 10.9 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 10.9,
+    "evidence": "Caved at 10.4 ppg, hole stable at 10.9 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       356.5,
+       252.6,
+       364.9
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-119-2021-11-06",
+   "page": 1,
+   "bbox": [
+    51.4,
+    302.5,
+    397.8,
+    364.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-119-B06",
+  "wellId": "KN-119",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3498.0,
+  "date": "2021-11-09",
+  "time": "05:39",
+  "mudWeightPpg": 10.9,
+  "nptHours": 26.1,
+  "narrative": "Coal-shale cavings over the shakers at 10.9 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 11.5 ppg.",
+  "remarks": "Caved at 10.9 ppg, hole stable at 11.5 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 11.5,
+    "evidence": "Caved at 10.9 ppg, hole stable at 11.5 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       333.3,
+       252.6,
+       341.7
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-119-2021-11-09",
+   "page": 1,
+   "bbox": [
+    51.4,
+    279.3,
+    397.8,
+    341.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-119-B07",
+  "wellId": "KN-119",
+  "kind": "differential-sticking",
+  "title": "Differential sticking in Main Sand",
+  "md": 3715.3,
+  "date": "2021-11-11",
+  "time": "12:10",
+  "mudWeightPpg": 11.5,
+  "nptHours": 13.1,
+  "narrative": "Differentially stuck across the Main Sand at 11.5 ppg after a 34 min survey.",
+  "action": "Spotted a pipe-freeing pill, worked the string and came free.",
+  "remarks": "Keep the string moving across the Main Sand.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-119-2021-11-11",
+   "page": 1,
+   "bbox": [
+    51.5,
+    326.2,
+    381.2,
+    388.1
+   ],
+   "ocr": true
+  },
+  "confidence": 0.899,
+  "fieldConfidence": {
+   "kind": 0.944,
+   "title": 0.957,
+   "depth": 0.899,
+   "mudWeight": 0.899,
+   "npt": 0.899
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-119-B08",
+  "wellId": "KN-119",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4441.2,
+  "date": "2021-11-19",
+  "time": "04:25",
+  "mudWeightPpg": 12.2,
+  "nptHours": 12.5,
+  "narrative": "Partial losses of 28 bbl/h at 12.2 ppg.",
+  "action": "Pumped a 41 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 12.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-119-2021-11-19",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    305.8,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 28.0
+ },
+ {
+  "id": "KN-120-B01",
+  "wellId": "KN-120",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 734.7,
+  "date": "2022-08-17",
+  "time": "12:54",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.6,
+  "narrative": "ROP fell to 3 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-120-2022-08-17",
+   "page": 1,
+   "bbox": [
+    51.4,
+    372.1,
+    315.1,
+    434.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-120-B02",
+  "wellId": "KN-120",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1325.4,
+  "date": "2022-08-19",
+  "time": "17:46",
+  "mudWeightPpg": 9.6,
+  "nptHours": 2.9,
+  "narrative": "Overpull of 12 t at 1,325 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-120-2022-08-19",
+   "page": 1,
+   "bbox": [
+    51.4,
+    389.7,
+    324.5,
+    452.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-120-B03",
+  "wellId": "KN-120",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3141.8,
+  "date": "2022-08-30",
+  "time": "18:06",
+  "mudWeightPpg": 10.4,
+  "nptHours": 20.5,
+  "narrative": "Coal-shale cavings over the shakers at 10.4 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 10.9 ppg.",
+  "remarks": "Caved at 10.4 ppg, hole stable at 10.9 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 10.9,
+    "evidence": "Caved at 10.4 ppg, hole stable at 10.9 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       412.5,
+       252.6,
+       420.9
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-120-2022-08-30",
+   "page": 1,
+   "bbox": [
+    51.4,
+    358.5,
+    397.8,
+    420.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-120-B04",
+  "wellId": "KN-120",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3310.7,
+  "date": "2022-09-01",
+  "time": "10:32",
+  "mudWeightPpg": 10.9,
+  "nptHours": 21.5,
+  "narrative": "Coal-shale cavings over the shakers at 10.9 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 11.3 ppg.",
+  "remarks": "Caved at 10.9 ppg, hole stable at 11.3 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 11.3,
+    "evidence": "Caved at 10.9 ppg, hole stable at 11.3 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       356.5,
+       252.6,
+       364.9
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-120-2022-09-01",
+   "page": 1,
+   "bbox": [
+    51.4,
+    302.5,
+    397.8,
+    364.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-120-B05",
+  "wellId": "KN-120",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4299.3,
+  "date": "2022-09-10",
+  "time": "07:43",
+  "mudWeightPpg": 12.2,
+  "nptHours": 26.1,
+  "narrative": "Pit gain of 10 bbl at 12.2 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.5 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.5 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-120-2022-09-10",
+   "page": 1,
+   "bbox": [
+    51.4,
+    302.5,
+    349.4,
+    364.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-120-B06",
+  "wellId": "KN-120",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4454.1,
+  "date": "2022-09-12",
+  "time": "20:51",
+  "mudWeightPpg": 12.7,
+  "nptHours": 10.2,
+  "narrative": "Partial losses of 45 bbl/h at 12.7 ppg.",
+  "action": "Pumped a 50 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 13.1 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-120-2022-09-12",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    305.8,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 45.0
+ },
+ {
+  "id": "KN-120-B07",
+  "wellId": "KN-120",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4498.7,
+  "date": "2022-09-14",
+  "time": "21:49",
+  "mudWeightPpg": 12.7,
+  "nptHours": 25.2,
+  "narrative": "Partial losses of 41 bbl/h at 12.7 ppg.",
+  "action": "Pumped a 42 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 13.1 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-120-2022-09-14",
+   "page": 1,
+   "bbox": [
+    51.4,
+    302.5,
+    305.8,
+    364.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 41.0
+ },
+ {
+  "id": "KN-121-B01",
+  "wellId": "KN-121",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 537.5,
+  "date": "2022-04-14",
+  "time": "01:18",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.2,
+  "narrative": "ROP fell to 5 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-121-2022-04-14",
+   "page": 1,
+   "bbox": [
+    51.4,
+    403.3,
+    315.1,
+    465.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-121-B02",
+  "wellId": "KN-121",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 622.5,
+  "date": "2022-04-14",
+  "time": "12:40",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.5,
+  "narrative": "ROP fell to 3 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-121-2022-04-14",
+   "page": 1,
+   "bbox": [
+    51.4,
+    472.1,
+    315.1,
+    534.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-121-B03",
+  "wellId": "KN-121",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 654.1,
+  "date": "2022-04-14",
+  "time": "18:23",
+  "mudWeightPpg": 9.6,
+  "nptHours": 7.2,
+  "narrative": "Overpull of 12 t at 654 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-121-2022-04-14",
+   "page": 1,
+   "bbox": [
+    51.4,
+    540.9,
+    324.5,
+    603.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-121-B04",
+  "wellId": "KN-121",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 717.4,
+  "date": "2022-04-15",
+  "time": "06:48",
+  "mudWeightPpg": 9.6,
+  "nptHours": 4.9,
+  "narrative": "Overpull of 26 t at 717 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-121-2022-04-15",
+   "page": 1,
+   "bbox": [
+    51.4,
+    389.7,
+    324.5,
+    452.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-121-B05",
+  "wellId": "KN-121",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 748.7,
+  "date": "2022-04-15",
+  "time": "13:33",
+  "mudWeightPpg": 9.6,
+  "nptHours": 2.8,
+  "narrative": "ROP fell to 5 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-121-2022-04-15",
+   "page": 1,
+   "bbox": [
+    51.4,
+    458.5,
+    315.1,
+    520.9
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-121-B06",
+  "wellId": "KN-121",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1023.3,
+  "date": "2022-04-16",
+  "time": "11:48",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.2,
+  "narrative": "Overpull of 29 t at 1,023 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-121-2022-04-16",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    324.5,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-121-B07",
+  "wellId": "KN-121",
+  "kind": "losses",
+  "title": "Partial losses in Tipam sand",
+  "md": 1548.8,
+  "date": "2022-04-20",
+  "time": "16:35",
+  "mudWeightPpg": 9.8,
+  "nptHours": 10.7,
+  "narrative": "Partial losses of 17 bbl/h at 9.8 ppg.",
+  "action": "Pumped a 56 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 10.2 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-121-2022-04-20",
+   "page": 1,
+   "bbox": [
+    51.4,
+    330.7,
+    305.8,
+    393.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 17.0
+ },
+ {
+  "id": "KN-122-B01",
+  "wellId": "KN-122",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 552.8,
+  "date": "2023-06-23",
+  "time": "04:30",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.9,
+  "narrative": "Overpull of 28 t at 553 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-122-2023-06-23",
+   "page": 1,
+   "bbox": [
+    51.4,
+    372.1,
+    324.5,
+    434.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-122-B02",
+  "wellId": "KN-122",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 981.2,
+  "date": "2023-06-24",
+  "time": "19:25",
+  "mudWeightPpg": 9.6,
+  "nptHours": 2.8,
+  "narrative": "ROP fell to 5 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-122-2023-06-24",
+   "page": 1,
+   "bbox": [
+    51.4,
+    372.1,
+    315.1,
+    434.5
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-122-B03",
+  "wellId": "KN-122",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1274.8,
+  "date": "2023-06-26",
+  "time": "04:44",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.6,
+  "narrative": "Overpull of 16 t at 1,275 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-122-2023-06-26",
+   "page": 1,
+   "bbox": [
+    51.4,
+    352.9,
+    324.5,
+    415.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-122-B04",
+  "wellId": "KN-122",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 1389.6,
+  "date": "2023-06-26",
+  "time": "20:21",
+  "mudWeightPpg": 9.6,
+  "nptHours": 4.2,
+  "narrative": "Overpull of 24 t at 1,390 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-122-2023-06-26",
+   "page": 1,
+   "bbox": [
+    51.4,
+    421.7,
+    324.5,
+    484.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-122-B05",
+  "wellId": "KN-122",
+  "kind": "caving",
+  "title": "Coal-shale caving, pack-off",
+  "md": 3387.2,
+  "date": "2023-07-10",
+  "time": "17:16",
+  "mudWeightPpg": 10.4,
+  "nptHours": 26.9,
+  "narrative": "Coal-shale cavings over the shakers at 10.4 ppg, torque erratic on connections.",
+  "action": "Pumped hi-vis sweeps and raised mud weight to 11.1 ppg.",
+  "remarks": "Caved at 10.4 ppg, hole stable at 11.1 ppg.",
+  "lessons": [
+   {
+    "kind": "raise-mud-weight",
+    "toPpg": 11.1,
+    "evidence": "Caved at 10.4 ppg, hole stable at 11.1 ppg.",
+    "source": {
+     "page": 1,
+     "rects": [
+      [
+       92.0,
+       379.7,
+       252.6,
+       388.1
+      ]
+     ]
+    }
+   }
+  ],
+  "source": {
+   "docId": "KN-122-2023-07-10",
+   "page": 1,
+   "bbox": [
+    51.4,
+    325.7,
+    397.8,
+    388.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-122-B06",
+  "wellId": "KN-122",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4197.6,
+  "date": "2023-07-18",
+  "time": "14:42",
+  "mudWeightPpg": 12.2,
+  "nptHours": 54.7,
+  "narrative": "Pit gain of 11 bbl at 12.2 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.4 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.4 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-122-2023-07-18",
+   "page": 1,
+   "bbox": [
+    51.5,
+    335.9,
+    348.8,
+    397.8
+   ],
+   "ocr": true
+  },
+  "confidence": 0.929,
+  "fieldConfidence": {
+   "kind": 0.935,
+   "title": 0.96,
+   "depth": 0.929,
+   "mudWeight": 0.929,
+   "npt": 0.929
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-123-B01",
+  "wellId": "KN-123",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 922.9,
+  "date": "2024-04-13",
+  "time": "21:04",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.2,
+  "narrative": "ROP fell to 5 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-123-2024-04-13",
+   "page": 1,
+   "bbox": [
+    51.4,
+    348.9,
+    315.1,
+    411.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-123-B02",
+  "wellId": "KN-123",
+  "kind": "bit-balling",
+  "title": "Bit balling in sticky clay",
+  "md": 1085.3,
+  "date": "2024-04-14",
+  "time": "10:11",
+  "mudWeightPpg": 9.6,
+  "nptHours": 3.8,
+  "narrative": "ROP fell to 4 m/h with low torque, bit balled in sticky clay.",
+  "action": "Pumped a detergent sweep and raised flow. ROP recovered.",
+  "remarks": "Run a detergent sweep every 150 m in the Girujan.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-123-2024-04-14",
+   "page": 1,
+   "bbox": [
+    51.4,
+    389.7,
+    315.1,
+    452.1
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-123-B03",
+  "wellId": "KN-123",
+  "kind": "losses",
+  "title": "Losses in fractured limestone",
+  "md": 4491.0,
+  "date": "2024-05-05",
+  "time": "15:48",
+  "mudWeightPpg": 12.2,
+  "nptHours": 34.8,
+  "narrative": "Partial losses of 18 bbl/h at 12.2 ppg.",
+  "action": "Pumped a 36 bbl LCM pill and reduced flow. Losses cured.",
+  "remarks": "Pre-treat with 15 ppb LCM and hold ECD under 12.6 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-123-2024-05-05",
+   "page": 1,
+   "bbox": [
+    51.4,
+    335.3,
+    305.8,
+    397.7
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false,
+  "lossRateBblH": 18.0
+ },
+ {
+  "id": "KN-124-B01",
+  "wellId": "KN-124",
+  "kind": "tight-hole",
+  "title": "Tight hole on trip",
+  "md": 777.9,
+  "date": "2025-01-19",
+  "time": "14:19",
+  "mudWeightPpg": 9.6,
+  "nptHours": 5.7,
+  "narrative": "Overpull of 19 t at 778 m while pulling out of hole.",
+  "action": "Worked through with back-reaming and circulated the hole clean.",
+  "remarks": "Back-ream stands through the Girujan on every trip.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-124-2025-01-19",
+   "page": 1,
+   "bbox": [
+    51.5,
+    349.6,
+    324.0,
+    411.5
+   ],
+   "ocr": true
+  },
+  "confidence": 0.925,
+  "fieldConfidence": {
+   "kind": 0.942,
+   "title": 0.956,
+   "depth": 0.925,
+   "mudWeight": 0.925,
+   "npt": 0.925
+  },
+  "needsReview": false
+ },
+ {
+  "id": "KN-124-B02",
+  "wellId": "KN-124",
+  "kind": "kick",
+  "title": "Kick, gas influx",
+  "md": 4152.8,
+  "date": "2025-02-09",
+  "time": "08:05",
+  "mudWeightPpg": 12.2,
+  "nptHours": 54.6,
+  "narrative": "Pit gain of 16 bbl at 12.2 ppg, well shut in.",
+  "action": "Circulated out by the driller's method and raised mud weight by 0.5 ppg.",
+  "remarks": "Weight up ahead of the Kopili ramp, trip margin 0.5 ppg.",
+  "lessons": [],
+  "source": {
+   "docId": "KN-124-2025-02-09",
+   "page": 1,
+   "bbox": [
+    51.4,
+    288.9,
+    349.4,
+    351.3
+   ],
+   "ocr": false
+  },
+  "confidence": 0.99,
+  "fieldConfidence": {
+   "kind": 0.99,
+   "title": 0.99,
+   "depth": 0.99,
+   "mudWeight": 0.99,
+   "npt": 0.99
+  },
+  "needsReview": false
+ }
+]

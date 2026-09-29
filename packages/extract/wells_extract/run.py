@@ -1,0 +1,129 @@
+"""Parses every rendered report in the demo pack and scores the result against the generator's truth.
+
+Writes data/demo/extracted/events.json, documents.json and stats.json. The web app and the API read
+these files, so every alert on screen comes from a parsed page, not from the generator directly.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+from concurrent.futures import ProcessPoolExecutor
+from pathlib import Path
+
+from .incidents import REVIEW_THRESHOLD, parse_report
+from .pages import read_lines
+
+ROOT = Path(__file__).resolve().parents[3]
+DEMO = ROOT / "data" / "demo"
+CACHE = DEMO / ".cache" / "ocr"
+
+
+def _parse(args: tuple[str, str, str]) -> dict:
+    doc_id, well_id, path = args
+    lines = read_lines(Path(path), CACHE)
+    events = parse_report(lines, doc_id)
+    ocr = [line for line in lines if line.ocr]
+    pages = sorted({line.page for line in lines})
+    return {
+        "doc": {
+            "docId": doc_id,
+            "wellId": well_id,
+            "pages": len(pages),
+            "ocrPages": len({line.page for line in ocr}),
+            "lines": len(lines),
+            "ocrConfidence": round(sum(line.conf for line in ocr) / len(ocr), 3) if ocr else None,
+            "incidents": len(events),
+        },
+        "events": events,
+    }
+
+
+def histogram(values: list[float], lo: float = 0.5, step: float = 0.05) -> list[dict]:
+    bins = []
+    edge = lo
+    while edge < 1.0 - 1e-9:
+        hi = round(edge + step, 2)
+        n = sum(1 for v in values if (edge <= v < hi) or (hi >= 1.0 and v >= edge))
+        bins.append({"from": round(edge, 2), "to": hi, "count": n})
+        edge = hi
+    below = sum(1 for v in values if v < lo)
+    if below:
+        bins.insert(0, {"from": 0.0, "to": lo, "count": below})
+    return bins
+
+
+def accuracy(extracted: list[dict], truth: list[dict]) -> dict:
+    """Matches each true event to the parsed event in the same report nearest in depth."""
+    by_doc: dict[str, list[dict]] = {}
+    for e in extracted:
+        by_doc.setdefault(e["source"]["docId"], []).append(e)
+    found = kind = depth = mw = npt = 0
+    for t in truth:
+        cands = by_doc.get(t["source"]["docId"], [])
+        if not cands:
+            continue
+        best = min(cands, key=lambda e: abs((e["md"] or -1e9) - t["md"]))
+        found += 1
+        kind += best["kind"] == t["kind"]
+        depth += best["md"] is not None and abs(best["md"] - t["md"]) < 0.05
+        mw += best["mudWeightPpg"] == t["mudWeightPpg"]
+        npt += best["nptHours"] == t["nptHours"]
+    n = len(truth) or 1
+    return {
+        "truthEvents": len(truth),
+        "extractedEvents": len(extracted),
+        "recall": round(found / n, 4),
+        "kindCorrect": round(kind / n, 4),
+        "depthExact": round(depth / n, 4),
+        "mudWeightExact": round(mw / n, 4),
+        "nptExact": round(npt / n, 4),
+    }
+
+
+def main(argv: list[str] | None = None) -> None:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--jobs", type=int, default=8)
+    args = ap.parse_args(argv)
+
+    manifest = json.loads((DEMO / "ddr" / "manifest.json").read_text())
+    field = json.loads((DEMO / "field.json").read_text())
+    jobs = [(m["docId"], m["wellId"], str(DEMO / "ddr" / m["wellId"] / f"{m['docId']}.pdf")) for m in manifest]
+    with ProcessPoolExecutor(max_workers=args.jobs) as pool:
+        results = list(pool.map(_parse, jobs, chunksize=4))
+
+    scanned = {m["docId"]: m["scanned"] for m in manifest}
+    documents = [{**r["doc"], "date": r["doc"]["docId"][-10:], "scanned": scanned[r["doc"]["docId"]]} for r in results]
+    events = sorted((e for r in results for e in r["events"]), key=lambda e: (e["wellId"], e["md"] or 0))
+    rendered_wells = {m["wellId"] for m in manifest}
+    truth = [e for e in field["events"] if e["wellId"] in rendered_wells]
+
+    ocr_confs = [d["ocrConfidence"] for d in documents if d["ocrConfidence"] is not None]
+    stats = {
+        "documents": len(documents),
+        "pages": sum(d["pages"] for d in documents),
+        "ocrPages": sum(d["ocrPages"] for d in documents),
+        "textPages": sum(d["pages"] - d["ocrPages"] for d in documents),
+        "wells": len(rendered_wells),
+        "events": len(events),
+        "needsReview": sum(1 for e in events if e["needsReview"]),
+        "reviewThreshold": REVIEW_THRESHOLD,
+        "eventConfidence": histogram([e["confidence"] for e in events]),
+        "ocrPageConfidence": histogram(ocr_confs),
+        "accuracy": accuracy(events, truth),
+    }
+    out = DEMO / "extracted"
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "events.json").write_text(json.dumps(events, indent=1) + "\n")
+    (out / "documents.json").write_text(json.dumps(documents, indent=1) + "\n")
+    (out / "stats.json").write_text(json.dumps(stats, indent=1) + "\n")
+    a = stats["accuracy"]
+    print(
+        f"parsed {stats['documents']} reports, {stats['pages']} pages ({stats['ocrPages']} by OCR): "
+        f"{stats['events']} events, {stats['needsReview']} for review. "
+        f"recall {a['recall']:.3f}, depth exact {a['depthExact']:.3f}, kind {a['kindCorrect']:.3f}"
+    )
+
+
+if __name__ == "__main__":
+    main()

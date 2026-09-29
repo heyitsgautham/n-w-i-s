@@ -1,0 +1,24 @@
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+.env*
+.DS_Store
+test-results/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+recording/frames/
+data/demo/.cache/
+recording/out/stills/
+recording/out/slice-*.mp4
+# Rendered reports: the four section wells are committed, `make demo` renders the other twenty.
+data/demo/ddr/*/
+!data/demo/ddr/KN-104/
+!data/demo/ddr/KN-109/
+!data/demo/ddr/KN-117/
+!data/demo/ddr/KN-121/
+recording/out/sheets/

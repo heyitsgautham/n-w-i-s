@@ -1,0 +1,128 @@
+{
+ "documents": 926,
+ "pages": 928,
+ "ocrPages": 189,
+ "textPages": 739,
+ "wells": 24,
+ "events": 118,
+ "needsReview": 4,
+ "reviewThreshold": 0.85,
+ "eventConfidence": [
+  {
+   "from": 0.0,
+   "to": 0.5,
+   "count": 1
+  },
+  {
+   "from": 0.5,
+   "to": 0.55,
+   "count": 0
+  },
+  {
+   "from": 0.55,
+   "to": 0.6,
+   "count": 0
+  },
+  {
+   "from": 0.6,
+   "to": 0.65,
+   "count": 0
+  },
+  {
+   "from": 0.65,
+   "to": 0.7,
+   "count": 0
+  },
+  {
+   "from": 0.7,
+   "to": 0.75,
+   "count": 0
+  },
+  {
+   "from": 0.75,
+   "to": 0.8,
+   "count": 0
+  },
+  {
+   "from": 0.8,
+   "to": 0.85,
+   "count": 3
+  },
+  {
+   "from": 0.85,
+   "to": 0.9,
+   "count": 4
+  },
+  {
+   "from": 0.9,
+   "to": 0.95,
+   "count": 17
+  },
+  {
+   "from": 0.95,
+   "to": 1.0,
+   "count": 93
+  }
+ ],
+ "ocrPageConfidence": [
+  {
+   "from": 0.5,
+   "to": 0.55,
+   "count": 0
+  },
+  {
+   "from": 0.55,
+   "to": 0.6,
+   "count": 0
+  },
+  {
+   "from": 0.6,
+   "to": 0.65,
+   "count": 0
+  },
+  {
+   "from": 0.65,
+   "to": 0.7,
+   "count": 0
+  },
+  {
+   "from": 0.7,
+   "to": 0.75,
+   "count": 0
+  },
+  {
+   "from": 0.75,
+   "to": 0.8,
+   "count": 4
+  },
+  {
+   "from": 0.8,
+   "to": 0.85,
+   "count": 18
+  },
+  {
+   "from": 0.85,
+   "to": 0.9,
+   "count": 107
+  },
+  {
+   "from": 0.9,
+   "to": 0.95,
+   "count": 60
+  },
+  {
+   "from": 0.95,
+   "to": 1.0,
+   "count": 0
+  }
+ ],
+ "accuracy": {
+  "truthEvents": 120,
+  "extractedEvents": 118,
+  "recall": 0.9833,
+  "kindCorrect": 0.9833,
+  "depthExact": 0.9833,
+  "mudWeightExact": 0.9833,
+  "nptExact": 0.9833
+ }
+}

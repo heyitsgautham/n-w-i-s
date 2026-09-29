@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Night shift in a control room. Slate chrome, amber and red only for alerts,
+ * FGDC lithology colours on the section so a geologist reads it without a legend.
+ */
+:root {
+  --bg: #020617;
+  --chrome: #050b18;
+  --paper: #070f1e;
+  --paper-deep: #040a16;
+  --rule: #16213a;
+  --rule-strong: #25324d;
+  --ink: #e2e8f0;
+  --ink-bright: #f8fafc;
+  --ink-muted: #94a3b8;
+  --ink-dim: #5f6f89;
+  --ink-faint: #3a4863;
+
+  --watch: #fbbf24;
+  --prepare: #ef4444;
+  --monitor: #8a9ab3;
+  --passed: #4b5870;
+
+  --lith-gravel: #d9b27a;
+  --lith-sandy-clay: #b8a46a;
+  --lith-clay: #8c7a4c;
+  --lith-sandstone: #eadb8c;
+  --lith-shale: #8ea894;
+  --lith-coal: #0d0f10;
+  --lith-siltstone: #b7b18e;
+  --lith-limestone: #a8cbe6;
+  --lith-basement: #c99090;
+  --pattern-ink: #0a1222;
+
+  /* shadcn tokens, mapped onto the palette above. */
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--chrome);
+  --card-foreground: var(--ink);
+  --popover: #0b1426;
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--bg);
+  --secondary: #0e182c;
+  --secondary-foreground: var(--ink);
+  --muted: #0e182c;
+  --muted-foreground: var(--ink-muted);
+  --accent: #111c33;
+  --accent-foreground: var(--ink);
+  --destructive: var(--prepare);
+  --border: var(--rule);
+  --input: var(--rule-strong);
+  --ring: #64748b;
+  --radius: 0.25rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chrome: var(--chrome);
+  --color-paper: var(--paper);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-ink: var(--ink);
+  --color-ink-bright: var(--ink-bright);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-faint: var(--ink-faint);
+  --color-watch: var(--watch);
+  --color-prepare: var(--prepare);
+  --color-monitor: var(--monitor);
+  --color-passed: var(--passed);
+
+  --font-sans: var(--font-barlow);
+  --font-mono: var(--font-jetbrains);
+  --font-heading: var(--font-barlow);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Uppercase annotation, the way a drafter letters a drawing. */
+.label-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.num {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+@keyframes flip-flash {
+  0% {
+    background-color: color-mix(in srgb, var(--prepare) 30%, transparent);
+  }
+  100% {
+    background-color: color-mix(in srgb, var(--prepare) 7%, transparent);
+  }
+}
+
+@keyframes feed-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes live-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}

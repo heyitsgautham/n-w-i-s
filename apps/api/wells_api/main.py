@@ -1,0 +1,296 @@
+"""N-W-I-S API over the demo pack and the parsed reports.
+
+Run with `uv run uvicorn wells_api.main:app --port 8121`. Everything it serves comes from
+data/demo: field.json from the generator, and extracted/ from the parser run over the rendered PDFs.
+"""
+
+from __future__ import annotations
+
+import io
+import json
+import math
+import os
+import threading
+import uuid
+from functools import lru_cache
+from pathlib import Path
+from typing import Literal
+
+import pypdfium2 as pdfium
+from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
+from pydantic import BaseModel
+
+from .briefing import briefing_pdf
+from .search import formation_at, parse_query, search
+
+DEMO = Path(os.environ.get("WELLS_DATA_DIR", Path(__file__).resolve().parents[3] / "data" / "demo"))
+
+app = FastAPI(title="Offset-well memory API", version="0.1.0", description="Synthetic demo pack")
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+
+
+class Store:
+    """The pack is read once. Review decisions live in memory and reset with the demo."""
+
+    def __init__(self, root: Path):
+        self.root = root
+        self.field = json.loads((root / "field.json").read_text())
+        self.events = json.loads((root / "extracted" / "events.json").read_text())
+        self.documents = {d["docId"]: d for d in json.loads((root / "extracted" / "documents.json").read_text())}
+        self.stats = json.loads((root / "extracted" / "stats.json").read_text())
+        self.wells = {w["id"]: w for w in self.field["wells"]}
+        self.decisions: dict[str, str] = {}
+        self.briefings: dict[str, bytes] = {}
+        self.lock = threading.Lock()
+
+    def event_view(self, e: dict) -> dict:
+        decision = self.decisions.get(e["id"])
+        return {
+            **e,
+            "needsReview": e["needsReview"] and decision is None,
+            "rejected": decision == "reject",
+            "reviewed": decision,
+        }
+
+    def live_events(self) -> list[dict]:
+        return [self.event_view(e) for e in self.events]
+
+
+@lru_cache(maxsize=1)
+def store() -> Store:
+    return Store(DEMO)
+
+
+def _active() -> dict:
+    s = store()
+    return s.wells[s.field["activeWellId"]]
+
+
+def _distance_km(well: dict) -> float:
+    a = _active()
+    return round(math.hypot(well["x"] - a["x"], well["y"] - a["y"]) / 1000, 2)
+
+
+@app.get("/health")
+def health() -> dict:
+    s = store()
+    return {
+        "ok": True,
+        "seed": s.field["seed"],
+        "wells": len(s.wells),
+        "events": len(s.events),
+        "documents": len(s.documents),
+    }
+
+
+@app.get("/wells")
+def wells() -> list[dict]:
+    keys = ["id", "role", "x", "y", "rtElevation", "spudDate", "rig", "tdMd", "releaseDate"]
+    return [{**{k: w.get(k) for k in keys}, "distanceKm": _distance_km(w)} for w in store().wells.values()]
+
+
+@app.get("/wells/{well_id}")
+def well(well_id: str) -> dict:
+    w = store().wells.get(well_id)
+    if not w:
+        raise HTTPException(404, f"no well {well_id}")
+    return {**{k: v for k, v in w.items() if k != "gammaRay"}, "distanceKm": _distance_km(w)}
+
+
+@app.get("/wells/{well_id}/tops")
+def tops(well_id: str) -> list[dict]:
+    return well(well_id)["tops"]
+
+
+@app.get("/events")
+def events(well: str | None = None, kind: str | None = None, formation: str | None = None) -> list[dict]:
+    s = store()
+    out = []
+    for e in s.live_events():
+        if well and e["wellId"] != well:
+            continue
+        if kind and e["kind"] != kind:
+            continue
+        f = formation_at(s.wells[e["wellId"]]["tops"], e["md"]) if e["md"] is not None else None
+        if formation and f != formation:
+            continue
+        out.append({**e, "formationId": f})
+    return out
+
+
+@app.get("/replay")
+def replay() -> dict:
+    return store().field["replay"]
+
+
+@app.get("/documents")
+def documents(well: str | None = None) -> list[dict]:
+    return [d for d in store().documents.values() if not well or d["wellId"] == well]
+
+
+@app.get("/documents/{doc_id}.pdf")
+def document_pdf(doc_id: str) -> Response:
+    s = store()
+    d = s.documents.get(doc_id)
+    pdf = s.root / "ddr" / d["wellId"] / f"{doc_id}.pdf" if d else None
+    if not pdf or not pdf.exists():
+        raise HTTPException(404, f"no rendered document {doc_id}")
+    return Response(pdf.read_bytes(), media_type="application/pdf")
+
+
+@app.get("/documents/{doc_id}")
+def document(doc_id: str) -> dict:
+    s = store()
+    d = s.documents.get(doc_id)
+    if not d:
+        raise HTTPException(404, f"no document {doc_id}")
+    pdf = s.root / "ddr" / d["wellId"] / f"{doc_id}.pdf"
+    return {**d, "available": pdf.exists(), "events": [e for e in s.live_events() if e["source"]["docId"] == doc_id]}
+
+
+#: PDFium is not thread-safe, and FastAPI runs these handlers on a thread pool.
+PDFIUM = threading.Lock()
+
+
+@lru_cache(maxsize=256)
+def _page_png(path: str, page: int, scale: float) -> bytes:
+    with PDFIUM:
+        return _render(path, page, scale)
+
+
+def _render(path: str, page: int, scale: float) -> bytes:
+    pdf = pdfium.PdfDocument(path)
+    if page < 1 or page > len(pdf):
+        raise HTTPException(404, f"page {page} out of range")
+    img = pdf[page - 1].render(scale=scale).to_pil()
+    buf = io.BytesIO()
+    img.save(buf, format="PNG", optimize=True)
+    return buf.getvalue()
+
+
+@app.get("/documents/{doc_id}/pages/{page}.png")
+def page_png(doc_id: str, page: int, scale: float = Query(2.0, ge=0.5, le=4.0)) -> Response:
+    s = store()
+    d = s.documents.get(doc_id)
+    if not d:
+        raise HTTPException(404, f"no document {doc_id}")
+    pdf = s.root / "ddr" / d["wellId"] / f"{doc_id}.pdf"
+    if not pdf.exists():
+        raise HTTPException(404, f"{doc_id} is not rendered in this checkout; run `make demo`")
+    return Response(_page_png(str(pdf), page, scale), media_type="image/png", headers={"Cache-Control": "max-age=3600"})
+
+
+@app.get("/search")
+def search_events(q: str = Query(..., min_length=2)) -> dict:
+    s = store()
+    query = parse_query(q, s.field["formations"])
+    results = search(query, s.live_events(), s.wells, s.field["activeWellId"])
+    return {"query": q, "filters": query.filters(), "terms": query.terms, "count": len(results), "results": results}
+
+
+@app.get("/ingestion")
+def ingestion() -> dict:
+    s = store()
+    live = s.live_events()
+    return {
+        **s.stats,
+        "pendingReview": sum(1 for e in live if e["needsReview"]),
+        "confirmed": sum(1 for e in live if e["reviewed"] == "confirm"),
+        "rejected": sum(1 for e in live if e["reviewed"] == "reject"),
+        "scannedDocuments": sum(1 for d in s.documents.values() if d["scanned"]),
+        "volve": _volve_metrics(),
+    }
+
+
+def _volve_metrics() -> dict | None:
+    path = DEMO.parent / "volve" / "metrics.json"
+    return json.loads(path.read_text()) if path.exists() else None
+
+
+@app.get("/review")
+def review_queue() -> list[dict]:
+    s = store()
+    return [e for e in s.live_events() if e["needsReview"] or (s.decisions.get(e["id"]) is not None)]
+
+
+@app.get("/review/decisions")
+def review_decisions() -> dict[str, str]:
+    return dict(store().decisions)
+
+
+@app.post("/review/reset")
+def reset_review() -> dict:
+    s = store()
+    with s.lock:
+        s.decisions.clear()
+    return {"ok": True}
+
+
+class Decision(BaseModel):
+    decision: Literal["confirm", "reject"]
+
+
+@app.post("/review/{event_id}")
+def decide(event_id: str, body: Decision) -> dict:
+    s = store()
+    if not any(e["id"] == event_id for e in s.events):
+        raise HTTPException(404, f"no event {event_id}")
+    with s.lock:
+        s.decisions[event_id] = body.decision
+    return {"id": event_id, "decision": body.decision}
+
+
+class BriefingLine(BaseModel):
+    text: str
+    cites: list[str] = []
+
+
+class BriefingSection(BaseModel):
+    title: str
+    summary: str = ""
+    lines: list[BriefingLine]
+
+
+class Briefing(BaseModel):
+    title: str
+    subtitle: str = ""
+    footer: str = ""
+    sections: list[BriefingSection]
+
+
+@app.post("/briefing/pdf")
+def export_briefing(body: Briefing) -> dict:
+    pdf = briefing_pdf(body.model_dump())
+    key = uuid.uuid5(uuid.NAMESPACE_URL, json.dumps(body.model_dump(), sort_keys=True)).hex[:12]
+    store().briefings[key] = pdf
+    with PDFIUM:
+        pages = len(pdfium.PdfDocument(pdf))
+    return {"id": key, "pages": pages, "bytes": len(pdf), "url": f"/briefing/{key}.pdf"}
+
+
+@app.get("/briefing/{key}.pdf")
+def briefing_file(key: str) -> Response:
+    pdf = store().briefings.get(key)
+    if not pdf:
+        raise HTTPException(404, "no such briefing")
+    return Response(
+        pdf,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="briefing-{key}.pdf"'},
+    )
+
+
+@app.get("/briefing/{key}/pages/{page}.png")
+def briefing_page(key: str, page: int, scale: float = Query(1.5, ge=0.5, le=3.0)) -> Response:
+    pdf = store().briefings.get(key)
+    if not pdf:
+        raise HTTPException(404, "no such briefing")
+    with PDFIUM:
+        doc = pdfium.PdfDocument(pdf)
+        if page < 1 or page > len(doc):
+            raise HTTPException(404, "page out of range")
+        buf = io.BytesIO()
+        doc[page - 1].render(scale=scale).to_pil().save(buf, format="PNG")
+    return Response(buf.getvalue(), media_type="image/png")

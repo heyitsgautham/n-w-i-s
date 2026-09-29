@@ -1,0 +1,30 @@
+[project]
+name = "wells"
+version = "0.1.0"
+description = "N-W-I-S Python workspace: DDR renderer, report parser and API"
+requires-python = ">=3.11"
+dependencies = ["wells-api", "wells-extract", "wells-ddr"]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["apps/api", "packages/extract", "packages/synth/ddr"]
+
+[tool.uv.sources]
+wells-api = { workspace = true }
+wells-extract = { workspace = true }
+wells-ddr = { workspace = true }
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6", "httpx>=0.27", "imageio-ffmpeg>=0.5"]
+
+[tool.pytest.ini_options]
+testpaths = ["packages/synth/ddr/tests", "packages/extract/tests", "apps/api/tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

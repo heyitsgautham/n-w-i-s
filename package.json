@@ -1,0 +1,29 @@
+{
+  "name": "n-w-i-s",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.26.2",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "start": "WELLS_PROD=1 node scripts/dev.mjs",
+    "build": "pnpm --filter web build",
+    "test": "pnpm test:ts && pnpm test:py",
+    "test:ts": "vitest run",
+    "test:py": "uv run pytest -q",
+    "lint": "pnpm --filter web lint && uv run ruff check . && uv run ruff format --check .",
+    "typecheck": "tsc -p packages/correlate && tsc -p packages/synth && tsc -p recording && pnpm --filter web exec next typegen && pnpm --filter web exec tsc --noEmit",
+    "synth": "tsx packages/synth/src/cli.ts",
+    "data": "pnpm synth && uv run python -m wells_ddr.render && uv run python -m wells_extract.run",
+    "shots": "tsx recording/shots.ts",
+    "film": "tsx recording/film.ts",
+    "contact-sheet": "tsx recording/contact-sheet.ts",
+    "voiceover": "tsx recording/voiceover.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "playwright": "1.63.0",
+    "tsx": "^4",
+    "typescript": "^5",
+    "vitest": "^3"
+  }
+}
