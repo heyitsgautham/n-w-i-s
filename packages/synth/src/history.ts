@@ -15,7 +15,7 @@ import {
   type SurveyStation,
 } from "@wells/correlate";
 import { rng, type Rng } from "./rng";
-import { DRILLING, HOLE_PROGRAM, KOPILI_STEP, MUD_OVERRIDES, REPLAY } from "./scenario";
+import { CLEAN_SCANS, DRILLING, HOLE_PROGRAM, KOPILI_STEP, MUD_OVERRIDES, REPLAY } from "./scenario";
 import { round1 } from "./wells";
 
 /** An event the simulator must stop for when the bit reaches its depth. */
@@ -388,6 +388,7 @@ export function dailyReports(opts: {
         : null,
       surveys: opts.surveys.filter((s) => s.md > startMd && s.md <= endMd).map((s) => ({ md: s.md, inc: round2(s.inc), azi: round1(s.azi), tvd: round1(s.tvd) })),
       incidents,
+      ...(incidents.some((i) => CLEAN_SCANS.includes(i.eventId)) ? { scan: "clean" as const } : {}),
     });
   }
   return reports;

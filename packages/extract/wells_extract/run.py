@@ -53,15 +53,22 @@ def histogram(values: list[float], lo: float = 0.5, step: float = 0.05) -> list[
     return bins
 
 
-def accuracy(extracted: list[dict], truth: list[dict]) -> dict:
-    """Matches each true event to the parsed event in the same report nearest in depth."""
+def accuracy(extracted: list[dict], truth: list[dict], scanned: dict[str, bool]) -> dict:
+    """Matches each true event to the parsed event in the same report nearest in depth.
+
+    Fields are scored over the events found, so a miss counts once, as a miss, and is named.
+    """
     by_doc: dict[str, list[dict]] = {}
     for e in extracted:
         by_doc.setdefault(e["source"]["docId"], []).append(e)
     found = kind = depth = mw = npt = 0
+    missed = []
     for t in truth:
         cands = by_doc.get(t["source"]["docId"], [])
         if not cands:
+            missed.append(
+                {"id": t["id"], "docId": t["source"]["docId"], "scanned": scanned.get(t["source"]["docId"], False)}
+            )
             continue
         best = min(cands, key=lambda e: abs((e["md"] or -1e9) - t["md"]))
         found += 1
@@ -69,15 +76,15 @@ def accuracy(extracted: list[dict], truth: list[dict]) -> dict:
         depth += best["md"] is not None and abs(best["md"] - t["md"]) < 0.05
         mw += best["mudWeightPpg"] == t["mudWeightPpg"]
         npt += best["nptHours"] == t["nptHours"]
-    n = len(truth) or 1
     return {
         "truthEvents": len(truth),
         "extractedEvents": len(extracted),
-        "recall": round(found / n, 4),
-        "kindCorrect": round(kind / n, 4),
-        "depthExact": round(depth / n, 4),
-        "mudWeightExact": round(mw / n, 4),
-        "nptExact": round(npt / n, 4),
+        "found": found,
+        "kindRight": kind,
+        "depthExact": depth,
+        "mudWeightExact": mw,
+        "nptExact": npt,
+        "missed": missed,
     }
 
 
@@ -110,7 +117,7 @@ def main(argv: list[str] | None = None) -> None:
         "reviewThreshold": REVIEW_THRESHOLD,
         "eventConfidence": histogram([e["confidence"] for e in events]),
         "ocrPageConfidence": histogram(ocr_confs),
-        "accuracy": accuracy(events, truth),
+        "accuracy": accuracy(events, truth, scanned),
     }
     out = DEMO / "extracted"
     out.mkdir(parents=True, exist_ok=True)
@@ -121,7 +128,8 @@ def main(argv: list[str] | None = None) -> None:
     print(
         f"parsed {stats['documents']} reports, {stats['pages']} pages ({stats['ocrPages']} by OCR): "
         f"{stats['events']} events, {stats['needsReview']} for review. "
-        f"recall {a['recall']:.3f}, depth exact {a['depthExact']:.3f}, kind {a['kindCorrect']:.3f}"
+        f"found {a['found']} of {a['truthEvents']}; of those, kind {a['kindRight']}, depth {a['depthExact']}, "
+        f"mud weight {a['mudWeightExact']}, NPT {a['nptExact']}; missed {[m['id'] for m in a['missed']]}"
     )
 
 

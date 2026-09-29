@@ -335,7 +335,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 28,
-  "ocrConfidence": 0.825,
+  "ocrConfidence": 0.826,
   "incidents": 0,
   "date": "2009-02-08",
   "scanned": true
@@ -434,7 +434,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 20,
-  "ocrConfidence": 0.905,
+  "ocrConfidence": 0.906,
   "incidents": 0,
   "date": "2009-02-17",
   "scanned": true
@@ -445,7 +445,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 22,
-  "ocrConfidence": 0.793,
+  "ocrConfidence": 0.795,
   "incidents": 0,
   "date": "2009-02-18",
   "scanned": true
@@ -609,8 +609,8 @@
   "wellId": "KN-102",
   "pages": 1,
   "ocrPages": 1,
-  "lines": 39,
-  "ocrConfidence": 0.902,
+  "lines": 38,
+  "ocrConfidence": 0.905,
   "incidents": 0,
   "date": "2010-01-15",
   "scanned": true
@@ -632,7 +632,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 22,
-  "ocrConfidence": 0.859,
+  "ocrConfidence": 0.86,
   "incidents": 0,
   "date": "2010-01-17",
   "scanned": true
@@ -1028,7 +1028,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 47,
-  "ocrConfidence": 0.822,
+  "ocrConfidence": 0.823,
   "incidents": 0,
   "date": "2010-11-09",
   "scanned": true
@@ -1039,7 +1039,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 42,
-  "ocrConfidence": 0.929,
+  "ocrConfidence": 0.93,
   "incidents": 0,
   "date": "2010-11-10",
   "scanned": true
@@ -1204,7 +1204,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 26,
-  "ocrConfidence": 0.868,
+  "ocrConfidence": 0.864,
   "incidents": 0,
   "date": "2010-11-25",
   "scanned": true
@@ -1358,7 +1358,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 43,
-  "ocrConfidence": 0.909,
+  "ocrConfidence": 0.912,
   "incidents": 0,
   "date": "2011-03-05",
   "scanned": true
@@ -1512,7 +1512,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 39,
-  "ocrConfidence": 0.878,
+  "ocrConfidence": 0.879,
   "incidents": 0,
   "date": "2011-03-19",
   "scanned": true
@@ -1589,7 +1589,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 30,
-  "ocrConfidence": 0.915,
+  "ocrConfidence": 0.919,
   "incidents": 0,
   "date": "2011-03-26",
   "scanned": true
@@ -1721,7 +1721,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 40,
-  "ocrConfidence": 0.82,
+  "ocrConfidence": 0.821,
   "incidents": 0,
   "date": "2011-07-23",
   "scanned": true
@@ -1875,7 +1875,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 36,
-  "ocrConfidence": 0.889,
+  "ocrConfidence": 0.887,
   "incidents": 1,
   "date": "2011-08-06",
   "scanned": true
@@ -2172,7 +2172,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 36,
-  "ocrConfidence": 0.901,
+  "ocrConfidence": 0.902,
   "incidents": 0,
   "date": "2012-06-06",
   "scanned": true
@@ -2469,7 +2469,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 29,
-  "ocrConfidence": 0.877,
+  "ocrConfidence": 0.879,
   "incidents": 0,
   "date": "2012-07-03",
   "scanned": true
@@ -2513,7 +2513,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 22,
-  "ocrConfidence": 0.855,
+  "ocrConfidence": 0.856,
   "incidents": 0,
   "date": "2012-07-07",
   "scanned": true
@@ -2524,7 +2524,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 24,
-  "ocrConfidence": 0.809,
+  "ocrConfidence": 0.811,
   "incidents": 0,
   "date": "2012-07-08",
   "scanned": true
@@ -2711,7 +2711,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 23,
-  "ocrConfidence": 0.873,
+  "ocrConfidence": 0.874,
   "incidents": 0,
   "date": "2013-05-28",
   "scanned": true
@@ -2788,7 +2788,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 44,
-  "ocrConfidence": 0.863,
+  "ocrConfidence": 0.864,
   "incidents": 1,
   "date": "2013-06-04",
   "scanned": true
@@ -2920,7 +2920,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 21,
-  "ocrConfidence": 0.845,
+  "ocrConfidence": 0.846,
   "incidents": 0,
   "date": "2013-06-16",
   "scanned": true
@@ -3041,7 +3041,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 43,
-  "ocrConfidence": 0.899,
+  "ocrConfidence": 0.9,
   "incidents": 0,
   "date": "2014-03-25",
   "scanned": true
@@ -3118,7 +3118,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 41,
-  "ocrConfidence": 0.877,
+  "ocrConfidence": 0.878,
   "incidents": 0,
   "date": "2014-04-01",
   "scanned": true
@@ -3128,8 +3128,8 @@
   "wellId": "KN-108",
   "pages": 1,
   "ocrPages": 1,
-  "lines": 40,
-  "ocrConfidence": 0.871,
+  "lines": 39,
+  "ocrConfidence": 0.864,
   "incidents": 0,
   "date": "2014-04-02",
   "scanned": true
@@ -3217,7 +3217,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 21,
-  "ocrConfidence": 0.865,
+  "ocrConfidence": 0.866,
   "incidents": 0,
   "date": "2014-04-10",
   "scanned": true
@@ -3866,7 +3866,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 36,
-  "ocrConfidence": 0.905,
+  "ocrConfidence": 0.907,
   "incidents": 0,
   "date": "2014-11-28",
   "scanned": true
@@ -3954,7 +3954,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 44,
-  "ocrConfidence": 0.869,
+  "ocrConfidence": 0.87,
   "incidents": 0,
   "date": "2014-12-06",
   "scanned": true
@@ -4218,7 +4218,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 21,
-  "ocrConfidence": 0.853,
+  "ocrConfidence": 0.854,
   "incidents": 0,
   "date": "2014-12-30",
   "scanned": true
@@ -4405,7 +4405,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 34,
-  "ocrConfidence": 0.851,
+  "ocrConfidence": 0.852,
   "incidents": 0,
   "date": "2015-10-18",
   "scanned": true
@@ -4482,7 +4482,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 26,
-  "ocrConfidence": 0.91,
+  "ocrConfidence": 0.911,
   "incidents": 0,
   "date": "2015-10-25",
   "scanned": true
@@ -4658,7 +4658,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 32,
-  "ocrConfidence": 0.84,
+  "ocrConfidence": 0.841,
   "incidents": 0,
   "date": "2015-11-10",
   "scanned": true
@@ -4669,7 +4669,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 31,
-  "ocrConfidence": 0.768,
+  "ocrConfidence": 0.769,
   "incidents": 0,
   "date": "2015-11-11",
   "scanned": true
@@ -4845,7 +4845,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 50,
-  "ocrConfidence": 0.844,
+  "ocrConfidence": 0.845,
   "incidents": 0,
   "date": "2016-10-08",
   "scanned": true
@@ -4856,7 +4856,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 42,
-  "ocrConfidence": 0.865,
+  "ocrConfidence": 0.866,
   "incidents": 0,
   "date": "2016-10-09",
   "scanned": true
@@ -4944,7 +4944,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 39,
-  "ocrConfidence": 0.865,
+  "ocrConfidence": 0.866,
   "incidents": 0,
   "date": "2016-10-17",
   "scanned": true
@@ -4987,8 +4987,8 @@
   "wellId": "KN-112",
   "pages": 1,
   "ocrPages": 1,
-  "lines": 30,
-  "ocrConfidence": 0.902,
+  "lines": 31,
+  "ocrConfidence": 0.891,
   "incidents": 0,
   "date": "2016-10-21",
   "scanned": true
@@ -5065,7 +5065,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 27,
-  "ocrConfidence": 0.893,
+  "ocrConfidence": 0.894,
   "incidents": 0,
   "date": "2016-10-28",
   "scanned": true
@@ -5285,7 +5285,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 31,
-  "ocrConfidence": 0.871,
+  "ocrConfidence": 0.872,
   "incidents": 0,
   "date": "2017-07-09",
   "scanned": true
@@ -5361,8 +5361,8 @@
   "wellId": "KN-113",
   "pages": 1,
   "ocrPages": 1,
-  "lines": 41,
-  "ocrConfidence": 0.87,
+  "lines": 40,
+  "ocrConfidence": 0.869,
   "incidents": 0,
   "date": "2017-07-16",
   "scanned": true
@@ -5703,7 +5703,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 26,
-  "ocrConfidence": 0.888,
+  "ocrConfidence": 0.889,
   "incidents": 0,
   "date": "2018-04-29",
   "scanned": true
@@ -5714,7 +5714,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 39,
-  "ocrConfidence": 0.859,
+  "ocrConfidence": 0.86,
   "incidents": 0,
   "date": "2018-04-30",
   "scanned": true
@@ -5758,7 +5758,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 51,
-  "ocrConfidence": 0.853,
+  "ocrConfidence": 0.83,
   "incidents": 0,
   "date": "2018-05-04",
   "scanned": true
@@ -6088,7 +6088,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 28,
-  "ocrConfidence": 0.813,
+  "ocrConfidence": 0.814,
   "incidents": 0,
   "date": "2019-03-25",
   "scanned": true
@@ -6165,7 +6165,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 28,
-  "ocrConfidence": 0.91,
+  "ocrConfidence": 0.911,
   "incidents": 0,
   "date": "2019-04-01",
   "scanned": true
@@ -6198,7 +6198,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 44,
-  "ocrConfidence": 0.924,
+  "ocrConfidence": 0.925,
   "incidents": 1,
   "date": "2019-04-04",
   "scanned": true
@@ -6286,7 +6286,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 34,
-  "ocrConfidence": 0.864,
+  "ocrConfidence": 0.865,
   "incidents": 0,
   "date": "2019-04-12",
   "scanned": true
@@ -6352,7 +6352,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 22,
-  "ocrConfidence": 0.881,
+  "ocrConfidence": 0.882,
   "incidents": 0,
   "date": "2019-04-18",
   "scanned": true
@@ -6495,7 +6495,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 36,
-  "ocrConfidence": 0.93,
+  "ocrConfidence": 0.929,
   "incidents": 0,
   "date": "2020-02-15",
   "scanned": true
@@ -6550,7 +6550,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 23,
-  "ocrConfidence": 0.857,
+  "ocrConfidence": 0.859,
   "incidents": 0,
   "date": "2020-02-20",
   "scanned": true
@@ -6572,7 +6572,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 45,
-  "ocrConfidence": 0.861,
+  "ocrConfidence": 0.862,
   "incidents": 1,
   "date": "2020-02-22",
   "scanned": true
@@ -6836,7 +6836,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 53,
-  "ocrConfidence": 0.884,
+  "ocrConfidence": 0.885,
   "incidents": 1,
   "date": "2018-01-22",
   "scanned": true
@@ -6869,7 +6869,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 41,
-  "ocrConfidence": 0.807,
+  "ocrConfidence": 0.808,
   "incidents": 0,
   "date": "2018-01-25",
   "scanned": true
@@ -6957,7 +6957,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 22,
-  "ocrConfidence": 0.865,
+  "ocrConfidence": 0.866,
   "incidents": 0,
   "date": "2018-02-02",
   "scanned": true
@@ -6966,12 +6966,12 @@
   "docId": "KN-117-2018-02-03",
   "wellId": "KN-117",
   "pages": 1,
-  "ocrPages": 0,
-  "lines": 43,
-  "ocrConfidence": null,
+  "ocrPages": 1,
+  "lines": 44,
+  "ocrConfidence": 0.925,
   "incidents": 1,
   "date": "2018-02-03",
-  "scanned": false
+  "scanned": true
  },
  {
   "docId": "KN-117-2018-02-04",
@@ -7055,8 +7055,8 @@
   "wellId": "KN-117",
   "pages": 1,
   "ocrPages": 1,
-  "lines": 28,
-  "ocrConfidence": 0.838,
+  "lines": 25,
+  "ocrConfidence": 0.866,
   "incidents": 0,
   "date": "2018-02-11",
   "scanned": true
@@ -7067,7 +7067,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 35,
-  "ocrConfidence": 0.858,
+  "ocrConfidence": 0.859,
   "incidents": 0,
   "date": "2018-02-12",
   "scanned": true
@@ -7210,7 +7210,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 34,
-  "ocrConfidence": 0.898,
+  "ocrConfidence": 0.899,
   "incidents": 0,
   "date": "2020-12-11",
   "scanned": true
@@ -7485,7 +7485,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 36,
-  "ocrConfidence": 0.861,
+  "ocrConfidence": 0.862,
   "incidents": 0,
   "date": "2021-01-05",
   "scanned": true
@@ -7672,7 +7672,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 29,
-  "ocrConfidence": 0.896,
+  "ocrConfidence": 0.895,
   "incidents": 0,
   "date": "2021-10-24",
   "scanned": true
@@ -7826,7 +7826,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 36,
-  "ocrConfidence": 0.846,
+  "ocrConfidence": 0.847,
   "incidents": 0,
   "date": "2021-11-07",
   "scanned": true
@@ -7914,7 +7914,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 20,
-  "ocrConfidence": 0.87,
+  "ocrConfidence": 0.871,
   "incidents": 0,
   "date": "2021-11-15",
   "scanned": true
@@ -8035,7 +8035,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 22,
-  "ocrConfidence": 0.858,
+  "ocrConfidence": 0.859,
   "incidents": 0,
   "date": "2021-11-26",
   "scanned": true
@@ -8387,7 +8387,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 28,
-  "ocrConfidence": 0.827,
+  "ocrConfidence": 0.828,
   "incidents": 0,
   "date": "2022-09-13",
   "scanned": true
@@ -8474,8 +8474,8 @@
   "wellId": "KN-120",
   "pages": 1,
   "ocrPages": 1,
-  "lines": 19,
-  "ocrConfidence": 0.865,
+  "lines": 20,
+  "ocrConfidence": 0.872,
   "incidents": 0,
   "date": "2022-09-21",
   "scanned": true
@@ -8848,8 +8848,8 @@
   "wellId": "KN-121",
   "pages": 1,
   "ocrPages": 1,
-  "lines": 28,
-  "ocrConfidence": 0.864,
+  "lines": 31,
+  "ocrConfidence": 0.835,
   "incidents": 0,
   "date": "2022-05-14",
   "scanned": true
@@ -8882,7 +8882,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 23,
-  "ocrConfidence": 0.86,
+  "ocrConfidence": 0.861,
   "incidents": 0,
   "date": "2022-05-17",
   "scanned": true
@@ -9168,7 +9168,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 35,
-  "ocrConfidence": 0.898,
+  "ocrConfidence": 0.899,
   "incidents": 0,
   "date": "2023-07-12",
   "scanned": true
@@ -9234,7 +9234,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 38,
-  "ocrConfidence": 0.911,
+  "ocrConfidence": 0.912,
   "incidents": 1,
   "date": "2023-07-18",
   "scanned": true
@@ -9300,7 +9300,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 30,
-  "ocrConfidence": 0.831,
+  "ocrConfidence": 0.832,
   "incidents": 0,
   "date": "2023-07-24",
   "scanned": true
@@ -9355,7 +9355,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 20,
-  "ocrConfidence": 0.866,
+  "ocrConfidence": 0.868,
   "incidents": 0,
   "date": "2023-07-29",
   "scanned": true
@@ -9454,7 +9454,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 21,
-  "ocrConfidence": 0.865,
+  "ocrConfidence": 0.866,
   "incidents": 0,
   "date": "2024-04-17",
   "scanned": true
@@ -9718,7 +9718,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 21,
-  "ocrConfidence": 0.856,
+  "ocrConfidence": 0.855,
   "incidents": 0,
   "date": "2024-05-11",
   "scanned": true
@@ -9861,7 +9861,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 38,
-  "ocrConfidence": 0.892,
+  "ocrConfidence": 0.893,
   "incidents": 0,
   "date": "2025-01-24",
   "scanned": true
@@ -10136,7 +10136,7 @@
   "pages": 1,
   "ocrPages": 1,
   "lines": 29,
-  "ocrConfidence": 0.752,
+  "ocrConfidence": 0.753,
   "incidents": 0,
   "date": "2025-02-18",
   "scanned": true

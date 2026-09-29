@@ -1,4 +1,4 @@
-"""N-W-I-S API over the demo pack and the parsed reports.
+"""API over the demo pack and the parsed reports.
 
 Run with `uv run uvicorn wells_api.main:app --port 8121`. Everything it serves comes from
 data/demo: field.json from the generator, and extracted/ from the parser run over the rendered PDFs.
@@ -21,6 +21,7 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel
+from wells_extract.pages import read_lines
 
 from .briefing import briefing_pdf
 from .search import formation_at, parse_query, search
@@ -168,6 +169,35 @@ def _render(path: str, page: int, scale: float) -> bytes:
     buf = io.BytesIO()
     img.save(buf, format="PNG", optimize=True)
     return buf.getvalue()
+
+
+@lru_cache(maxsize=64)
+def _page_words(path: str, page: int) -> dict:
+    # pdfplumber renders through PDFium to key the OCR cache, so it takes the same lock as the PNGs.
+    with PDFIUM:
+        lines = [line for line in read_lines(Path(path), DEMO / ".cache" / "ocr") if line.page == page]
+    return {
+        "page": page,
+        "ocr": any(line.ocr for line in lines),
+        "lines": [
+            {"conf": round(line.conf, 3), "words": [[w[0], *(round(v, 1) for v in w[1:])] for w in line.words]}
+            for line in lines
+        ],
+    }
+
+
+@app.get("/documents/{doc_id}/pages/{page}/words")
+def page_words(doc_id: str, page: int) -> dict:
+    """Every word the parser read on a page, with its box in PDF points, line by line from the top.
+
+    For a scanned page these are Tesseract's own boxes, so the drawer can show where OCR read.
+    """
+    s = store()
+    d = s.documents.get(doc_id)
+    pdf = s.root / "ddr" / d["wellId"] / f"{doc_id}.pdf" if d else None
+    if not pdf or not pdf.exists():
+        raise HTTPException(404, f"no rendered document {doc_id}")
+    return _page_words(str(pdf), page)
 
 
 @app.get("/documents/{doc_id}/pages/{page}.png")

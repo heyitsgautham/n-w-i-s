@@ -5,6 +5,7 @@ import { BAND_COLOR } from "@/components/section/annotations";
 import { clock, dayLabel, metres } from "@/lib/format";
 import type { HeroModel } from "@/lib/hero-model";
 import { RETIE_DELAY_MS, RETIE_MS, type NumberedAlert, type Scene } from "@/lib/scene";
+import { BRAND } from "@/lib/brand";
 
 const BAND_LABEL: Record<Band, string> = { prepare: "Prepare", watch: "Watch", monitor: "Monitor", passed: "Passed" };
 
@@ -73,7 +74,7 @@ function AlertRow({ a, model, settled, onOpen }: { a: NumberedAlert; model: Hero
           </span>
         </div>
         <div className="mt-1 flex items-baseline justify-between gap-2 text-[11.5px] leading-tight">
-          <span className="truncate text-ink-muted">
+          <span className="truncate text-ink-muted" data-film-hide>
             <span className="text-ink">
               {metres(a.projection.offsetM)} m {a.projection.anchor === "top" ? "below" : "above"} {formation?.short}{" "}
               {a.projection.anchor}
@@ -99,7 +100,7 @@ export function AlertList({ model, scene, onOpen }: { model: HeroModel; scene: S
       <SectionTitle aside={`Prepare ≤ ${model.bands.prepareHours} h · Watch ≤ ${model.bands.watchHours} h`}>
         Ahead of the bit
       </SectionTitle>
-      <p className="-mt-1 truncate text-[12px] text-ink-dim">
+      <p className="-mt-1 truncate text-[12px] text-ink-dim" data-film-hide>
         Placed on {model.activeWellId} by formation · at the 10-min ROP,{" "}
         <span className="num text-ink-muted">{scene.telemetry.ropAvg.toFixed(1)} m/h</span>
       </p>
@@ -109,7 +110,7 @@ export function AlertList({ model, scene, onOpen }: { model: HeroModel; scene: S
         ))}
       </ol>
       {next && (
-        <p className="truncate text-[12px] text-ink-dim">
+        <p className="truncate text-[12px] text-ink-dim" data-film-hide>
           +{scene.deeper.length} deeper · next {next.event.title.toLowerCase()} in {nextFormation?.short},{" "}
           <span className="num">{next.hours === null ? "" : formatHours(next.hours)}</span>
         </p>
@@ -173,7 +174,7 @@ export function RecommendationCard({ model, scene, onOpen }: { model: HeroModel;
   );
 }
 
-const SOURCE_LABEL = { driller: "Driller", "mud-logger": "Mud logger", system: "N-W-I-S" } as const;
+const SOURCE_LABEL = { driller: "Driller", "mud-logger": "Mud logger", system: BRAND } as const;
 
 export function RigFeed({ model, scene }: { model: HeroModel; scene: Scene }) {
   const call = scene.call;

@@ -1,6 +1,8 @@
-import { SectionScreen } from "@/components/hero/hero-screen";
+import { OpenWell } from "@/components/home/open-well";
+import { loadField } from "@/lib/data";
 
-/** The correlation section, the hero. Live state comes from the console provider in the layout. */
-export default function Page() {
-  return <SectionScreen />;
+/** Where an engineer starts: one field, the well they are on shift for. */
+export default function Home() {
+  const field = loadField();
+  return <OpenWell activeWellId={field.activeWellId} fieldName={field.field.name} wells={field.wells.length} />;
 }

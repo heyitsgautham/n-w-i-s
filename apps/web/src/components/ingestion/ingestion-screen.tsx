@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useConsole } from "@/components/console/console-provider";
 import { API } from "@/lib/api";
 import { dayLabel, metres } from "@/lib/format";
+import { KIND_LABEL } from "@/lib/hazards";
 
 interface Bin {
   from: number;
@@ -25,17 +26,148 @@ interface Ingestion {
   reviewThreshold: number;
   eventConfidence: Bin[];
   ocrPageConfidence: Bin[];
-  accuracy: { truthEvents: number; extractedEvents: number; recall: number; kindCorrect: number; depthExact: number; mudWeightExact: number; nptExact: number };
+  accuracy: {
+    truthEvents: number;
+    extractedEvents: number;
+    found: number;
+    kindRight: number;
+    depthExact: number;
+    mudWeightExact: number;
+    nptExact: number;
+    missed: { id: string; docId: string; scanned: boolean }[];
+  };
   pendingReview: number;
   confirmed: number;
   rejected: number;
   scannedDocuments: number;
-  volve: { files: number; parsed: number; activities: number } | null;
+  volve: Volve | null;
+}
+
+interface Volve {
+  reports: number;
+  wells: number;
+  activities: number;
+  hazardActivities: number;
+  reportsWithHazard: number;
+  byKind: Record<string, number>;
+  examples: Record<string, { text: string; report: string; md: number }>;
+  handCheck: { sample: number; seed: number; right: number; otherHazard: number; notAHazard: number };
 }
 
 type ReviewItem = OffsetEvent & { fieldConfidence: Record<string, number>; reviewed: "confirm" | "reject" | null };
 
-const pct = (v: number) => `${(v * 100).toFixed(1)}%`;
+
+/** Volve report names run 15_9_19_BT2_1998_01_02: the wellbore, then the report date. */
+function volveReport(name: string) {
+  const m = /^(.*)_(\d{4})_(\d{2})_(\d{2})$/.exec(name);
+  if (!m) return name;
+  const well = `15/9-${m[1]!.replace(/^15_9_/, "").replaceAll("_", " ")}`;
+  return `${well} · ${dayLabel(`${m[2]}-${m[3]}-${m[4]}`)}`;
+}
+
+function Accuracy({ a }: { a: Ingestion["accuracy"] }) {
+  const fields: [string, number][] = [
+    ["type", a.kindRight],
+    ["depth", a.depthExact],
+    ["mud weight", a.mudWeightExact],
+    ["NPT", a.nptExact],
+  ];
+  const allExact = fields.every(([, n]) => n === a.found);
+  return (
+    <div className="rounded-[4px] border border-rule px-4 py-3.5" data-accuracy>
+      <h3 className="label-caps text-[10.5px] text-ink-muted">Checked against the generator&apos;s ground truth</h3>
+      <div className="mt-2.5 flex items-baseline gap-3">
+        <span className="num text-[30px] leading-none font-semibold text-ink-bright">
+          {a.found} <span className="text-ink-muted">of</span> {a.truthEvents}
+        </span>
+        <span className="text-[14px] text-ink">planted incidents found</span>
+      </div>
+      {allExact ? (
+        <p className="mt-2 text-[13px] text-ink">
+          On all {a.found} found, the {fields.map(([k]) => k).join(", ").replace(/, ([^,]*)$/, " and $1")} match the report exactly.
+        </p>
+      ) : (
+        <ul className="mt-2 grid grid-cols-4 gap-3">
+          {fields.map(([k, n]) => (
+            <li key={k} className="text-[12.5px] text-ink-muted">
+              <span className="num text-[16px] font-semibold text-ink-bright">
+                {n}/{a.found}
+              </span>{" "}
+              {k} exact
+            </li>
+          ))}
+        </ul>
+      )}
+      {a.missed.length > 0 && (
+        <p className="mt-1.5 text-[12.5px] leading-snug text-ink-muted">
+          Missed {a.missed.map((m) => m.id).join(" and ")}, {a.missed.every((m) => m.scanned) ? "both scanned pages where" : "where"} OCR misread the
+          incident number, so the heading never parsed. They are counted here, not hidden.
+        </p>
+      )}
+    </div>
+  );
+}
+
+function VolveCard({ v }: { v: Volve | null }) {
+  if (!v) {
+    return (
+      <div className="rounded-[4px] border border-dashed border-rule-strong px-4 py-3.5" data-volve>
+        <h3 className="label-caps text-[10.5px] text-ink-muted">Real reports · Equinor Volve</h3>
+        <p className="mt-1.5 text-[13px] leading-snug text-ink-muted">
+          Run <code className="num text-[12px] text-ink">uv run python data/volve/fetch.py</code> to read Equinor&apos;s public Volve daily reports.
+        </p>
+      </div>
+    );
+  }
+  const kinds = Object.entries(v.byKind);
+  const max = Math.max(...kinds.map(([, n]) => n));
+  const quote = v.examples["stuck-pipe"] ?? Object.values(v.examples)[0];
+  const h = v.handCheck;
+  return (
+    <div className="rounded-[4px] border border-rule-strong px-4 py-3.5" style={{ boxShadow: "inset 3px 0 0 var(--ink-muted)" }} data-volve>
+      <div className="flex items-baseline justify-between gap-3">
+        <h3 className="label-caps text-[10.5px] text-ink-muted">Real reports · Equinor Volve field, North Sea</h3>
+        <span className="text-[11px] text-ink-dim">Equinor Open Data Licence</span>
+      </div>
+      <div className="mt-2.5 grid grid-cols-4 gap-3" data-volve-counts>
+        {[
+          [v.reports, "daily reports"],
+          [v.wells, "wells"],
+          [v.activities, "activities read"],
+          [v.hazardActivities, "hazards found"],
+        ].map(([n, label]) => (
+          <div key={label as string}>
+            <div className="num text-[22px] leading-none font-semibold text-ink-bright">{(n as number).toLocaleString("en-US")}</div>
+            <div className="mt-1 text-[12px] text-ink-muted">{label}</div>
+          </div>
+        ))}
+      </div>
+      <ul className="mt-3 flex flex-col gap-1" data-volve-kinds>
+        {kinds.map(([k, n]) => (
+          <li key={k} className="grid grid-cols-[118px_minmax(0,1fr)_36px] items-center gap-2 text-[12px]">
+            <span className="text-ink-muted">{KIND_LABEL[k as keyof typeof KIND_LABEL] ?? k}</span>
+            <span className="h-[7px] rounded-[1px] bg-ink-muted/60" style={{ width: `${(n / max) * 100}%` }} />
+            <span className="num text-right text-ink">{n}</span>
+          </li>
+        ))}
+      </ul>
+      {quote && (
+        <figure className="mt-3 rounded-[3px] border border-rule bg-[color-mix(in_srgb,var(--paper)_60%,transparent)] px-3 py-2" data-volve-quote>
+          <blockquote className="num text-[12.5px] text-ink-bright">{quote.text}</blockquote>
+          <figcaption className="mt-1 text-[11px] text-ink-dim">
+            {volveReport(quote.report)} · {metres(quote.md)} m MD
+          </figcaption>
+        </figure>
+      )}
+      {h && (
+        <p className="mt-2.5 text-[12.5px] leading-snug text-ink" data-volve-check>
+          We read {h.sample} of the {v.hazardActivities} by hand, drawn at random. <span className="num font-semibold">{h.right}</span> named the right hazard,{" "}
+          <span className="num">{h.otherHazard}</span> a different real hazard, and <span className="num">{h.notAHazard}</span> were not hazards.
+        </p>
+      )}
+    </div>
+  );
+}
 
 function Histogram({ title, bins, threshold, unit }: { title: string; bins: Bin[]; threshold: number; unit: string }) {
   const max = Math.max(1, ...bins.map((b) => b.count));
@@ -176,8 +308,6 @@ export function IngestionScreen() {
 
   if (error) return <p className="p-6 text-[14px] text-prepare">The API is not answering ({error}). Start it with `pnpm dev`.</p>;
   if (!data) return <p className="p-6 text-[14px] text-ink-muted">Loading the parse run…</p>;
-  const a = data.accuracy;
-  const missed = a.truthEvents - Math.round(a.recall * a.truthEvents);
   const cleared = data.events - data.pendingReview - data.rejected;
   const stages = [
     { n: data.documents, label: "daily reports", sub: `${data.pages} pages, ${data.wells} wells` },
@@ -190,7 +320,7 @@ export function IngestionScreen() {
 
   return (
     <div className="grid h-full min-h-0 grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
-      <section className="flex min-h-0 flex-col gap-5 overflow-y-auto border-r border-rule px-6 pt-5 pb-5">
+      <section className="flex min-h-0 flex-col gap-5 overflow-y-auto border-r border-rule px-6 pt-5 pb-5" data-ingestion-scroll>
         <header>
           <div className="label-caps text-[10.5px] text-ink-dim">Ingestion</div>
           <h1 className="mt-1 text-[22px] leading-tight font-semibold text-ink-bright">Every daily report, parsed into events that cite their page</h1>
@@ -211,39 +341,8 @@ export function IngestionScreen() {
           <Histogram title="Event confidence" bins={data.eventConfidence} threshold={data.reviewThreshold} unit={`${data.events} events`} />
           <Histogram title="OCR page confidence" bins={data.ocrPageConfidence} threshold={data.reviewThreshold} unit={`${data.ocrPages} pages`} />
         </div>
-        <div className="rounded-[4px] border border-rule px-4 py-3.5">
-          <h3 className="label-caps text-[10.5px] text-ink-muted">Checked against ground truth from the generator</h3>
-          <div className="mt-3 grid grid-cols-5 gap-3">
-            {[
-              ["Found", a.recall],
-              ["Type right", a.kindCorrect],
-              ["Depth exact", a.depthExact],
-              ["MW exact", a.mudWeightExact],
-              ["NPT exact", a.nptExact],
-            ].map(([k, v]) => (
-              <div key={k as string}>
-                <div className="num text-[20px] font-semibold text-ink-bright">{pct(v as number)}</div>
-                <div className="text-[12px] text-ink-muted">{k}</div>
-              </div>
-            ))}
-          </div>
-          <p className="mt-2.5 text-[12.5px] leading-snug text-ink-muted">
-            {missed} of {a.truthEvents} true events were missed, both on poor scans where OCR lost the incident heading. They are counted here, not hidden.
-          </p>
-        </div>
-        <div className="rounded-[4px] border border-dashed border-rule-strong px-4 py-3.5" data-volve>
-          <h3 className="label-caps text-[10.5px] text-ink-muted">Public-data proof · Equinor Volve</h3>
-          {data.volve ? (
-            <p className="mt-1.5 text-[13px] text-ink">
-              Parsed {data.volve.parsed} of {data.volve.files} Volve daily reports, {data.volve.activities.toLocaleString("en-US")} activities.
-            </p>
-          ) : (
-            <p className="mt-1.5 text-[13px] leading-snug text-ink-muted">
-              Not run in this build. The WITSML parser is written and tested on a fixture; the Volve reports need an Equinor data licence download first. Run{" "}
-              <code className="num text-[12px] text-ink">data/volve/fetch.py</code> on them to fill this in.
-            </p>
-          )}
-        </div>
+        <Accuracy a={data.accuracy} />
+        <VolveCard v={data.volve} />
       </section>
       <aside className="flex min-h-0 flex-col gap-3 bg-chrome px-5 pt-5 pb-4">
         <div className="flex items-baseline justify-between">

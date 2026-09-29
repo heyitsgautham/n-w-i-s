@@ -1,8 +1,8 @@
 {
  "documents": 926,
  "pages": 928,
- "ocrPages": 189,
- "textPages": 739,
+ "ocrPages": 190,
+ "textPages": 738,
  "wells": 24,
  "events": 118,
  "needsReview": 4,
@@ -51,7 +51,7 @@
   {
    "from": 0.85,
    "to": 0.9,
-   "count": 4
+   "count": 5
   },
   {
    "from": 0.9,
@@ -61,7 +61,7 @@
   {
    "from": 0.95,
    "to": 1.0,
-   "count": 93
+   "count": 92
   }
  ],
  "ocrPageConfidence": [
@@ -98,17 +98,17 @@
   {
    "from": 0.8,
    "to": 0.85,
-   "count": 18
+   "count": 19
   },
   {
    "from": 0.85,
    "to": 0.9,
-   "count": 107
+   "count": 106
   },
   {
    "from": 0.9,
    "to": 0.95,
-   "count": 60
+   "count": 61
   },
   {
    "from": 0.95,
@@ -119,10 +119,22 @@
  "accuracy": {
   "truthEvents": 120,
   "extractedEvents": 118,
-  "recall": 0.9833,
-  "kindCorrect": 0.9833,
-  "depthExact": 0.9833,
-  "mudWeightExact": 0.9833,
-  "nptExact": 0.9833
+  "found": 118,
+  "kindRight": 118,
+  "depthExact": 118,
+  "mudWeightExact": 118,
+  "nptExact": 118,
+  "missed": [
+   {
+    "id": "KN-112-B03",
+    "docId": "KN-112-2016-10-08",
+    "scanned": true
+   },
+   {
+    "id": "KN-121-B08",
+    "docId": "KN-121-2022-05-12",
+    "scanned": true
+   }
+  ]
  }
 }

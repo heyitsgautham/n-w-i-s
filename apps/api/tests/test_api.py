@@ -49,3 +49,12 @@ def test_briefing_exports_to_pdf():
     made = client.post("/briefing/pdf", json=body).json()
     assert made["pages"] == 1
     assert client.get(made["url"]).content[:4] == b"%PDF"
+
+
+def test_page_words_are_the_ocr_boxes_of_a_scanned_page():
+    words = client.get("/documents/KN-117-2018-02-03/pages/1/words").json()
+    assert words["ocr"] is True
+    text = " ".join(w[0] for line in words["lines"] for w in line["words"])
+    assert "Caved at 9.8 ppg, hole stable at 10.4 ppg." in text
+    x0, top, x1, bottom = words["lines"][0]["words"][0][1:]
+    assert 0 <= x0 < x1 <= 595.3 and 0 <= top < bottom <= 841.9

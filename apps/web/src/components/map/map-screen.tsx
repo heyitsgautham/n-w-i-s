@@ -3,10 +3,14 @@
 import type { Analogue, Fault, Formation, StructureGrid, WellRole } from "@wells/correlate";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { contourSegments, gridRange } from "@/lib/contours";
+import { mapsKey } from "@/lib/google-maps";
 import { bearingOf } from "@/lib/hero-model";
+import { SatelliteMap } from "./satellite-map";
 
 export interface MapModel {
   activeWellId: string;
+  /** Where the active well sits on real imagery; the field itself is fictional. */
+  anchor: { lat: number; lng: number };
   wells: { id: string; role: WellRole; x: number; y: number; spudYear: number }[];
   sectionOrder: string[];
   structure: StructureGrid;
@@ -195,8 +199,7 @@ function StructureMap({
         <text
           x={X(active.x) + radiusKm * 1000 * k * Math.SQRT1_2 + 6}
           y={Y(active.y) - radiusKm * 1000 * k * Math.SQRT1_2 - 6}
-          className="num"
-          fontSize={12}
+          fontSize={13}
           fontWeight={600}
           style={{ fill: "var(--ink-bright)", stroke: "var(--paper)", strokeWidth: 4, paintOrder: "stroke" }}
         >
@@ -284,21 +287,49 @@ export function MapScreen({ model }: { model: MapModel }) {
   const best = ranked[0]?.wellId ?? null;
   const nearest = [...ranked].sort((a, b) => a.distanceKm - b.distanceKm)[0];
   const formation = model.formations.find((f) => f.id === interval)!;
+  // Satellite when there is a Google key, the drawn structure map when there is not.
+  const hasKey = mapsKey() !== "";
+  const [base, setBase] = useState<"satellite" | "structure">(hasKey ? "satellite" : "structure");
 
   return (
     <div className="grid h-full min-h-0 grid-cols-[minmax(0,1fr)_clamp(380px,24vw,470px)]">
       <section className="flex min-h-0 min-w-0 flex-col border-r border-rule">
-        <div className="flex shrink-0 items-baseline justify-between gap-6 px-4 pt-3.5 pb-2.5">
+        <div className="flex shrink-0 items-center justify-between gap-6 px-4 pt-3 pb-2.5">
           <h1 className="text-[16px] leading-none font-semibold text-ink-bright">
             Offsets around {model.activeWellId}
-            <span className="ml-2.5 text-[12.5px] font-normal text-ink-muted">Barail Coal-Shale top, structure contours every 10 m TVDSS</span>
+            <span className="ml-2.5 text-[12.5px] font-normal text-ink-muted">
+              {base === "satellite" ? "Google satellite imagery, pan and zoom" : "Barail Coal-Shale top, structure contours every 10 m TVDSS"}
+            </span>
           </h1>
-          <span className="text-[12px] text-ink-dim">Grid in km from {model.activeWellId}</span>
+          {hasKey ? (
+            <div className="flex rounded-[4px] border border-rule-strong p-0.5" role="radiogroup" aria-label="Base map">
+              {(["satellite", "structure"] as const).map((b) => (
+                <button
+                  key={b}
+                  type="button"
+                  role="radio"
+                  aria-checked={base === b}
+                  data-base={b}
+                  onClick={() => setBase(b)}
+                  className={`rounded-[3px] px-3 py-1 text-[12.5px] capitalize transition-colors ${
+                    base === b ? "bg-ink-bright font-semibold text-[#0b0f19]" : "text-ink-muted hover:text-ink"
+                  }`}
+                >
+                  {b}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <span className="text-[12px] text-ink-dim">Grid in km from {model.activeWellId}</span>
+          )}
         </div>
         <div ref={ref} className="relative min-h-0 flex-1">
-          {size.width > 0 && (
-            <StructureMap model={model} radiusKm={radiusKm} inRing={inRing} highlight={hover} best={best} onHover={setHover} width={size.width} height={size.height} />
-          )}
+          {size.width > 0 &&
+            (base === "satellite" ? (
+              <SatelliteMap model={model} radiusKm={radiusKm} inRing={inRing} highlight={hover} best={best} onHover={setHover} width={size.width} height={size.height} />
+            ) : (
+              <StructureMap model={model} radiusKm={radiusKm} inRing={inRing} highlight={hover} best={best} onHover={setHover} width={size.width} height={size.height} />
+            ))}
         </div>
       </section>
       <aside className="flex min-h-0 flex-col gap-4 overflow-hidden bg-chrome px-4 pt-3.5 pb-3">
@@ -325,7 +356,9 @@ export function MapScreen({ model }: { model: MapModel }) {
         <div>
           <div className="flex items-baseline justify-between">
             <h2 className="label-caps text-[11px] text-ink-muted">Radius</h2>
-            <span className="num text-[15px] text-ink-bright">{radiusKm.toFixed(1)} km</span>
+            <span className="text-[15px] text-ink-bright">
+              <span className="num">{radiusKm.toFixed(1)}</span> km
+            </span>
           </div>
           <input
             type="range"

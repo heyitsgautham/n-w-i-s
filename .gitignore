@@ -22,3 +22,6 @@ data/demo/ddr/*/
 !data/demo/ddr/KN-117/
 !data/demo/ddr/KN-121/
 recording/out/sheets/
+data/volve/.cache/
+recording/.cache/
+recording/voice/

@@ -17,7 +17,8 @@
     "shots": "tsx recording/shots.ts",
     "film": "tsx recording/film.ts",
     "contact-sheet": "tsx recording/contact-sheet.ts",
-    "voiceover": "tsx recording/voiceover.ts"
+    "voiceover": "tsx recording/voiceover.ts",
+    "voice": "tsx recording/voice.ts"
   },
   "devDependencies": {
     "@types/node": "^22",

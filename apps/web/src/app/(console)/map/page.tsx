@@ -21,6 +21,7 @@ export default async function MapPage() {
   }
   const model: MapModel = {
     activeWellId: field.activeWellId,
+    anchor: field.field.anchor,
     wells: field.wells.map((w) => ({ id: w.id, role: w.role, x: w.x, y: w.y, spudYear: Number(w.spudDate.slice(0, 4)) })),
     sectionOrder: field.sectionOrder,
     structure: field.structure,

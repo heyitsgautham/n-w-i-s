@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from .hazards import classify
 from .pages import Line
 
 #: Below this an event goes to the review queue and cannot raise an alert until a person confirms it.
@@ -19,17 +20,6 @@ KINDS = {
     "DIFFERENTIAL STICKING": "differential-sticking",
     "KICK": "kick",
 }
-
-#: When the type label is unreadable, the description usually says what happened.
-KEYWORDS = [
-    ("differential-sticking", r"differential"),
-    ("stuck-pipe", r"\bstuck\b|could not pick up"),
-    ("caving", r"caving|cavings|pack(ed)? off"),
-    ("losses", r"\blosses\b|lost returns"),
-    ("kick", r"\bkick\b|pit gain|influx"),
-    ("tight-hole", r"overpull|tight"),
-    ("bit-balling", r"balled|balling"),
-]
 
 HEADING = re.compile(r"INCIDENT\s+([A-Z0-9O]{2}-[0-9O]{3}-[EB][0-9O]{2})\s*[|lI!/]?\s*([A-Z ]+)$")
 SECTION_END = re.compile(r"^(MUD PROPERTIES|BIT RECORD|SURVEYS|INCIDENT\s)")
@@ -127,7 +117,8 @@ def parse_block(block: Block, doc_id: str, well_id: str, date: str, depth_range:
     kind_conf = block.heading.conf
     if kind is None:
         desc = _between(text, "Description:", "Action:") or text
-        kind = next((k for k, pat in KEYWORDS if re.search(pat, desc, re.I)), "tight-hole")
+        # When the type label is unreadable, the description usually says what happened.
+        kind = classify(desc) or "tight-hole"
         kind_conf *= 0.6
 
     title = _between(text, "Title:", "Start:")

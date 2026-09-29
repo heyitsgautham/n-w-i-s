@@ -12,7 +12,7 @@ export const TICKS_TO_CALL = 15;
 
 /** Opens the hero paused on the take's first frame and waits for fonts and the drawn section. */
 export async function openHero(page: Page) {
-  await page.goto(`${BASE_URL}/`);
+  await page.goto(`${BASE_URL}/section`);
   await page.waitForSelector('svg[aria-label="Correlation section"]');
   await page.evaluate(() => document.fonts.ready);
   const tick = Number(await page.getAttribute("[data-tick]", "data-tick"));

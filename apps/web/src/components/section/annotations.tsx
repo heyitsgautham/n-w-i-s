@@ -117,7 +117,7 @@ export function OffsetPins({
         const edge = dir > 0 ? w.lith.x1 : w.lith.x0;
         const y = ctx.L.y(ctx.display(w.well.id, a.event.md));
         return (
-          <g key={a.event.id} onClick={() => onOpen(a.event)} style={{ cursor: "pointer" }} data-pin={`offset-${a.n}`}>
+          <g key={a.event.id} onClick={() => onOpen(a.event)} style={{ cursor: "pointer" }} data-pin={`offset-${a.n}`} data-event={a.event.id}>
             <line x1={edge - dir * 6} x2={edge + dir * 6} y1={y} y2={y} style={{ stroke: BAND_COLOR[a.band] }} strokeWidth={2} />
             <Badge x={edge + dir * 14} y={y} n={a.n} band={a.band} />
             <title>{`${a.event.title}, ${a.event.wellId} ${fmt(a.event.md)} m`}</title>

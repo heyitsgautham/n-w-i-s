@@ -1,1 +1,1 @@
-"""Daily drilling report renderer for the N-W-I-S synthetic demo pack."""
+"""Daily drilling report renderer for the synthetic demo pack."""

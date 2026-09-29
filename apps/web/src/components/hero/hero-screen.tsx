@@ -8,7 +8,7 @@ import { AlertList, RecommendationCard, RigFeed } from "./rail";
 function Legend() {
   const item = "flex items-center gap-1.5 whitespace-nowrap";
   return (
-    <div className="flex items-center gap-4 text-[11.5px] text-ink-muted">
+    <div className="flex items-center gap-4 text-[11.5px] text-ink-muted" data-film-hide>
       <span className={item}>
         <svg width="22" height="8" aria-hidden>
           <line x1="0" x2="22" y1="4" y2="4" style={{ stroke: "var(--ink-bright)" }} strokeWidth="1.6" />
@@ -55,7 +55,7 @@ function TitleBlock({ model }: { model: HeroModel }) {
     { k: "Pack", v: `synthetic, seed ${model.seed}` },
   ];
   return (
-    <div className="flex shrink-0 border-t border-rule-strong">
+    <div className="flex shrink-0 border-t border-rule-strong" data-film-hide>
       {cells.map((c, i) => (
         <div
           key={c.k}
@@ -72,7 +72,7 @@ function TitleBlock({ model }: { model: HeroModel }) {
 export function SectionScreen() {
   const { model, scene, openEvent } = useConsole();
   return (
-    <div className="grid h-full min-h-0 grid-cols-[minmax(0,1fr)_clamp(372px,23vw,452px)]">
+    <div className="grid h-full min-h-0 grid-cols-[minmax(0,1fr)_clamp(372px,23vw,452px)]" data-section-grid>
       <section className="flex min-h-0 min-w-0 flex-col border-r border-rule">
         <div className="flex shrink-0 items-center justify-between gap-6 px-4 pt-3.5 pb-2.5">
           <h1 className="min-w-0 truncate text-[16px] leading-none font-semibold text-ink-bright">
@@ -83,12 +83,12 @@ export function SectionScreen() {
           </h1>
           <Legend />
         </div>
-        <div className="flex min-h-0 flex-1 flex-col px-3">
+        <div className="flex min-h-0 flex-1 flex-col px-3" data-section-panel>
           <CorrelationPanel model={model} scene={scene} onOpen={openEvent} />
         </div>
         <TitleBlock model={model} />
       </section>
-      <aside className="flex min-h-0 flex-col gap-4 overflow-hidden bg-chrome px-4 pt-3.5 pb-3">
+      <aside className="flex min-h-0 flex-col gap-4 overflow-hidden bg-chrome px-4 pt-3.5 pb-3" data-film-rail>
         <AlertList model={model} scene={scene} onOpen={openEvent} />
         <RecommendationCard model={model} scene={scene} onOpen={openEvent} />
         <RigFeed model={model} scene={scene} />

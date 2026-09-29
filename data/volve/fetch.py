@@ -1,57 +1,48 @@
-"""Runs the N-W-I-S report parser over Equinor's public Volve daily drilling reports.
+"""Runs the hazard reader over Equinor's public Volve daily drilling reports.
 
-The Volve data set is published under the Equinor Open Data Licence and is reached through the
-Databricks Marketplace after accepting the licence, so this script does not download it. Export the
-folder of daily drilling report XML files (WITSML 1.4 drillReport, 1,759 files in the release), then:
+Equinor publishes the Volve field data under the Equinor Open Data Licence. Its 1,759 daily drilling
+reports are WITSML drillReport XML, and bengsoon/volve_daily_drilling_report on Hugging Face carries
+the same reports converted to one Parquet file under CC-BY-4.0. This script downloads that file once
+into data/volve/.cache/ (kept out of git), reads every report, checks the hand-checked sample in
+checked-sample.json still matches, and writes metrics.json, which the ingestion screen shows.
 
-    uv run python data/volve/fetch.py --source /path/to/volve/ddr-xml
-
-The script writes data/volve/metrics.json with the counts the README quotes. The XML stays out of
-the repository. Until someone runs it, there is no metrics file and no Volve claim anywhere.
+    uv run python data/volve/fetch.py
 """
 
 from __future__ import annotations
 
-import argparse
 import json
-from collections import Counter
 from pathlib import Path
+from urllib.request import Request, urlopen
 
-from wells_extract.witsml import parse_drill_report
+from wells_extract.volve import load_reports, summarise
 
 HERE = Path(__file__).resolve().parent
+URL = (
+    "https://huggingface.co/datasets/bengsoon/volve_daily_drilling_report/resolve/main/data/all-00000-of-00001.parquet"
+)
+CACHE = HERE / ".cache" / "volve_ddr.parquet"
 
 
-def main(argv: list[str] | None = None) -> None:
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--source", required=True, type=Path, help="folder of Volve DDR XML files")
-    args = ap.parse_args(argv)
+def download() -> Path:
+    if not CACHE.exists():
+        CACHE.parent.mkdir(parents=True, exist_ok=True)
+        with urlopen(Request(URL, headers={"User-Agent": "wells/0.1"}), timeout=300) as r:
+            CACHE.write_bytes(r.read())
+    return CACHE
 
-    files = sorted(args.source.rglob("*.xml"))
-    if not files:
-        raise SystemExit(f"no XML files under {args.source}")
-    parsed, failed, kinds = 0, [], Counter()
-    activities = 0
-    for f in files:
-        try:
-            r = parse_drill_report(f)
-        except (ValueError, OSError) as exc:
-            failed.append({"file": f.name, "error": str(exc)})
-            continue
-        parsed += 1
-        activities += r["activities"]
-        kinds.update(e["kind"] for e in r["events"])
-    metrics = {
-        "source": "Equinor Volve data set, daily drilling reports (WITSML), Equinor Open Data Licence",
-        "files": len(files),
-        "parsed": parsed,
-        "failed": len(failed),
-        "activities": activities,
-        "eventsByKind": dict(sorted(kinds.items())),
-        "failures": failed[:50],
-    }
-    (HERE / "metrics.json").write_text(json.dumps(metrics, indent=1) + "\n")
-    print(f"parsed {parsed} of {len(files)} reports, {activities} activities, {sum(kinds.values())} hazard events")
+
+def main() -> None:
+    reports = load_reports(download())
+    checked = json.loads((HERE / "checked-sample.json").read_text())
+    metrics = summarise(reports, checked)
+    (HERE / "metrics.json").write_text(json.dumps(metrics, indent=1, ensure_ascii=False) + "\n")
+    h = metrics["handCheck"]
+    print(
+        f"{metrics['reports']} reports, {metrics['activities']} activities, "
+        f"{metrics['hazardActivities']} hazard activities {metrics['byKind']}; "
+        f"hand check {h['right']} of {h['sample']} right"
+    )
 
 
 if __name__ == "__main__":

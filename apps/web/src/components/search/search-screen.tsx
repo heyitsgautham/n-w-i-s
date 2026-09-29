@@ -145,6 +145,7 @@ export function SearchScreen({ initialQuery }: { initialQuery: string }) {
             <button
               key={s}
               type="button"
+              data-try={s}
               onClick={() => {
                 setDraft(s);
                 setQuery(s);

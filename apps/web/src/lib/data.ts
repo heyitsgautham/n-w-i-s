@@ -39,7 +39,16 @@ export interface ExtractionStats {
   reviewThreshold: number;
   eventConfidence: { from: number; to: number; count: number }[];
   ocrPageConfidence: { from: number; to: number; count: number }[];
-  accuracy: Record<string, number>;
+  accuracy: {
+    truthEvents: number;
+    extractedEvents: number;
+    found: number;
+    kindRight: number;
+    depthExact: number;
+    mudWeightExact: number;
+    nptExact: number;
+    missed: { id: string; docId: string; scanned: boolean }[];
+  };
 }
 
 let field: Field | null = null;
@@ -78,4 +87,82 @@ export async function liveEvents(): Promise<ExtractedEvent[]> {
   return loadExtracted()
     .filter((e) => e.md !== null && decisions[e.id] !== "reject")
     .map((e) => ({ ...e, needsReview: e.needsReview && decisions[e.id] !== "confirm", reviewed: decisions[e.id] ?? null }));
+}
+
+export interface DocumentRow {
+  docId: string;
+  wellId: string;
+  pages: number;
+  ocrPages: number;
+  scanned: boolean;
+}
+
+export function loadDocuments(): DocumentRow[] {
+  return JSON.parse(readFileSync(path.join(DATA_DIR, "extracted", "documents.json"), "utf8")) as DocumentRow[];
+}
+
+/** What the arrival draws: every well on the ground, its reports, and the incidents read from them. */
+export interface ArrivalData {
+  anchor: { lat: number; lng: number };
+  fieldName: string;
+  activeWellId: string;
+  sectionOrder: string[];
+  wells: {
+    id: string;
+    role: "active" | "offset";
+    x: number;
+    y: number;
+    reports: number;
+    events: { id: string; kind: OffsetEvent["kind"]; md: number }[];
+  }[];
+}
+
+export async function arrivalData(): Promise<ArrivalData> {
+  const f = loadField();
+  const events = await liveEvents();
+  const reports = new Map<string, number>();
+  for (const d of loadDocuments()) reports.set(d.wellId, (reports.get(d.wellId) ?? 0) + 1);
+  return {
+    anchor: f.field.anchor,
+    fieldName: f.field.name,
+    activeWellId: f.activeWellId,
+    sectionOrder: f.sectionOrder,
+    wells: f.wells.map((w) => ({
+      id: w.id,
+      role: w.role,
+      x: w.x,
+      y: w.y,
+      reports: reports.get(w.id) ?? 0,
+      events: events
+        .filter((e) => e.wellId === w.id)
+        .sort((a, b) => a.md - b.md)
+        .map((e) => ({ id: e.id, kind: e.kind, md: e.md })),
+    })),
+  };
+}
+
+/** The run over Equinor's Volve reports, written by data/volve/fetch.py. Null until someone runs it. */
+export interface VolveMetrics {
+  reports: number;
+  wells: number;
+  activities: number;
+  hazardActivities: number;
+  byKind: Record<string, number>;
+  handCheck?: { sample: number; right: number; otherHazard: number; notAHazard: number };
+}
+
+export function loadVolve(): VolveMetrics | null {
+  const file = path.join(DATA_DIR, "..", "volve", "metrics.json");
+  return existsSync(file) ? (JSON.parse(readFileSync(file, "utf8")) as VolveMetrics) : null;
+}
+
+/** The check of other public prototypes for this statement, written up in docs/prior-work.md. */
+export interface PriorWork {
+  checked: string;
+  repos: number;
+  readmes: number;
+}
+
+export function loadPriorWork(): PriorWork {
+  return JSON.parse(readFileSync(path.join(DATA_DIR, "..", "prior-work.json"), "utf8")) as PriorWork;
 }

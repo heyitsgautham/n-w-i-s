@@ -25,6 +25,8 @@
   --prepare: #ef4444;
   --monitor: #8a9ab3;
   --passed: #4b5870;
+  /* Where OCR read a word on a scanned page. */
+  --ocr: #0e7490;
 
   --lith-gravel: #d9b27a;
   --lith-sandy-clay: #b8a46a;
@@ -157,4 +159,55 @@
   50% {
     opacity: 0.3;
   }
+}
+
+/* OCR read-through on a scanned page: a scan line runs down the page and each word's box lights as it passes. */
+@keyframes ocr-sweep {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(var(--sweep-to));
+    opacity: 0;
+  }
+}
+
+@keyframes ocr-word {
+  0% {
+    opacity: 0;
+    background-color: color-mix(in srgb, var(--ocr) 38%, transparent);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.32;
+    background-color: color-mix(in srgb, var(--ocr) 5%, transparent);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Film mode: the recording hides secondary labels and enlarges the rail so every frame reads at 1080p. */
+html[data-film] [data-film-hide] {
+  display: none !important;
+}
+
+html[data-film] [data-section-grid] {
+  grid-template-columns: minmax(0, 1fr) 436px;
+}
+
+html[data-film] [data-film-rail] > * {
+  zoom: 1.1;
 }

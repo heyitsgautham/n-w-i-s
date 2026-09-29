@@ -37,4 +37,4 @@ def test_reads_activities_and_flags_the_losses(tmp_path):
     e = r["events"][0]
     assert (e["kind"], e["md"], e["failedState"]) == ("losses", 2412.0, True)
     assert e["mudWeightPpg"] == 10.85
-    assert e["source"] == {"file": "fixture.xml", "activity": 1}
+    assert e["source"] == {"report": "fixture.xml", "activity": 1}

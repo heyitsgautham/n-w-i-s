@@ -3,6 +3,7 @@
 import { Pause, Play, RotateCcw, StepForward } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useConsole } from "@/components/console/console-provider";
+import { BRAND, TAGLINE } from "@/lib/brand";
 import { clock, dayLabel, metres } from "@/lib/format";
 
 function Readout({ label, value, unit, className = "" }: { label: string; value: string; unit?: string; className?: string }) {
@@ -48,8 +49,8 @@ export function TopBar() {
       <div className="flex shrink-0 items-center gap-2.5">
         <Mark />
         <div className="leading-none">
-          <div className="text-[18px] font-bold tracking-[0.14em] text-ink-bright">N-W-I-S</div>
-          <div className="mt-1 text-[10.5px] tracking-[0.06em] text-ink-dim">Offset-well memory</div>
+          <div className="text-[18px] font-bold tracking-[0.14em] text-ink-bright">{BRAND}</div>
+          <div className="mt-1 text-[10.5px] tracking-[0.06em] text-ink-dim">{TAGLINE}</div>
         </div>
       </div>
 

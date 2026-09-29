@@ -91,7 +91,7 @@ function WellHeader({ w, trackY, model }: { w: WellLayout; trackY: number; model
       <g>
         <rect x={x0} y={2} width={x1 - x0} height={trackY - 16} rx={2} style={{ fill: "var(--ink)" }} opacity={0.05} />
         <rect x={x0} y={2} width={x1 - x0} height={2} style={{ fill: "var(--ink-bright)" }} />
-        <text x={cx} y={27} textAnchor="middle" fontSize={21} fontWeight={700} style={{ fill: "var(--ink-bright)" }}>
+        <text x={cx} y={27} textAnchor="middle" fontSize={21} fontWeight={700} style={{ fill: "var(--ink-bright)" }} data-well-head={well.id}>
           {well.id}
         </text>
         <text x={w.lane!.x0 + 8} y={22} fontSize={10.5} className="label-caps" style={{ fill: "var(--ink-bright)" }}>
@@ -114,7 +114,7 @@ function WellHeader({ w, trackY, model }: { w: WellLayout; trackY: number; model
   }
   return (
     <g>
-      <text x={w.center} y={25} textAnchor="middle" fontSize={17} fontWeight={600} style={{ fill: "var(--ink)" }}>
+      <text x={w.center} y={25} textAnchor="middle" fontSize={17} fontWeight={600} style={{ fill: "var(--ink)" }} data-well-head={well.id}>
         {well.id}
       </text>
       <text x={w.center} y={40} textAnchor="middle" fontSize={11.5} style={{ fill: "var(--ink-muted)" }}>

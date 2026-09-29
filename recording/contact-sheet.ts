@@ -5,6 +5,7 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readdirSync, rmSync } from "node:fs";
 import { join } from "node:path";
+import { FPS } from "./storyboard";
 import { ffmpegPath } from "./tools";
 
 const every = Number(process.argv[2] ?? 4);
@@ -24,10 +25,12 @@ const duration = /Duration: ([\d:.]+)/.exec(info)?.[1];
 const stream = /Video: ([^\n]+)/.exec(info)?.[1];
 console.log(`duration ${duration}\nvideo ${stream}`);
 
-// Timestamp every tile so a problem can be found in the MP4 again.
+// Timestamp every tile so a problem can be found in the MP4 again. `select` keeps the exact frame at
+// each whole multiple of `every` seconds with its own time; `fps` would sample mid-interval.
 const label = "drawtext=text='%{pts\\:hms}':x=12:y=12:fontsize=28:fontcolor=white:box=1:boxcolor=black@0.6:boxborderw=6";
+const pick = `select='not(mod(n\\,${Math.round(every * FPS)}))'`;
 const sheet = (filters: string) =>
-  execFileSync(ffmpeg, ["-hide_banner", "-loglevel", "error", "-i", video, "-vf", `fps=1/${every},${filters}scale=640:-1,tile=3x4:padding=6:color=0x020617`, join(dir, "sheet-%02d.png")]);
+  execFileSync(ffmpeg, ["-hide_banner", "-loglevel", "error", "-i", video, "-vf", `${pick},${filters}scale=640:-1,tile=3x4:padding=6:color=0x020617`, "-fps_mode", "vfr", join(dir, "sheet-%02d.png")]);
 try {
   sheet(`${label},`);
 } catch {

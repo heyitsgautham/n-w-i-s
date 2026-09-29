@@ -18,6 +18,13 @@ export const FIELD = {
   name: "Kathal Nala",
   area: "Upper Assam shelf, fictional field",
   datumNote: "Section depths are TVD below the KN-125 rotary table",
+  /**
+   * Where the map draws KN-125 on real satellite imagery: farmland near Tingkhong in Dibrugarh
+   * district, south of the Brahmaputra. Every well lands on land, the nearest town is 7.7 km
+   * south, and the nearest industrial site is 20 km west. The terrain is real; every well, name and
+   * event on it is fictional.
+   */
+  anchor: { lat: 27.285, lng: 95.075 },
 };
 
 export const ACTIVE = {
@@ -228,3 +235,9 @@ export const HAZARDS: Record<string, { kind: EventKind; per100m: number; title: 
 };
 
 export const RESERVED_FOR_SECTION = ["BCS", "BMS"];
+
+/**
+ * Reports that arrive as clean scans, whatever the one-in-five draw says. The hero report is one, so
+ * the drawer shows OCR reading a page rather than a text layer. Clean means a flatbed scan, not a fax.
+ */
+export const CLEAN_SCANS = ["KN-117-E04"];

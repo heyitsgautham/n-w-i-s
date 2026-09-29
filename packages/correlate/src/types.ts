@@ -207,6 +207,8 @@ export interface DailyReport {
   bit: { no: number; sizeIn: string; type: string; depthInMd: number; metres: number; hours: number } | null;
   surveys: SurveyStation[];
   incidents: Incident[];
+  /** Set when the report must arrive as a clean scan; otherwise one report in five is scanned by hash. */
+  scan?: "clean";
 }
 
 export interface TopCall {
@@ -286,7 +288,13 @@ export interface StructureGrid {
 
 export interface DemoPack {
   seed: number;
-  field: { name: string; area: string; datumNote: string };
+  field: {
+    name: string;
+    area: string;
+    datumNote: string;
+    /** Latitude and longitude the map places the active well at. Display only; the field is fictional. */
+    anchor: { lat: number; lng: number };
+  };
   faults: Fault[];
   structure: StructureGrid;
   /** Daily drilling reports for every offset, the input to the DDR renderer. */

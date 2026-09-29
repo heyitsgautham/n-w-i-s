@@ -1,11 +1,11 @@
 "use client";
 
-import { ChartSpline, FileText, Info, Layers3, MapPinned, ScanText, Search } from "lucide-react";
+import { BookOpenCheck, ChartSpline, FileText, Info, Layers3, MapPinned, ScanText, Search } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const ITEMS = [
-  { href: "/", label: "Section", icon: Layers3 },
+  { href: "/section", label: "Section", icon: Layers3 },
   { href: "/map", label: "Map", icon: MapPinned },
   { href: "/search", label: "Search", icon: Search },
   { href: "/compare", label: "Compare", icon: ChartSpline },
@@ -32,13 +32,14 @@ function Item({ href, label, icon: Icon, active }: (typeof ITEMS)[number] & { ac
 
 export function NavRail() {
   const path = usePathname();
-  const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+  const isActive = (href: string) => path.startsWith(href);
   return (
     <nav className="flex w-[68px] shrink-0 flex-col items-center border-r border-rule bg-chrome py-1.5">
       {ITEMS.map((item) => (
         <Item key={item.href} {...item} active={isActive(item.href)} />
       ))}
       <div className="flex-1" />
+      <Item href="/research" label="Research" icon={BookOpenCheck} active={isActive("/research")} />
       <Item href="/about" label="About" icon={Info} active={isActive("/about")} />
     </nav>
   );

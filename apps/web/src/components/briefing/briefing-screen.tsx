@@ -1,6 +1,7 @@
 "use client";
 
 import type { BriefingSection, Citation, OffsetEvent } from "@wells/correlate";
+import { BRAND } from "@/lib/brand";
 import { Download, FileDown, Loader2, PencilLine, X } from "lucide-react";
 import { useState } from "react";
 import { useConsole } from "@/components/console/console-provider";
@@ -33,7 +34,7 @@ export function BriefingScreen({ wellId, radiusKm, offsets, sections, events, pe
     const body = {
       title: `Offset review for ${wellId}`,
       subtitle: `Pre-spud briefing by hole section. Offsets within ${radiusKm} km: ${offsets.map((o) => o.id).join(", ")}. Every line cites the daily drilling report it came from.`,
-      footer: "N-W-I-S working prototype. Synthetic demo pack, not Oil India data.",
+      footer: `${BRAND} working prototype. Synthetic demo pack, not Oil India data.`,
       sections: sections.map((s) => ({
         title: `${s.sizeIn} in hole, ${metres(s.topMd)} to ${metres(s.shoeMd)} m MD, ${s.casingIn} in casing`,
         summary: s.formations.map(name).join(", "),

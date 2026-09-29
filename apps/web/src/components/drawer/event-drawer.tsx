@@ -50,12 +50,61 @@ function evidenceOf(event: OffsetEvent) {
   return lesson ? { text: lesson.evidence, rects: lesson.source!.rects } : undefined;
 }
 
+/** Tesseract's words for a page, line by line from the top, in PDF points: text, x0, top, x1, bottom. */
+interface PageWords {
+  ocr: boolean;
+  lines: { conf: number; words: [string, number, number, number, number][] }[];
+}
+
+/** How long the scan line takes to run down the whole page, and when the highlight follows it. */
+const SWEEP_MS = 2600;
+const MARK_AFTER_MS = SWEEP_MS + 150;
+
+function OcrLayer({ words, k }: { words: PageWords; k: number }) {
+  const at = (top: number) => Math.round((top / A4.h) * SWEEP_MS);
+  return (
+    <div className="pointer-events-none absolute inset-0" data-ocr-layer>
+      <div
+        className="absolute inset-x-0 top-0 h-[3px]"
+        data-ocr-sweep
+        style={
+          {
+            "--sweep-to": `${A4.h * k}px`,
+            background: "var(--ocr)",
+            boxShadow: "0 0 14px 4px color-mix(in srgb, var(--ocr) 55%, transparent)",
+            animation: `ocr-sweep ${SWEEP_MS}ms linear both`,
+          } as React.CSSProperties
+        }
+      />
+      {words.lines.map((line, i) =>
+        line.words.map(([text, x0, top, x1, bottom], j) => (
+          <div
+            key={`${i}-${j}`}
+            title={text}
+            className="absolute rounded-[1px]"
+            style={{
+              left: x0 * k - 1,
+              top: top * k - 1,
+              width: (x1 - x0) * k + 2,
+              height: (bottom - top) * k + 2,
+              border: "1px solid color-mix(in srgb, var(--ocr) 85%, transparent)",
+              animation: `ocr-word 700ms ease-out ${at(top)}ms both`,
+            }}
+          />
+        )),
+      )}
+    </div>
+  );
+}
+
 function PageViewer({ event }: { event: OffsetEvent }) {
   const evidence = evidenceOf(event);
   const box = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const [loaded, setLoaded] = useState<string | null>(null);
-  const src = `${API}/documents/${event.source.docId}/pages/${event.source.page ?? 1}.png?scale=2`;
+  const [words, setWords] = useState<PageWords | null>(null);
+  const page = event.source.page ?? 1;
+  const src = `${API}/documents/${event.source.docId}/pages/${page}.png?scale=2`;
   useEffect(() => {
     const el = box.current;
     if (!el) return;
@@ -63,18 +112,35 @@ function PageViewer({ event }: { event: OffsetEvent }) {
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+  useEffect(() => {
+    if (!event.source.ocr) return;
+    let live = true;
+    fetch(`${API}/documents/${event.source.docId}/pages/${page}/words`)
+      .then((r) => r.json())
+      .then((w: PageWords) => live && setWords(w))
+      .catch(() => undefined);
+    return () => {
+      live = false;
+    };
+  }, [event.source.docId, event.source.ocr, page]);
   const k = width / A4.w;
   const b = event.source.bbox;
   useEffect(() => {
     if (loaded !== src || !b || !box.current) return;
     box.current.scrollTop = Math.max(0, b[1] * k - box.current.clientHeight * 0.3);
   }, [loaded, src, b, k]);
+  // On a scanned page the highlight waits for the scan line to pass, so the page is read before it is marked.
+  const ready = loaded === src && (!event.source.ocr || words !== null);
+  const mark = event.source.ocr ? { animation: `appear 350ms ease-out ${MARK_AFTER_MS}ms both` } : undefined;
+  const wordCount = words?.lines.reduce((n, l) => n + l.words.length, 0) ?? 0;
   return (
     <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-[3px] border border-rule-strong bg-[#d9dcd8]">
       <div className="flex shrink-0 items-center justify-between gap-3 border-b border-rule-strong bg-paper px-3 py-2">
         <span className="num truncate text-[12px] text-ink">
-          DDR {event.source.docId} · page {event.source.page ?? "?"}
-          {evidence && <span className="ml-2 font-sans text-ink-muted">· highlighted: the sentence behind the lesson</span>}
+          DDR {event.source.docId} · page {page}
+          <span className="ml-2 font-sans text-ink-muted" data-page-caption>
+            {event.source.ocr ? `· scanned page, ${wordCount || "…"} words read by OCR` : evidence ? "· highlighted: the sentence behind the lesson" : ""}
+          </span>
         </span>
         <a
           href={`${API}/documents/${event.source.docId}.pdf`}
@@ -89,8 +155,9 @@ function PageViewer({ event }: { event: OffsetEvent }) {
         {width > 0 && (
           <div className="relative" style={{ width, height: A4.h * k }}>
             {/* eslint-disable-next-line @next/next/no-img-element -- served by the API, sized by the page box */}
-            <img src={src} alt={`Report page ${event.source.page}`} width={width} height={A4.h * k} onLoad={() => setLoaded(src)} className="block" />
-            {b && (
+            <img src={src} alt={`Report page ${page}`} width={width} height={A4.h * k} onLoad={() => setLoaded(src)} className="block" />
+            {ready && words && <OcrLayer words={words} k={k} />}
+            {ready && b && (
               <div
                 className="pointer-events-none absolute rounded-[2px]"
                 data-highlight
@@ -102,24 +169,27 @@ function PageViewer({ event }: { event: OffsetEvent }) {
                   background: evidence ? "rgba(251, 191, 36, 0.06)" : "rgba(251, 191, 36, 0.22)",
                   boxShadow: "0 0 0 2px rgba(217, 119, 6, 0.95)",
                   mixBlendMode: "multiply",
+                  ...mark,
                 }}
               />
             )}
-            {evidence?.rects.map((r, i) => (
-              <div
-                key={i}
-                className="pointer-events-none absolute rounded-[1px]"
-                data-sentence={i}
-                style={{
-                  left: r[0] * k - 2,
-                  top: r[1] * k - 2,
-                  width: (r[2] - r[0]) * k + 4,
-                  height: (r[3] - r[1]) * k + 4,
-                  background: "rgba(250, 204, 21, 0.62)",
-                  mixBlendMode: "multiply",
-                }}
-              />
-            ))}
+            {ready &&
+              evidence?.rects.map((r, i) => (
+                <div
+                  key={i}
+                  className="pointer-events-none absolute rounded-[1px]"
+                  data-sentence={i}
+                  style={{
+                    left: r[0] * k - 2,
+                    top: r[1] * k - 2,
+                    width: (r[2] - r[0]) * k + 4,
+                    height: (r[3] - r[1]) * k + 4,
+                    background: "rgba(250, 204, 21, 0.62)",
+                    mixBlendMode: "multiply",
+                    ...mark,
+                  }}
+                />
+              ))}
           </div>
         )}
       </div>
@@ -208,7 +278,7 @@ export function EventDrawer() {
                   </Prose>
                 )}
                 {e.lessons.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5" data-lessons>
                     {e.lessons.map((l) => (
                       <span key={l.kind} className="label-caps rounded-[2px] border border-rule-strong px-1.5 py-1 text-[9.5px] text-ink-muted">
                         Lesson · {LESSON_LABEL[l.kind]}

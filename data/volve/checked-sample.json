@@ -1,0 +1,715 @@
+{
+ "method": "100 hazard activities drawn at random (Python random.seed(2026)) from the flagged set, after the rules were frozen, excluding a separate 100-activity sample used to develop the rules. Each was read in full and marked right, other-hazard or not-a-hazard.",
+ "seed": 2026,
+ "entries": [
+  {
+   "report": "15_9_19_A_1997_08_02",
+   "activity": 7,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "FINALLY ESTABLISHED CIRCULATION WITH FULL RETURNS AT 1860 LPM/164 BAR. STARTED MOVING UPWARDS TOWARD WINDOW-STOPPED AT 2188 M. ORIENTED TOOL- FACE & THEN FLOW C"
+  },
+  {
+   "report": "15_9_19_A_1997_08_09",
+   "activity": 12,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "CIRC 1,25 BTM UP AT 1220M. BOOST RISER. GOT FAIR AMOUNT OF LARGE SIZE TYPE CAVINGS OVER SHAKERS."
+  },
+  {
+   "report": "15_9_19_A_1997_08_13",
+   "activity": 3,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "WASH AND REAM TIGHT HOLE FROM 3303 - 3820M WITH COREBARREL BHA."
+  },
+  {
+   "report": "15_9_19_A_1997_09_03",
+   "activity": 0,
+   "flagged": "kick",
+   "verdict": "other-hazard",
+   "note": "losses: The gain is spacer returns; the same line records 13 m3 lost",
+   "excerpt": "PUMPED 15 M3 HALLIBURTON SPACER 50OE+. GAINED 2 M3 (13 M3 LOST). DROPPED BALL AND SHEARED OUT BOTTOM PLUG WITH 100 BAR."
+  },
+  {
+   "report": "15_9_19_BT2_1997_12_13",
+   "activity": 2,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "FINISHED POOH WITH BHA. TOTAL MUD LOSS WHILE TOH = 2,1 M3."
+  },
+  {
+   "report": "15_9_19_BT2_1997_12_14",
+   "activity": 0,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "CONTINUED TO POOH FROM 2146M TO SURFACE.TOTAL MUD LOSS WHILE TOH=,4M3."
+  },
+  {
+   "report": "15_9_19_BT2_1997_12_28",
+   "activity": 5,
+   "flagged": "kick",
+   "verdict": "right",
+   "excerpt": "LOG SECTION FROM 3645M TO 3679M WITH MWD. OBSERVED PIT GAIN 0,5 M3."
+  },
+  {
+   "report": "15_9_19_BT2_1998_01_02",
+   "activity": 4,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "WORKED TIGHT HOLE AT 3772M. MAX O'PULL 70 TONS."
+  },
+  {
+   "report": "15_9_19_BT2_1998_01_04",
+   "activity": 1,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "CONTINUED REAMING FROM 3960M TO 4031M. AS BEFORE, HOLE WAS TIGHT IN SHORT DISCREET INTERVALS THAT CLEARED UP AFTER REAMING THROUGH ONCE."
+  },
+  {
+   "report": "15_9_19_BT2_1998_01_11",
+   "activity": 3,
+   "flagged": "stuck-pipe",
+   "verdict": "right",
+   "excerpt": "WORKED AND JARRED ON STUCK PIPE. NO PROGRESS. GOOD CIRCULATION."
+  },
+  {
+   "report": "15_9_19_BT2_1998_01_22",
+   "activity": 15,
+   "flagged": "stuck-pipe",
+   "verdict": "right",
+   "excerpt": "SPOTTED CEMENT PLUG NUMBER 2 FROM 4025 - 3800 M. PUMPED 2,0 M3 1,69 SG SPACER, 5,1 M3 1,90 SG CEMENT SLURRY, 0,35 M3 1,69 SG SPACER & DISPLACED WITH 18,9 M3 1,4"
+  },
+  {
+   "report": "15_9_19_BT2_1998_01_24",
+   "activity": 1,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "WHILE CLEANING RIG FLOOR & PREPARING TO MU BHA, VISUALLY OBSERVED ANNULUS LEVEL DROP IN RISER. CLOSED BLIND/SHEAR RAMS; RATE OF MUD LOSS DID NOT DECREASE; 1,3 M"
+  },
+  {
+   "report": "15_9_19_B_1997_11_15",
+   "activity": 3,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "PUMPED 8 M3 NUT PLUG COARSE, MICA COARSE AND LIGNOCEL (WOOD FIBRE) TOTAL CONCENTRATION, 222,8 KG/M3/1,8 SG. CLEARED SUCTION STRAINERS ON MUD PUMPS PRIOR TO DISP"
+  },
+  {
+   "report": "15_9_19_B_1997_11_19",
+   "activity": 0,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "CIRCULATED HOLE WITH 1500 L/M. LOST 22,4 M3 MUD TO FORMATION."
+  },
+  {
+   "report": "15_9_19_B_1997_11_24",
+   "activity": 7,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "BROKE CIRCULATION AT 250 LPM WITH NO LOSSES. INCREASED RATE TO 1000 LPM AND BEGAN LOSING MUD AT 15 M3/HR. REDUCED CIRCULATING RATE TO 500 LPM - LOSSES AT 12 M3/"
+  },
+  {
+   "report": "15_9_19_B_1997_11_25",
+   "activity": 4,
+   "flagged": "kick",
+   "verdict": "right",
+   "excerpt": "GAINED 3.5 M3 WHILE MAKING CONNECTION. CLOSED IN WELL. INITIAL SICP/SIDPP 17 BAR/17 BAR. LEVELED OUT AT 20 BAR/20 BAR. TOTAL GAINED 4.5 M3."
+  },
+  {
+   "report": "15_9_19_B_1997_11_25",
+   "activity": 7,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "M/U CEMENTING STAND WHILE BOOSTING RISER. TESTED CEMENT LINE TO 100 BAR. PUMPED 4 M3 1.55 SG SPACER, 5.5 M3 1.65 SG CEMENT. DISPLACED CEMENT WITH .5 M3 SPACER A"
+  },
+  {
+   "report": "15_9_19_B_1997_11_28",
+   "activity": 4,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "AT 3272 METERS STARTED LOSING MUD AT 20-30 M3/HR. PICKED UP FROM BOTTOM - NO UNUSUAL DRAG. REDUCED PUMP RATE TO 800 LPM. STILL LOSING MUD. QUIT CIRCULATING AND "
+  },
+  {
+   "report": "15_9_19_B_1997_11_28",
+   "activity": 6,
+   "flagged": "stuck-pipe",
+   "verdict": "right",
+   "excerpt": "ATTEMPTED TO RIH - NO GO. JARRED DOWN WITH NO PROGRESS. JARRED AND WORKED DRILL STRING UP FROM 3248M TO 3241M. INITIALLY ATTAINED ROTATION AND A WINDOW OF A FEW"
+  },
+  {
+   "report": "15_9_19_B_1997_12_02",
+   "activity": 4,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "STARTED TO CIRCULATE BOTTOMS UP FROM 3161M. EXPERIENCED LOSSES OF 6 M3/HR CIRCULATING AT 500 LPM, 2.5 M3/HR AT 350 LPM, NO LOSSES AT 250 LPM. SHUT DOWN PUMPS. S"
+  },
+  {
+   "report": "15_9_19_B_1997_12_05",
+   "activity": 0,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "MIXED/PUMPED 5,4 M3 1,95 SG CMT. + 1,5 M3 1,69 SG SPACER - Ø MAXIMUM RATE OF 400 LPM. DISPLACED CMT. W/RIG PUMP-Ø 400 LPM. SLOWED RATE TO 280 LPM ONCE CMT. CLEA"
+  },
+  {
+   "report": "15_9_19_ST2_1992_12_28",
+   "activity": 7,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "BACKREAMED FROM 2730M TO 2715M. WORKED PIPE DUE TO TIGHT HOLE."
+  },
+  {
+   "report": "15_9_19_ST2_1993_01_06",
+   "activity": 15,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "POOH TO 2898M. TIGHT SPOTS AT 3046M AND 3010M. STARTED CIRCULATING BUTTOMS UP WITH 2556LPM, 270BAR, 165RPM."
+  },
+  {
+   "report": "15_9_19_S_1992_12_06",
+   "activity": 2,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "BACKREAMED FROM 3017 M TO 2460 M. PACKED OFF,AND CHARGED FORMATION."
+  },
+  {
+   "report": "15_9_19_S_1992_12_07",
+   "activity": 9,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "REAMED FROM 2876 M TO 3017 M, DUE TO TIGHT HOLE."
+  },
+  {
+   "report": "15_9_19_S_1992_12_16",
+   "activity": 1,
+   "flagged": "stuck-pipe",
+   "verdict": "right",
+   "excerpt": "FILLED PIPE. WASHED/REAMED FROM 1400M TO 1493M. PIPE STUCK AT 1493M WITHOUT ANY WARNING SIGNS. KEPT FULL CIRCULATION."
+  },
+  {
+   "report": "15_9_19_S_1992_12_16",
+   "activity": 2,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "WORKED PIPE FREE. WORKED PIPE ACROSS TIGHT AREAS AT 1492M TO 1494M. TENDENCIES OF GETTING STUCK SEVERAL TIMES. CONTINUED WORKING PIPE. NO CEMENT IN RETURNS. WOR"
+  },
+  {
+   "report": "15_9_F_10_2009_04_17",
+   "activity": 11,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "RIH with 20\" 133# N80 Tenaris ER casing from 314 m to 448 m MD. Filled casing with 1,40 sg KCl mud every 5th joint. Tight spot at 640 m to 652 m MD, ~15 MT drag"
+  },
+  {
+   "report": "15_9_F_10_2009_04_18",
+   "activity": 13,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "Worked through tight area from 1383 m to 1389 m MD ~25 MT drag. Washed down with 2000 lpm / SPP 24 bar."
+  },
+  {
+   "report": "15_9_F_10_2009_04_18",
+   "activity": 14,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "Picked up cement head and continued working tight spot down to 1289 m MD. Landed and locked 18 3/4\" wellhead in 30\" conductor housing at 139,72 m MD by setting "
+  },
+  {
+   "report": "15_9_F_10_2009_04_30",
+   "activity": 10,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "Packed off stright afher connection. Took 10-15 ton over pull at 2013m. RIH to 2021m. Established circulation, staged pumps to 4500 l/min, 265 bar, 150 rpm, 10-"
+  },
+  {
+   "report": "15_9_F_10_2009_05_03",
+   "activity": 4,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "Washed / reamed 13 3/8\" casing down from 2235 - 2290 m; 2000 lpm, 16 - 35 bar, 1 rpm, 20 - 25 kNm. Observed increasing drag, packed off casing string at 2290 m."
+  },
+  {
+   "report": "15_9_F_10_2009_05_03",
+   "activity": 7,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "Established circulation after connection, worked casing down from 2354 - 2356 m; 2500 lpm, 22 - 35 bar, 1 rpm, 20 - 25 kNm. Packed off casing string at 2356 m."
+  },
+  {
+   "report": "15_9_F_10_2009_05_11",
+   "activity": 2,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Flow checked well prior to POOH. Observed loss of 70 l/ 30 min."
+  },
+  {
+   "report": "15_9_F_10_2009_05_12",
+   "activity": 8,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "Washed/ reamed down from 2854 m to 2882 with 1000 lpm/ 25 bar - 50 RPM/ 14-23 kNm. Worked tight spots. Increased pumprate to 2900 lpm/ 166 bar. Backreamed stand"
+  },
+  {
+   "report": "15_9_F_10_2009_05_12",
+   "activity": 10,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Pumped and displaced 11 m3 LCM pill at 2850 m with 780 lpm/ 20 bar. Lost 6,5 m3 to formation while pumping LCM pill."
+  },
+  {
+   "report": "15_9_F_10_2009_05_12",
+   "activity": 16,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "Washed and reamed in hole from 2900 m to 2995 m. Parameters: 3500 lpm/ 224 bar. 30-60 RPM/ 20-25 kNm. Max torque 40 kNm. Staged pumps up slowly after each conne"
+  },
+  {
+   "report": "15_9_F_10_2009_05_14",
+   "activity": 12,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "POOH with 12 1/4\" BHA on 5 1/2\" DP from 3243 m to 2907 m. Encountered tight spot at 2907 m, max OP 20 ton."
+  },
+  {
+   "report": "15_9_F_10_2009_05_14",
+   "activity": 15,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "Attempted to pull on elevator from 2880 m, no go. Encountered tight spot at 2872 m, max OP 25 ton. Run in hole to 2880 m and M/U TDS. Attempted to rotate throug"
+  },
+  {
+   "report": "15_9_F_10_2009_05_15",
+   "activity": 4,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Flowchecked well on triptank prior to POOH with BHA, had initial losses 200 l/hr. Meanwhile removed PS-21 slips and installed master bushing. Rearranged pipe in"
+  },
+  {
+   "report": "15_9_F_10_2009_05_16",
+   "activity": 5,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "RIH with 9 5/8\" liner on 5 1/2\" DP from 940 m to 1867 m. Filled every 5 stands. Running speed 412 m/ hr. Total losses while RIH with 9 5/8\" liner from surface t"
+  },
+  {
+   "report": "15_9_F_10_2009_05_30",
+   "activity": 7,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "POOH with 8 1/2\" drilling BHA from 4911 m to 4859 m MD, took >20 MT overpull. Pumped out of hole with 5 stands of 5 1/2\" DP to 4710 m MD at 1500 lpm / 30 RPM."
+  },
+  {
+   "report": "15_9_F_10_2009_06_03",
+   "activity": 9,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "POOH with 8 1/2\" drilling BHA on 5 1/2\" DP from 5320 m to 5215 m MD. Parameters : Flow 2200 lpm / SPP 230-240 bar. Took >20 MT overpull at 5215 m MD. Attempted "
+  },
+  {
+   "report": "15_9_F_11_B_2013_06_04",
+   "activity": 3,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Verified cement line up and pumped 27 m3 of 1.52 sg spacer with 1200 lpm, 38 bar. Mixed and pumped 16.8 m3 of 1.90 sg cement slurry 650 lpm. Displaced the cemen"
+  },
+  {
+   "report": "15_9_F_11_B_2013_06_15",
+   "activity": 6,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "From 3856m MD, observed frequent tight spots corresponding with high doglegs. Ran in hole with 7\" liner on 5 1/2\" landing string and worked through tight spots "
+  },
+  {
+   "report": "15_9_F_11_T2_2013_05_06",
+   "activity": 9,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Tested foulty systems in V-ICIS. Meanwhile: Observed 800 liter loss to well during maintanence (400 l/hr)"
+  },
+  {
+   "report": "15_9_F_12_2007_06_27",
+   "activity": 7,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "MU TDS, rotated 10 rpm and flow checked well. Total loss 140 l over 1.5 hr. Meanwhile checked rollers and dies on AFT PRS."
+  },
+  {
+   "report": "15_9_F_12_2007_06_28",
+   "activity": 4,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Drilled 8 1/2\" pilot hole from 618 m to 685 m, 2250 lpm/114 bar, 120 rpm/1-3 kNm, 1-3 MT wob, ECD 1.21-1.24 SG. Observed losses, 3 m3/15 min at 655 m. Circulate"
+  },
+  {
+   "report": "15_9_F_12_2007_06_30",
+   "activity": 2,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "Drilled 8 1/2\" pilot hole from 941 m to 1178 m, 2250 lpm/111 bar, 120 rpm/1-5 kNm, 1-2 MT wob, ECD 1.14-1.20 SG. Reamed each stand. Took weight at 978 m, 1027 m"
+  },
+  {
+   "report": "15_9_F_12_2007_07_23",
+   "activity": 14,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "POOH with 17 1/2\" drilling BHA from 1546 m to 1467 m MD. Tight hole took approx 30 MT overpull."
+  },
+  {
+   "report": "15_9_F_12_2007_07_28",
+   "activity": 6,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "Tight hole from 2254. Continued POOH while pumping at 3500 lpm from 2254 to 1798 m MD. Rotated at 40 rpm on 15 MT+ overpull as dictated by hole."
+  },
+  {
+   "report": "15_9_F_12_2007_08_01",
+   "activity": 3,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Cirulated well clean. Stepped up pumps to 4500 lpm and reciprocated on stand with 120/180 rpm rotation. Reset Powerdrive according to instructions from DD. Dyna"
+  },
+  {
+   "report": "15_9_F_12_2007_08_13",
+   "activity": 8,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "POOH and correlated into setting depth at 2697 m, 3425 lpm, 216 bar and no rotation. Down linked tool to 6 bit signal density. Took pressure reading with Stetho"
+  },
+  {
+   "report": "15_9_F_12_2008_01_30",
+   "activity": 0,
+   "flagged": "losses",
+   "verdict": "not-a-hazard",
+   "note": "No returns while testing a seal in the PBR, a mechanical check",
+   "excerpt": "Performed line-up check. Attempted to circulate by pumping 100 lpm with cement unit up to 13 bar. No returns observed. Held pressure for 2 min. This confirmed t"
+  },
+  {
+   "report": "15_9_F_12_2016_08_22",
+   "activity": 25,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Pumped down ball with 160 l/min, sheared ball seat at 150 bar. Indication of guns firing (sound, vibration on surface). Top shot at 144,5m, bottom shot at 147,5"
+  },
+  {
+   "report": "15_9_F_12_2016_08_23",
+   "activity": 7,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Flowchecked well. Observed instant gain of 300l, then loss of 3m3/hour. Then losses went to 0. Observed bubbling inside drill string and in the riser, smell of "
+  },
+  {
+   "report": "15_9_F_14_2008_05_27",
+   "activity": 7,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Circulated casing volume and btms up, a total of 1150 strks, at 1770 lpm / 53 bar loss free rate. Observed 3 m3/hr loss at 2000 lpm but had full return at 1770 "
+  },
+  {
+   "report": "15_9_F_14_2008_06_18",
+   "activity": 3,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "Made up to TDS. Broke circulation and washed down from 3680m to 3700m. 450 lpm 38 bars. Washed through tight spots at 3685m - 3687m and at 3696m. Pressure incre"
+  },
+  {
+   "report": "15_9_F_14_2016_08_05",
+   "activity": 13,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Lined up on TT and flowchecked well for 10 min, initial loss rate 600 ltr/min. Lost for 7 to 8 min, then static. Meanwhile: Performed TBT for POOH"
+  },
+  {
+   "report": "15_9_F_14_2016_08_13",
+   "activity": 16,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Filled the pipe more than expected. Checked surface equipment, pumps, lines, BOP and wellhead area. Observed level in the riser/BOP dropped around 20m. Lined up"
+  },
+  {
+   "report": "15_9_F_14_2016_08_13",
+   "activity": 20,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Flow checked well on trip tank. Well not static. Losses of 10,5m3/hour"
+  },
+  {
+   "report": "15_9_F_14_2016_08_14",
+   "activity": 9,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Opened BOP and monitored well on TT. Observed loss rate 4.8m3/hr. Released RTTS packer, loss rate increased to 10.8m3/hr"
+  },
+  {
+   "report": "15_9_F_14_2016_08_14",
+   "activity": 11,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "M/U new stand. RIH and RTTS packer at 155m. (the depth below bottom shot of 10 3/4in csg perforation) Loss rate 10m3/hr. Stopped TT pump and let level drop"
+  },
+  {
+   "report": "15_9_F_14_2016_08_14",
+   "activity": 20,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Continued mixing 400kg/m3 LCM pill in pump room. Hopper is packing off while mixing. Continued to mix manually. Worked good Flow checked on TT. Loss rate 10m3/h"
+  },
+  {
+   "report": "15_9_F_14_2016_08_14",
+   "activity": 23,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Continued mixing LCM pill while monitoring well. Loss rate 11m3/hrs. Meanwhile isolated and removed suction strainers in MP#2"
+  },
+  {
+   "report": "15_9_F_15_2008_11_16",
+   "activity": 9,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Staged up flow rate in 200 lpm increments to 1800 lpm above top LCM pill and monitored for losses. Had 1 m3/hr loss at 1600 lpm and 0.5 m3/hr loss at 1800 lpm."
+  },
+  {
+   "report": "15_9_F_15_2008_11_24",
+   "activity": 17,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Continued to RIH while logging to 3632m, 30 m/hour, 1500 l/m, 60 rpm increased to 120 rpm due to stick slip, max ECD 1.46 sg EMW. Got downhole losses 12 m³/hour"
+  },
+  {
+   "report": "15_9_F_15_2008_11_26",
+   "activity": 8,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "2315-0000 Staged up pumps 1100 - 1300 lpm at RPM 30, for drilling parameters. Observed loss rate. LCM pill still coming over shakers. ECD at 1300 lpm: 1.38 sg E"
+  },
+  {
+   "report": "15_9_F_15_2008_12_02",
+   "activity": 1,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Displaced cement with rig pump 1.32 SG OBM 1250 lpm. After 15.5 m³ pumped catch up with cement and pump pressure increased to 44 bars. Total displacement volume"
+  },
+  {
+   "report": "15_9_F_15_2008_12_02",
+   "activity": 5,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Loaded 2x sponge balls and circulated with 1,32sg OBM, 120 rpm/1000 lpm observed losses (1.6m³). Reduced to 120 rpm/500 lpm. Circulated w/ stable returns until "
+  },
+  {
+   "report": "15_9_F_15_A_2008_12_16",
+   "activity": 6,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Lined up to triptank and flowcheked well. Observed static losses to well in order of 350 l/hrs. Checked trip tank line up - ok."
+  },
+  {
+   "report": "15_9_F_15_A_2008_12_17",
+   "activity": 2,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Lined up triptank and flowchecked well - prevailing loss trend - still loosing approx 350 l/hrs. Discussed situation, decided to start POOH."
+  },
+  {
+   "report": "15_9_F_15_A_2008_12_30",
+   "activity": 4,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "POOH from 2616 m to 2576 m and back down again. Parameters : 880 lpm / SPP 25 bar. While RIH took weight at 2594 m. Worked past several tight spots down to 2510"
+  },
+  {
+   "report": "15_9_F_15_A_2009_01_01",
+   "activity": 6,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "POOH with 8 1/2\" drilling BHA wet from 3180 m to 2980 m. Had 20 MT overpull from 3000 m to 2980 m and observed improper hole displacement of 300 ltrs."
+  },
+  {
+   "report": "15_9_F_15_C_2009_02_13",
+   "activity": 1,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "Drilled out 9 5/8\" casing shoe from 2914m to 2920m and 3 meter new formation to 2923m. Drilling parameters: Flow 2000 lpm / SPP 159 bars / String RPM 70 TQ 26-2"
+  },
+  {
+   "report": "15_9_F_15_D_2013_11_25",
+   "activity": 2,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Flowchecked well on T/T. Observed 440 l/h losses."
+  },
+  {
+   "report": "15_9_F_15_D_2013_11_27",
+   "activity": 2,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Displaced cement as per pump schedule using rig pumps at 1600 l/min. Bumped and sheared bottom plug w/ 1000 l/min and 5758 strokes. shear pressure 130 bar. Cont"
+  },
+  {
+   "report": "15_9_F_15_D_2013_12_08",
+   "activity": 6,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Established circulation in steps of 200 lpm to 900 lpm, 10 m3 loss was observed Reduced flow to 700 lpm, 90 bar, no loss observed. Established rotation with 20 "
+  },
+  {
+   "report": "15_9_F_15_D_2016_07_28",
+   "activity": 6,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "P/U 3 singles 8 1/4\" DC from cantilever and RIH to 26 mMD. Loss rate 1,08 m3/hr"
+  },
+  {
+   "report": "15_9_F_15_D_2016_07_28",
+   "activity": 9,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "RIH w/ RTTS plug on 5 1/2\" DP from 98 mMD to 218 mMD. Loss rate 1,08 m3/hr"
+  },
+  {
+   "report": "15_9_F_15_D_2016_07_28",
+   "activity": 19,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "B/O storm valve. Inspected RTTS and storm valve. M/U storm valve to RTTS plug. Loss rate 1,2 m3/hr"
+  },
+  {
+   "report": "15_9_F_1_2013_08_12",
+   "activity": 8,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "RIH with 13 3/8\" casing on 5 1/2\" HWDP landing string from 2460 m to 2570 m. Experienced tight spot between 2562 m - 2570 m. Worked tight spot, not able to pass"
+  },
+  {
+   "report": "15_9_F_1_2013_08_12",
+   "activity": 12,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "Established circulation and increased rate in steps to 2200 liter/min, 29 bar. Observed pack off at 2200 liter/min, reduced rate to at 1800 liter/min, 21 bar Me"
+  },
+  {
+   "report": "15_9_F_1_B_2013_09_03",
+   "activity": 1,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Established loss free rate at 1350 lpm/ 45 bar. Lost 3,2 m3 of mud in total during circulation. Held TBT prior to cement job."
+  },
+  {
+   "report": "15_9_F_1_C_2014_03_12",
+   "activity": 0,
+   "flagged": "caving",
+   "verdict": "right",
+   "excerpt": "Reamed from 3059 m back into shoe 3047 m w/ 2200 l/min/ 210 bar, 80 RPM / 10 - 12 kNm. Reamed area 2 times. Pulled into 9 5/8\" shoe without rotation, packed off"
+  },
+  {
+   "report": "15_9_F_1_C_2014_03_19",
+   "activity": 8,
+   "flagged": "tight-hole",
+   "verdict": "not-a-hazard",
+   "note": "Overpull pulling out of the PBR after cementing, a seal, not the hole",
+   "excerpt": "B/O and L/O cement head. Applied 30 bar to string, P/U 2m and observed pressure drop. Increased flow to 2000 l/min, 108 bar and circulated out excess cement whi"
+  },
+  {
+   "report": "15_9_F_1_C_2016_07_08",
+   "activity": 6,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Pressure tested surface cement plug against closed shear ram. Attempted to test twice. Pressure broke off around 30-40bar and leaked off. After second attempt s"
+  },
+  {
+   "report": "15_9_F_4_2008_02_19",
+   "activity": 9,
+   "flagged": "stuck-pipe",
+   "verdict": "other-hazard",
+   "note": "stuck-tool: A wireline tool string stuck in the hole, not drill pipe",
+   "excerpt": "Worked MDT toolstring and found string to be stuck. No tension on cable head observed when pulling surface tension of max pull 12000 llbs - wire probably stuck/"
+  },
+  {
+   "report": "15_9_F_4_2008_02_19",
+   "activity": 12,
+   "flagged": "stuck-pipe",
+   "verdict": "other-hazard",
+   "note": "stuck-tool: The same stuck wireline string",
+   "excerpt": "Worked WL several times. Slacked off to 5000 lbs and picked up to max tension 12000 lbs several tiems - not able to make progress. Prepared for doing cut and th"
+  },
+  {
+   "report": "15_9_F_4_2008_03_07",
+   "activity": 4,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "RIH with 8 1/2\" wiper trip BHA on 5 1/2\" DP from 3420 m to 3478 m MD. Worked pipe to pass tight spot. MU TDS and applied 30 rpm and pumped 500 lpm / 38 bar. Wor"
+  },
+  {
+   "report": "15_9_F_4_2008_04_12",
+   "activity": 0,
+   "flagged": "losses",
+   "verdict": "not-a-hazard",
+   "note": "No returns confirm a seal entered the liner PBR",
+   "excerpt": "Performed reverse circulation exercise 50-100 lpm / 3.5 bar. Moved string down in 20 cm increments from 2662.8 m to 2664.3 m. Had 1 bar increase in pressure fro"
+  },
+  {
+   "report": "15_9_F_5_2007_12_21",
+   "activity": 5,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "POOH with 17½\" BHA from 1415 m to 1123 m. Took weight of 20 MT overpull. RIH with two jnts. POOH with rotation on the string, passed obstruction with 5 MT overp"
+  },
+  {
+   "report": "15_9_F_5_2007_12_21",
+   "activity": 6,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "Continued POOH with 17½\" BHA from 1123 m to 720 m. Tight spots at 796 m and 775 m, pulled through with 10 -15 MT overpull."
+  },
+  {
+   "report": "15_9_F_5_2008_08_06",
+   "activity": 5,
+   "flagged": "losses",
+   "verdict": "not-a-hazard",
+   "note": "The plug lost weight on the hook during a pressure test",
+   "excerpt": "Lined up cement unit. Pressured up to 280 bar, observed losing ~10 MT weight on plug. Picked up weight to 82 MT on block. Continued pressuring up to 380 bar, ob"
+  },
+  {
+   "report": "15_9_F_5_2016_09_05",
+   "activity": 5,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Performed extended flow check of well over modified trip tank on WH. Well static for 45 min, then losses. Lost 130 ltr/hr for 15 min. Observed small gain (20 lt"
+  },
+  {
+   "report": "15_9_F_5_2016_09_05",
+   "activity": 34,
+   "flagged": "losses",
+   "verdict": "not-a-hazard",
+   "note": "Volume moving between the trip tank and the wellhead tank during plug and abandonment",
+   "excerpt": "Consulted onshore organization. Observed well on TT and modified TT on WH. Gained 240 ltr/20min at TT, lost 200 ltrs/20min on WH TT."
+  },
+  {
+   "report": "15_9_F_5_2016_09_05",
+   "activity": 35,
+   "flagged": "losses",
+   "verdict": "not-a-hazard",
+   "note": "Same trip tank exchange as the entry before",
+   "excerpt": "Consulted onshore organization. Well control duty and onshore organization concluded to perform BOP connector test and circulate well to even brine weight, no k"
+  },
+  {
+   "report": "15_9_F_9_2007_12_15",
+   "activity": 5,
+   "flagged": "tight-hole",
+   "verdict": "right",
+   "excerpt": "Took roadmap measurement, 200 lpm / 40 rpm / 1-3 kNm. Up weight 128 MT / down weight 118 MT. POOH with 17 1/2\" drilling BHA from 919 m MD to OOH. Worked through"
+  },
+  {
+   "report": "15_9_F_9_2008_09_03",
+   "activity": 18,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Pulled the upper cup into the blank pipe and swabbed the well 4 times with 20 m strokes 50 m/min. Ran back to 1050 m. Opened the stand pipe valve. Pumped 0.5 m³"
+  },
+  {
+   "report": "15_9_F_9_2008_09_03",
+   "activity": 20,
+   "flagged": "losses",
+   "verdict": "right",
+   "excerpt": "Pulled the upper cup into the blank pipe and swabbed the well for 10mins, 11times with 20 m strokes 50 m/min. Ran back to 1050 m. Opened the stand pipe valve. P"
+  }
+ ]
+}

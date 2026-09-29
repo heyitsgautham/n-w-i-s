@@ -109,7 +109,7 @@ def _numbered(meta: dict):
             self.drawString(16 * mm, 10 * mm, "SYNTHETIC REPORT")
             self.setFont("Helvetica", 7.5)
             self.drawString(
-                44 * mm, 10 * mm, f"N-W-I-S demo pack, seed {meta['seed']}. Not Oil India data.  {meta['doc']}"
+                44 * mm, 10 * mm, f"Synthetic demo pack, seed {meta['seed']}. Not Oil India data.  {meta['doc']}"
             )
             self.drawRightString(w - 16 * mm, 10 * mm, f"Page {self._pageNumber} of {total}")
             self.setStrokeColor(RULE)
@@ -158,7 +158,7 @@ def build_pdf(report: dict, well: dict, field: dict, seed: int) -> bytes:
         topMargin=21 * mm,
         bottomMargin=18 * mm,
         title=f"DDR {report['id']}",
-        author="N-W-I-S synthetic demo pack",
+        author="Synthetic demo pack",
     )
     days = report["reportNo"]
     header = [
@@ -284,8 +284,11 @@ def build_pdf(report: dict, well: dict, field: dict, seed: int) -> bytes:
     return buf.getvalue()
 
 
-def scan(pdf_bytes: bytes, doc_id: str) -> bytes:
-    """Rasterises every page to greyscale with a little scanner noise and rebuilds an image-only PDF."""
+def scan(pdf_bytes: bytes, doc_id: str, clean: bool = False) -> bytes:
+    """Rasterises every page to greyscale with a little scanner noise and rebuilds an image-only PDF.
+
+    A clean scan is a flatbed scan and never gets the fax treatment.
+    """
     rnd = random.Random(doc_id)
     pdf = pdfium.PdfDocument(pdf_bytes)
     out = io.BytesIO()
@@ -294,7 +297,7 @@ def scan(pdf_bytes: bytes, doc_id: str) -> bytes:
         page = pdf[i]
         img = page.render(scale=SCAN_DPI / 72).to_pil().convert("L")
         # About a third of scans arrive faxed or photocopied twice: softer, noisier, lossier.
-        poor = rnd.random() < 0.35
+        poor = rnd.random() < 0.35 and not clean
         if poor:
             small = img.resize((int(img.width * 0.52), int(img.height * 0.52)), Image.BILINEAR)
             img = small.resize(img.size, Image.BILINEAR).filter(ImageFilter.GaussianBlur(radius=rnd.uniform(0.5, 0.8)))
@@ -318,9 +321,10 @@ def scan(pdf_bytes: bytes, doc_id: str) -> bytes:
 def _render_one(args):
     report, well, field, seed, out_dir = args
     pdf = build_pdf(report, well, field, seed)
-    scanned = is_scanned(report["id"])
+    clean = report.get("scan") == "clean"
+    scanned = clean or is_scanned(report["id"])
     if scanned:
-        pdf = scan(pdf, report["id"])
+        pdf = scan(pdf, report["id"], clean=clean)
     target = Path(out_dir) / report["wellId"] / f"{report['id']}.pdf"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_bytes(pdf)

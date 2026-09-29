@@ -1,0 +1,49 @@
+{
+ "source": "Equinor Volve field data set, daily drilling reports, via the Hugging Face conversion bengsoon/volve_daily_drilling_report (CC-BY-4.0)",
+ "reports": 1759,
+ "wells": 23,
+ "activities": 23447,
+ "hazardActivities": 379,
+ "reportsWithHazard": 217,
+ "byKind": {
+  "losses": 186,
+  "tight-hole": 118,
+  "caving": 44,
+  "stuck-pipe": 22,
+  "kick": 9
+ },
+ "examples": {
+  "stuck-pipe": {
+   "text": "JARRED PIPE FREE - MAX O'PULL 75 TONS.",
+   "report": "15_9_19_BT2_1998_01_02",
+   "md": 3824.0
+  },
+  "caving": {
+   "text": "BACKREAMED FROM 3017 M TO 2460 M. PACKED OFF,AND CHARGED FORMATION.",
+   "report": "15_9_19_S_1992_12_06",
+   "md": 2460.0
+  },
+  "losses": {
+   "text": "Loss rate 320lpm. Filled trip tanks.",
+   "report": "15_9_F_9_2008_09_04",
+   "md": 1050.0
+  },
+  "tight-hole": {
+   "text": "REAMED TIGHT HOLE FROM 3680M TO 3772M.",
+   "report": "15_9_19_BT2_1998_01_02",
+   "md": 3772.0
+  },
+  "kick": {
+   "text": "Flow checked well for 15 minutes, gained 360 liter/hour.",
+   "report": "15_9_F_15_C_2013_11_05",
+   "md": 1486.0
+  }
+ },
+ "handCheck": {
+  "sample": 100,
+  "seed": 2026,
+  "right": 91,
+  "otherHazard": 3,
+  "notAHazard": 6
+ }
+}

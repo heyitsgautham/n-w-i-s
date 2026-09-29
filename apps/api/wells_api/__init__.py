@@ -1,1 +1,1 @@
-"""N-W-I-S API over the demo pack and the parsed reports."""
+"""API over the demo pack and the parsed reports."""
