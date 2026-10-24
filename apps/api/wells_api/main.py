@@ -11,25 +11,58 @@ import json
 import math
 import os
 import threading
+import time
 import uuid
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
 import pypdfium2 as pdfium
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response
+from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel
 from wells_extract.pages import read_lines
 
+from . import logs
 from .briefing import briefing_pdf
 from .search import formation_at, parse_query, search
 
 DEMO = Path(os.environ.get("WELLS_DATA_DIR", Path(__file__).resolve().parents[3] / "data" / "demo"))
 
 app = FastAPI(title="Offset-well memory API", version="0.1.0", description="Synthetic demo pack")
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"], expose_headers=["X-Request-ID"]
+)
+log = logs.configure()
+
+
+@app.middleware("http")
+async def request_log(request: Request, call_next):
+    """Logs every request as one JSON line and returns its id in X-Request-ID.
+
+    A caller's own X-Request-ID is kept, so a request can be traced from the web server through the API.
+    An unhandled error is logged with its traceback and answered as JSON carrying the same id.
+    """
+    rid = request.headers.get("x-request-id") or uuid.uuid4().hex[:16]
+    start = time.perf_counter()
+    try:
+        response = await call_next(request)
+    except Exception:
+        log.exception("unhandled error", extra={"request_id": rid, "method": request.method, "path": request.url.path})
+        response = JSONResponse({"detail": "internal error", "requestId": rid}, status_code=500)
+    response.headers["X-Request-ID"] = rid
+    log.info(
+        "request",
+        extra={
+            "request_id": rid,
+            "method": request.method,
+            "path": request.url.path,
+            "status": response.status_code,
+            "duration_ms": round((time.perf_counter() - start) * 1000, 1),
+        },
+    )
+    return response
 
 
 class Store:
