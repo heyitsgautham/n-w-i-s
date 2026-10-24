@@ -20,6 +20,7 @@ KIND_WORDS = {
     "tight-hole": ["tight hole", "tight", "overpull"],
     "bit-balling": ["bit balling", "balling"],
 }
+KIND_PHRASES = [(w, kind) for kind, words in KIND_WORDS.items() for w in words]
 
 STOP = {
     "in",
@@ -92,12 +93,14 @@ def parse_query(text: str, formations: list[dict]) -> Query:
     if m := re.search(r"\bbefore\s+(\d{4})\b", s):
         q.year_to = int(m.group(1)) - 1
         s = s.replace(m.group(0), " ")
-    for kind, words in KIND_WORDS.items():
-        for w in words:
-            if re.search(rf"\b{re.escape(w)}\b", s):
-                if kind not in q.kinds:
-                    q.kinds.append(kind)
-                s = re.sub(rf"\b{re.escape(w)}\b", " ", s)
+    # Longest phrase first, across every kind, so "differential sticking" is not also read as
+    # "sticking" (stuck pipe) and "gas influx" leaves no stray "gas" behind as a ranking term.
+    for w, kind in sorted(KIND_PHRASES, key=lambda p: -len(p[0])):
+        if re.search(rf"\b{re.escape(w)}\b", s):
+            if kind not in q.kinds:
+                q.kinds.append(kind)
+            s = re.sub(rf"\b{re.escape(w)}\b", " ", s)
+    q.kinds.sort(key=list(KIND_WORDS).index)
     # Longer names first, so "barail main sand" wins over "barail".
     names = sorted(((f["name"].lower(), f["id"]) for f in formations), key=lambda x: -len(x[0]))
     names += [(f["short"].lower(), f["id"]) for f in formations]
