@@ -1,0 +1,27 @@
+# `docker compose up --build` brings up the API on :8121 and the web app on :3000.
+# Set NEXT_PUBLIC_GOOGLE_MAPS_API_KEY in .env to enable the satellite flight; everything else works without it.
+services:
+  api:
+    build:
+      context: .
+      target: api
+    ports:
+      - "8121:8121"
+    environment:
+      WELLS_LOG_LEVEL: ${WELLS_LOG_LEVEL:-INFO}
+
+  web:
+    build:
+      context: .
+      target: web
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8121}
+        NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY:-}
+    ports:
+      - "3000:3000"
+    environment:
+      # The web server reads the pack from its own copy and calls the API over the compose network.
+      WELLS_API_URL: http://api:8121
+    depends_on:
+      api:
+        condition: service_healthy
