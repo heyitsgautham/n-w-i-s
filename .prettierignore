@@ -1,0 +1,9 @@
+# Prettier covers the TypeScript and scripts. Ruff formats the Python.
+*
+!*/
+!**/*.ts
+!**/*.tsx
+!**/*.mjs
+node_modules/
+.next/
+next-env.d.ts
