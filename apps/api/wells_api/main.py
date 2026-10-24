@@ -66,10 +66,19 @@ async def request_log(request: Request, call_next):
     return response
 
 
+class PackMissing(Exception):
+    """The demo pack has not been generated, or WELLS_DATA_DIR points somewhere else."""
+
+
 class Store:
     """The pack is read once. Review decisions live in memory and reset with the demo."""
 
     def __init__(self, root: Path):
+        missing = [p for p in ("field.json", "extracted/events.json") if not (root / p).exists()]
+        if missing:
+            raise PackMissing(
+                f"no demo pack at {root}: {', '.join(missing)} missing. Run `make data` or set WELLS_DATA_DIR."
+            )
         self.root = root
         self.field = json.loads((root / "field.json").read_text())
         self.events = json.loads((root / "extracted" / "events.json").read_text())
@@ -96,6 +105,12 @@ class Store:
 @lru_cache(maxsize=1)
 def store() -> Store:
     return Store(DEMO)
+
+
+@app.exception_handler(PackMissing)
+def pack_missing(request: Request, exc: PackMissing) -> JSONResponse:
+    log.error("demo pack missing", extra={"path": request.url.path, "detail": str(exc)})
+    return JSONResponse({"detail": str(exc)}, status_code=503)
 
 
 def _active() -> dict:

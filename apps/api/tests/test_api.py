@@ -92,3 +92,14 @@ def test_only_the_latest_briefings_are_kept(monkeypatch):
     urls = [client.post("/briefing/pdf", json=_briefing(text=f"Line {i}.")).json()["url"] for i in range(3)]
     assert client.get(urls[0]).status_code == 404
     assert [client.get(u).status_code for u in urls[1:]] == [200, 200]
+
+
+def test_a_missing_pack_answers_503_with_the_fix(tmp_path, monkeypatch):
+    monkeypatch.setattr(main, "DEMO", tmp_path)
+    main.store.cache_clear()
+    try:
+        res = client.get("/health")
+    finally:
+        main.store.cache_clear()
+    assert res.status_code == 503
+    assert str(tmp_path) in res.json()["detail"] and "make data" in res.json()["detail"]
