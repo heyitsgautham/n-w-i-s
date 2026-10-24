@@ -130,6 +130,7 @@ export function SearchScreen({ initialQuery }: { initialQuery: string }) {
           onChange={(e) => setDraft(e.target.value)}
           placeholder="Ask the offset reports, e.g. losses in Tipam within 5 km since 2015"
           aria-label="Question"
+          maxLength={200}
           data-search-input
           className="min-w-0 flex-1 bg-transparent text-[20px] text-ink-bright outline-none placeholder:text-ink-dim"
         />

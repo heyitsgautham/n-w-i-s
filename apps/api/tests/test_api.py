@@ -58,3 +58,19 @@ def test_page_words_are_the_ocr_boxes_of_a_scanned_page():
     assert "Caved at 9.8 ppg, hole stable at 10.4 ppg." in text
     x0, top, x1, bottom = words["lines"][0]["words"][0][1:]
     assert 0 <= x0 < x1 <= 595.3 and 0 <= top < bottom <= 841.9
+
+
+def test_page_words_outside_the_document_are_not_found():
+    doc = "KN-117-2018-02-03"
+    pages = client.get(f"/documents/{doc}").json()["pages"]
+    assert client.get(f"/documents/{doc}/pages/{pages + 1}/words").status_code == 404
+    assert client.get(f"/documents/{doc}/pages/0/words").status_code == 422
+
+
+def test_page_numbers_start_at_one_on_every_page_route():
+    assert client.get("/documents/KN-117-2018-02-03/pages/0.png").status_code == 422
+    assert client.get("/briefing/anything/pages/0.png").status_code == 422
+
+
+def test_search_rejects_a_question_too_long_to_be_one():
+    assert client.get("/search", params={"q": "losses " * 40}).status_code == 422

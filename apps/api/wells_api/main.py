@@ -19,6 +19,7 @@ from typing import Literal
 
 import pypdfium2 as pdfium
 from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi import Path as PathParam
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel
@@ -220,7 +221,7 @@ def _page_words(path: str, page: int) -> dict:
 
 
 @app.get("/documents/{doc_id}/pages/{page}/words")
-def page_words(doc_id: str, page: int) -> dict:
+def page_words(doc_id: str, page: int = PathParam(ge=1)) -> dict:
     """Every word the parser read on a page, with its box in PDF points, line by line from the top.
 
     For a scanned page these are Tesseract's own boxes, so the drawer can show where OCR read.
@@ -230,11 +231,13 @@ def page_words(doc_id: str, page: int) -> dict:
     pdf = s.root / "ddr" / d["wellId"] / f"{doc_id}.pdf" if d else None
     if not pdf or not pdf.exists():
         raise HTTPException(404, f"no rendered document {doc_id}")
+    if page > d["pages"]:
+        raise HTTPException(404, f"{doc_id} has {d['pages']} page(s), not {page}")
     return _page_words(str(pdf), page)
 
 
 @app.get("/documents/{doc_id}/pages/{page}.png")
-def page_png(doc_id: str, page: int, scale: float = Query(2.0, ge=0.5, le=4.0)) -> Response:
+def page_png(doc_id: str, page: int = PathParam(ge=1), scale: float = Query(2.0, ge=0.5, le=4.0)) -> Response:
     s = store()
     d = s.documents.get(doc_id)
     if not d:
@@ -246,7 +249,7 @@ def page_png(doc_id: str, page: int, scale: float = Query(2.0, ge=0.5, le=4.0)) 
 
 
 @app.get("/search")
-def search_events(q: str = Query(..., min_length=2)) -> dict:
+def search_events(q: str = Query(..., min_length=2, max_length=200)) -> dict:
     s = store()
     query = parse_query(q, s.field["formations"])
     results = search(query, s.live_events(), s.wells, s.field["activeWellId"])
@@ -346,7 +349,7 @@ def briefing_file(key: str) -> Response:
 
 
 @app.get("/briefing/{key}/pages/{page}.png")
-def briefing_page(key: str, page: int, scale: float = Query(1.5, ge=0.5, le=3.0)) -> Response:
+def briefing_page(key: str, page: int = PathParam(ge=1), scale: float = Query(1.5, ge=0.5, le=3.0)) -> Response:
     pdf = store().briefings.get(key)
     if not pdf:
         raise HTTPException(404, "no such briefing")
