@@ -22,7 +22,7 @@ from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi import Path as PathParam
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from wells_extract.pages import read_lines
 
 from . import logs
@@ -309,28 +309,39 @@ def decide(event_id: str, body: Decision) -> dict:
 
 
 class BriefingLine(BaseModel):
-    text: str
-    cites: list[str] = []
+    text: str = Field(max_length=2000)
+    cites: list[str] = Field(default=[], max_length=50)
 
 
 class BriefingSection(BaseModel):
-    title: str
-    summary: str = ""
-    lines: list[BriefingLine]
+    title: str = Field(min_length=1, max_length=200)
+    summary: str = Field(default="", max_length=1000)
+    lines: list[BriefingLine] = Field(max_length=200)
 
 
 class Briefing(BaseModel):
-    title: str
-    subtitle: str = ""
-    footer: str = ""
-    sections: list[BriefingSection]
+    """What the briefing screen exports. The limits sit well above a real briefing and stop a runaway body."""
+
+    title: str = Field(min_length=1, max_length=200)
+    subtitle: str = Field(default="", max_length=2000)
+    footer: str = Field(default="", max_length=500)
+    sections: list[BriefingSection] = Field(min_length=1, max_length=20)
+
+
+#: Exported briefings kept in memory for download. Each edit exports a new one, so the oldest are dropped.
+BRIEFINGS_KEPT = 32
 
 
 @app.post("/briefing/pdf")
 def export_briefing(body: Briefing) -> dict:
     pdf = briefing_pdf(body.model_dump())
     key = uuid.uuid5(uuid.NAMESPACE_URL, json.dumps(body.model_dump(), sort_keys=True)).hex[:12]
-    store().briefings[key] = pdf
+    s = store()
+    with s.lock:
+        s.briefings.pop(key, None)
+        s.briefings[key] = pdf
+        while len(s.briefings) > BRIEFINGS_KEPT:
+            del s.briefings[next(iter(s.briefings))]
     with PDFIUM:
         pages = len(pdfium.PdfDocument(pdf))
     return {"id": key, "pages": pages, "bytes": len(pdf), "url": f"/briefing/{key}.pdf"}

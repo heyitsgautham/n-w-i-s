@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+from wells_api import main
 from wells_api.main import app
 
 client = TestClient(app)
@@ -74,3 +75,20 @@ def test_page_numbers_start_at_one_on_every_page_route():
 
 def test_search_rejects_a_question_too_long_to_be_one():
     assert client.get("/search", params={"q": "losses " * 40}).status_code == 422
+
+
+def _briefing(title="Offset review", text="Raise mud weight."):
+    return {"title": title, "sections": [{"title": "8½ in", "lines": [{"text": text, "cites": []}]}]}
+
+
+def test_briefing_needs_a_title_and_a_section():
+    assert client.post("/briefing/pdf", json=_briefing(title="")).status_code == 422
+    assert client.post("/briefing/pdf", json={"title": "Offset review", "sections": []}).status_code == 422
+    assert client.post("/briefing/pdf", json=_briefing(text="x" * 2001)).status_code == 422
+
+
+def test_only_the_latest_briefings_are_kept(monkeypatch):
+    monkeypatch.setattr(main, "BRIEFINGS_KEPT", 2)
+    urls = [client.post("/briefing/pdf", json=_briefing(text=f"Line {i}.")).json()["url"] for i in range(3)]
+    assert client.get(urls[0]).status_code == 404
+    assert [client.get(u).status_code for u in urls[1:]] == [200, 200]
