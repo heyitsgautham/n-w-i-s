@@ -20,6 +20,8 @@ KIND_WORDS = {
     "tight-hole": ["tight hole", "tight", "overpull"],
     "bit-balling": ["bit balling", "balling"],
 }
+#: How engineers name the Barail members in passing.
+BARAIL_ALIASES = {"coal-shale": ["BCS"], "main sand": ["BMS"], "barail": ["BCS", "BMS"]}
 KIND_PHRASES = [(w, kind) for kind, words in KIND_WORDS.items() for w in words]
 
 STOP = {
@@ -101,16 +103,20 @@ def parse_query(text: str, formations: list[dict]) -> Query:
                 q.kinds.append(kind)
             s = re.sub(rf"\b{re.escape(w)}\b", " ", s)
     q.kinds.sort(key=list(KIND_WORDS).index)
-    # Longer names first, so "barail main sand" wins over "barail".
-    names = sorted(((f["name"].lower(), f["id"]) for f in formations), key=lambda x: -len(x[0]))
-    names += [(f["short"].lower(), f["id"]) for f in formations]
-    names += [("coal-shale", "BCS"), ("main sand", "BMS"), ("barail", "BCS"), ("barail", "BMS")]
-    for name, fid in names:
+    # Each name is read and removed before the next, longest first, so "barail main sand" is the
+    # Main Sand alone and only a bare "barail" means both Barail members.
+    names: dict[str, list[str]] = {}
+    for f in formations:
+        for alias in (f["name"].lower(), f["short"].lower()):
+            names.setdefault(alias, [f["id"]])
+    for alias, ids in BARAIL_ALIASES.items():
+        names.setdefault(alias, ids)
+    for name in sorted(names, key=len, reverse=True):
         if re.search(rf"\b{re.escape(name)}\b", s):
-            if fid not in q.formations:
-                q.formations.append(fid)
-    for name, _ in names:
-        s = re.sub(rf"\b{re.escape(name)}\b", " ", s)
+            q.formations += [fid for fid in names[name] if fid not in q.formations]
+            s = re.sub(rf"\b{re.escape(name)}\b", " ", s)
+    order = [f["id"] for f in formations]
+    q.formations.sort(key=lambda fid: order.index(fid) if fid in order else len(order))
     q.terms = [t for t in re.findall(r"[a-z0-9.]+", s) if t not in STOP and len(t) > 1]
     return q
 

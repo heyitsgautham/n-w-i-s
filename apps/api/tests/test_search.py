@@ -43,6 +43,11 @@ def test_year_bounds_and_radius_become_filters():
     ]
 
 
+def test_longest_formation_name_wins_and_bare_barail_means_both_members():
+    assert parse_query("losses in barail main sand", FORMATIONS).formations == ["BMS"]
+    assert parse_query("losses in barail", FORMATIONS).formations == ["BCS", "BMS"]
+
+
 def test_formation_at_reads_unsorted_tops():
     assert formation_at(TOPS, 1000) is None
     assert formation_at(TOPS, 1400) == "TPM"
