@@ -20,8 +20,8 @@ jobs:
         run: pnpm typecheck
       - name: Lint
         run: pnpm --filter web lint
-      - name: Tests
-        run: pnpm test:ts
+      - name: Tests with coverage
+        run: pnpm test:cov
       - name: Production build
         run: pnpm build
 
@@ -36,5 +36,5 @@ jobs:
       - run: uv sync --all-packages
       - name: Lint
         run: uv run ruff check . && uv run ruff format --check .
-      - name: Tests
+      - name: Tests with coverage
         run: uv run pytest -q

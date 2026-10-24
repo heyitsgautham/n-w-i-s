@@ -9,6 +9,7 @@
     "build": "pnpm --filter web build",
     "test": "pnpm test:ts && pnpm test:py",
     "test:ts": "vitest run",
+    "test:cov": "vitest run --coverage",
     "test:py": "uv run pytest -q",
     "lint": "pnpm --filter web lint && uv run ruff check . && uv run ruff format --check .",
     "typecheck": "tsc -p packages/correlate && tsc -p packages/synth && tsc -p recording && pnpm --filter web exec next typegen && pnpm --filter web exec tsc --noEmit",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "^22",
+    "@vitest/coverage-v8": "3.2.7",
     "playwright": "1.63.0",
     "tsx": "^4",
     "typescript": "^5",

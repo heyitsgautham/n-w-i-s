@@ -25,3 +25,4 @@ recording/out/sheets/
 data/volve/.cache/
 recording/.cache/
 recording/voice/
+.coverage

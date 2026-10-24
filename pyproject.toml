@@ -23,10 +23,18 @@ dev = [
     "httpx>=0.27",
     "imageio-ffmpeg>=0.5",
     "pyarrow>=25.0.1",
+    "pytest-cov>=7.1.0",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["packages/synth/ddr/tests", "packages/extract/tests", "apps/api/tests"]
+addopts = "--cov --cov-report=term-missing:skip-covered"
+
+[tool.coverage.run]
+source = ["wells_api", "wells_extract", "wells_ddr"]
+
+[tool.coverage.report]
+fail_under = 75
 
 [tool.ruff]
 line-length = 120
