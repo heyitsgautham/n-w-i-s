@@ -1,38 +1,17 @@
 "use client";
 
 import { displayAtMd } from "@wells/correlate";
-import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useConsole } from "@/components/console/console-provider";
 import { layoutSection } from "@/components/section/layout";
 import { CorrelationPanel } from "@/components/section/correlation-panel";
-import {
-  cameraAt,
-  centreAt,
-  cutAway,
-  easeInOut,
-  easeOut,
-  faceSwing,
-  FOV_DEG,
-  groundTilt,
-  GROUND_M,
-  metresPerPixel,
-  project,
-  readPhase,
-  seg,
-  T,
-} from "@/lib/arrival";
+import { cameraAt, centreAt, cutAway, easeInOut, easeOut, faceSwing, groundTilt, metresPerPixel, project, readPhase, seg, T } from "@/lib/arrival";
 import type { ArrivalData } from "@/lib/data";
-import { importLibrary, mapsKey } from "@/lib/google-maps";
+import { mapsKey } from "@/lib/google-maps";
 import { useViewport } from "@/hooks/use-viewport";
 import { KIND_COLOR, KIND_LABEL } from "@/lib/hazards";
+import { useSatellite } from "./satellite";
 import { chipSlot, fallStart, FallingChips, FlyCaptions, GridGround, lerp, Page } from "./scenery";
-
-type Map3D = HTMLElement & {
-  center: { lat: number; lng: number; altitude: number };
-  range: number;
-  tilt: number;
-  heading: number;
-};
 
 interface ArrivalApi {
   /** Draws the arrival at t seconds and moves the map camera there. */
@@ -64,10 +43,6 @@ export function Arrival({ data }: { data: ArrivalData }) {
   const [done, setDone] = useState(false);
   const film = useSyncExternalStore(noSubscribe, isFilm, () => false);
   const hasKey = mapsKey() !== "";
-  const mapBox = useRef<HTMLDivElement>(null);
-  const map = useRef<Map3D | null>(null);
-  const steady = useRef(!hasKey);
-  const [mapReady, setMapReady] = useState(!hasKey);
   const [panel, setPanel] = useState<DOMRect | null>(null);
 
   const byId = useMemo(() => new Map(data.wells.map((w) => [w.id, w])), [data.wells]);
@@ -75,19 +50,8 @@ export function Arrival({ data }: { data: ArrivalData }) {
   const lineEnds = useMemo(() => ({ a: byId.get(sectionIds[0]!)!, b: byId.get(sectionIds[sectionIds.length - 1]!)! }), [byId, sectionIds]);
   const offsets = useMemo(() => data.wells.filter((w) => w.role === "offset").sort((a, b) => Math.hypot(a.x, a.y) - Math.hypot(b.x, b.y)), [data.wells]);
   const readIndex = useMemo(() => new Map(offsets.map((w, i) => [w.id, i])), [offsets]);
-
-  const applyCamera = useCallback(
-    (time: number) => {
-      const m = map.current;
-      if (!m) return;
-      const c = cameraAt(time, data.anchor, { a: lineEnds.a, b: lineEnds.b });
-      m.center = { lat: c.lat, lng: c.lng, altitude: GROUND_M };
-      m.range = c.range;
-      m.tilt = c.tilt;
-      m.heading = c.heading;
-    },
-    [data.anchor, lineEnds],
-  );
+  // The Google 3D map. Without a key, or if it fails to load, the arrival starts at the field.
+  const { mapBox, mapReady, steady, applyCamera } = useSatellite(hasKey, data.anchor, lineEnds, () => setT(T.flyEnd));
 
   const finish = useCallback(() => {
     setDone(true);
@@ -95,43 +59,6 @@ export function Arrival({ data }: { data: ArrivalData }) {
     url.searchParams.delete("arrive");
     window.history.replaceState(null, "", url.pathname + url.search);
   }, []);
-
-  // The Google 3D map, created once. Without a key the arrival starts at the field, on drawn contours.
-  useEffect(() => {
-    if (!hasKey) return;
-    let live = true;
-    importLibrary<{ Map3DElement: new (o: object) => Map3D }>("maps3d")
-      .then(({ Map3DElement }) => {
-        if (!live || !mapBox.current) return;
-        const c = cameraAt(0, data.anchor, { a: lineEnds.a, b: lineEnds.b });
-        const m = new Map3DElement({
-          mode: "SATELLITE",
-          defaultUIHidden: true,
-          fov: FOV_DEG,
-          center: { lat: c.lat, lng: c.lng, altitude: GROUND_M },
-          range: c.range,
-          tilt: c.tilt,
-          heading: c.heading,
-        });
-        m.style.cssText = "position:absolute;inset:0;width:100%;height:100%;display:block";
-        m.addEventListener("gmp-steadychange", (e) => {
-          steady.current = (e as unknown as { isSteady: boolean }).isSteady;
-        });
-        mapBox.current.append(m);
-        map.current = m;
-        setMapReady(true);
-      })
-      .catch(() => {
-        steady.current = true;
-        setMapReady(true);
-        setT(T.flyEnd);
-      });
-    return () => {
-      live = false;
-      map.current?.remove();
-      map.current = null;
-    };
-  }, [hasKey, data.anchor, lineEnds]);
 
   // The section panel the arrival lands on, measured from the console underneath.
   useEffect(() => {
@@ -179,7 +106,7 @@ export function Arrival({ data }: { data: ArrivalData }) {
       cancelAnimationFrame(raf);
       window.removeEventListener("keydown", onKey);
     };
-  }, [mapReady, done, film, hasKey, applyCamera, finish]);
+  }, [mapReady, done, film, hasKey, applyCamera, finish, steady]);
 
   // The five section wells as the section draws them, for the cut face and the chips' landing places.
   const face = useMemo(() => {
