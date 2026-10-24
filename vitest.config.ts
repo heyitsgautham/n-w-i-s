@@ -9,7 +9,7 @@ export default defineConfig({
       // The CLI only writes files, and types.ts holds no runtime code.
       exclude: ["**/*.test.ts", "packages/synth/src/cli.ts", "packages/correlate/src/types.ts"],
       reporter: ["text-summary", "lcov"],
-      thresholds: { lines: 70, branches: 55, functions: 60 },
+      thresholds: { lines: 85, branches: 75, functions: 85 },
     },
   },
 });
