@@ -60,7 +60,8 @@ export function BriefingScreen({ wellId, radiusKm, offsets, sections, events, pe
           <div className="label-caps text-[10.5px] text-ink-dim">Pre-spud briefing</div>
           <h1 className="mt-1 text-[24px] leading-tight font-semibold text-ink-bright">Offset review for {wellId}, hole section by hole section</h1>
           <p className="mt-1.5 text-[13.5px] text-ink-muted">
-            Written from {events.length} cited offset events in {offsets.length} wells within {radiusKm} km. Click any line to change it; click a citation to open the page.
+            Written from {events.length} cited offset events in {offsets.length} wells within {radiusKm} km. Click any line to change it; click a citation to
+            open the page.
           </p>
         </header>
         <div className="mt-5 flex flex-col gap-5">
@@ -140,7 +141,8 @@ export function BriefingScreen({ wellId, radiusKm, offsets, sections, events, pe
           </ul>
           {pending > 0 && (
             <p className="mt-3 text-[12px] leading-snug text-ink-muted">
-              {pending} {pending === 1 ? "event is" : "events are"} waiting in the review queue and left out until someone confirms {pending === 1 ? "it" : "them"}.
+              {pending} {pending === 1 ? "event is" : "events are"} waiting in the review queue and left out until someone confirms{" "}
+              {pending === 1 ? "it" : "them"}.
             </p>
           )}
         </div>
@@ -170,8 +172,15 @@ export function BriefingScreen({ wellId, radiusKm, offsets, sections, events, pe
         </p>
       </aside>
       {preview && exported && (
-        <div className="fixed inset-x-0 top-[60px] bottom-7 z-40 flex items-center justify-center bg-[#01040b]/70" onClick={() => setPreview(false)} data-export-preview>
-          <div className="flex h-[92%] flex-col overflow-hidden rounded-[4px] border border-rule-strong bg-chrome shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="fixed inset-x-0 top-[60px] bottom-7 z-40 flex items-center justify-center bg-[#01040b]/70"
+          onClick={() => setPreview(false)}
+          data-export-preview
+        >
+          <div
+            className="flex h-[92%] flex-col overflow-hidden rounded-[4px] border border-rule-strong bg-chrome shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center justify-between gap-6 border-b border-rule px-4 py-2.5">
               <span className="num text-[13px] text-ink">
                 briefing-{wellId}.pdf · page 1 of {exported.pages}
@@ -181,7 +190,11 @@ export function BriefingScreen({ wellId, radiusKm, offsets, sections, events, pe
               </button>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element -- the exported PDF's first page, rendered by the API */}
-            <img src={`${API}/briefing/${exported.id}/pages/1.png?scale=1.6`} alt="Exported briefing, first page" className="min-h-0 flex-1 bg-white object-contain" />
+            <img
+              src={`${API}/briefing/${exported.id}/pages/1.png?scale=1.6`}
+              alt="Exported briefing, first page"
+              className="min-h-0 flex-1 bg-white object-contain"
+            />
           </div>
         </div>
       )}

@@ -1,12 +1,4 @@
-import {
-  retie,
-  type DailyReport,
-  type DemoPack,
-  type FormationTop,
-  type OffsetEvent,
-  type StructureGrid,
-  type Well,
-} from "@wells/correlate";
+import { retie, type DailyReport, type DemoPack, type FormationTop, type OffsetEvent, type StructureGrid, type Well } from "@wells/correlate";
 import { FORMATIONS } from "./column";
 import { backgroundEventSpecs, heroEventSpecs, type EventSpec } from "./events";
 import { placeGeneratedOffsets, scheduleSpud, slotOf, type RigSlot } from "./field";
@@ -71,7 +63,17 @@ export function buildDemoPack(seed: number = SEED): DemoPack {
       tdMd = round1(syl.md + rng(seed, `${o.id}/td`).range(140, 300));
       tops = tops.filter((t) => t.md < tdMd);
     }
-    return { id: o.id, x: o.x, y: o.y, rtElevation, tdMd, surveys, tops, ...("fixed" in o ? { fixed: o.fixed } : {}), ...("targetYear" in o ? { targetYear: o.targetYear } : {}) };
+    return {
+      id: o.id,
+      x: o.x,
+      y: o.y,
+      rtElevation,
+      tdMd,
+      surveys,
+      tops,
+      ...("fixed" in o ? { fixed: o.fixed } : {}),
+      ...("targetYear" in o ? { targetYear: o.targetYear } : {}),
+    };
   });
 
   // Plan and drill every offset. Durations come first; the rig schedule needs them to date the wells.
@@ -151,7 +153,16 @@ export function buildDemoPack(seed: number = SEED): DemoPack {
   const replay = buildReplay(seed, truthTops, activeBeds);
   const lastTick = replay.ticks[replay.ticks.length - 1]!;
   const planSections = holeSections(prognosis, ACTIVE.plannedTdMd);
-  const actual = simulate({ seed, wellId: ACTIVE.id, tops: truthTops, beds: activeBeds, sections: holeSections(truthTops, ACTIVE.plannedTdMd), events: [], tdMd: ACTIVE.plannedTdMd, stopAtMd: REPLAY.bitAtCallMd });
+  const actual = simulate({
+    seed,
+    wellId: ACTIVE.id,
+    tops: truthTops,
+    beds: activeBeds,
+    sections: holeSections(truthTops, ACTIVE.plannedTdMd),
+    events: [],
+    tdMd: ACTIVE.plannedTdMd,
+    stopAtMd: REPLAY.bitAtCallMd,
+  });
   const plan = simulate({ seed, wellId: `${ACTIVE.id}/plan`, tops: prognosis, beds: [], sections: planSections, events: [], tdMd: ACTIVE.plannedTdMd });
   const spudMs = Date.parse(REPLAY.callTime) + 5.5 * 3600e3 - actual.endT * 3600e3;
   const activeSpud = new Date(spudMs).toISOString().slice(0, 10);

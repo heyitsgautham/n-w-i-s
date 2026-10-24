@@ -121,10 +121,35 @@ export function SatelliteMap({
             );
           })}
           {/* Section line A–A′ */}
-          <polyline points={section.map((w) => `${P(w.x, w.y).x},${P(w.x, w.y).y}`).join(" ")} fill="none" stroke="#f8fafc" strokeWidth={1.6} strokeDasharray="8 4 2 4" opacity={0.8} />
+          <polyline
+            points={section.map((w) => `${P(w.x, w.y).x},${P(w.x, w.y).y}`).join(" ")}
+            fill="none"
+            stroke="#f8fafc"
+            strokeWidth={1.6}
+            strokeDasharray="8 4 2 4"
+            opacity={0.8}
+          />
           {/* Radius ring */}
-          <circle cx={P(active.x, active.y).x} cy={P(active.x, active.y).y} r={ringR} fill="#f8fafc" fillOpacity={0.05} stroke="#f8fafc" strokeWidth={1.8} strokeDasharray="7 5" data-ring={radiusKm} />
-          <text x={P(active.x, active.y).x} y={P(active.x, active.y).y - ringR - 10} textAnchor="middle" fontSize={14} fontWeight={600} fill="#f8fafc" style={halo}>
+          <circle
+            cx={P(active.x, active.y).x}
+            cy={P(active.x, active.y).y}
+            r={ringR}
+            fill="#f8fafc"
+            fillOpacity={0.05}
+            stroke="#f8fafc"
+            strokeWidth={1.8}
+            strokeDasharray="7 5"
+            data-ring={radiusKm}
+          />
+          <text
+            x={P(active.x, active.y).x}
+            y={P(active.x, active.y).y - ringR - 10}
+            textAnchor="middle"
+            fontSize={14}
+            fontWeight={600}
+            fill="#f8fafc"
+            style={halo}
+          >
             {`${radiusKm.toFixed(1)} km`}
           </text>
           {model.wells
@@ -137,7 +162,15 @@ export function SatelliteMap({
               return (
                 <g key={w.id} className="pointer-events-auto" onMouseEnter={() => onHover(w.id)} onMouseLeave={() => onHover(null)} data-well={w.id}>
                   {(hot || isBest) && <circle cx={p.x} cy={p.y} r={15} fill="none" stroke={isBest ? "var(--watch)" : "#f8fafc"} strokeWidth={2} />}
-                  <circle cx={p.x} cy={p.y} r={hot || isBest ? 7 : inside ? 6 : 4.5} fill={inside ? "#fbbf24" : "#cbd5e1"} stroke="#020617" strokeWidth={1.6} opacity={inside ? 1 : 0.75} />
+                  <circle
+                    cx={p.x}
+                    cy={p.y}
+                    r={hot || isBest ? 7 : inside ? 6 : 4.5}
+                    fill={inside ? "#fbbf24" : "#cbd5e1"}
+                    stroke="#020617"
+                    strokeWidth={1.6}
+                    opacity={inside ? 1 : 0.75}
+                  />
                   <text x={p.x + 10} y={p.y - 8} fontSize={inside ? 14 : 12} fontWeight={inside ? 600 : 400} fill={inside ? "#f8fafc" : "#cbd5e1"} style={halo}>
                     {w.id}
                   </text>

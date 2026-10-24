@@ -51,7 +51,19 @@ function dayAt(curve: CurvePoint[], md: number): number {
 
 const npt = (events: OffsetEvent[]) => events.reduce((s, e) => s + e.nptHours, 0);
 
-function Chart({ model, width, height, hover, setHover }: { model: CompareModel; width: number; height: number; hover: string | null; setHover: (id: string | null) => void }) {
+function Chart({
+  model,
+  width,
+  height,
+  hover,
+  setHover,
+}: {
+  model: CompareModel;
+  width: number;
+  height: number;
+  hover: string | null;
+  setHover: (id: string | null) => void;
+}) {
   const { openEvent } = useConsole();
   const pad = { l: 64, r: 18, t: 16, b: 38 };
   const maxDay = Math.ceil(Math.max(...model.wells.flatMap((w) => [w.curve.at(-1)!.day, w.planCurve?.at(-1)?.day ?? 0])) / 5) * 5;
@@ -82,7 +94,13 @@ function Chart({ model, width, height, hover, setHover }: { model: CompareModel;
       <text x={(pad.l + width - pad.r) / 2} y={height - 4} textAnchor="middle" fontSize={11} className="label-caps" style={{ fill: "var(--ink-dim)" }}>
         Days from spud
       </text>
-      <text transform={`translate(14 ${(pad.t + height - pad.b) / 2}) rotate(-90)`} textAnchor="middle" fontSize={11} className="label-caps" style={{ fill: "var(--ink-dim)" }}>
+      <text
+        transform={`translate(14 ${(pad.t + height - pad.b) / 2}) rotate(-90)`}
+        textAnchor="middle"
+        fontSize={11}
+        className="label-caps"
+        style={{ fill: "var(--ink-dim)" }}
+      >
         Depth, m MD
       </text>
       {offsets.map((w, i) => (
@@ -95,10 +113,19 @@ function Chart({ model, width, height, hover, setHover }: { model: CompareModel;
           strokeLinejoin="round"
         />
       ))}
-      {active.planCurve && <path d={path(active.planCurve)} style={{ fill: "none", stroke: "var(--ink-bright)" }} strokeWidth={1.6} strokeDasharray="7 5" opacity={0.85} />}
+      {active.planCurve && (
+        <path d={path(active.planCurve)} style={{ fill: "none", stroke: "var(--ink-bright)" }} strokeWidth={1.6} strokeDasharray="7 5" opacity={0.85} />
+      )}
       <path d={path(active.curve)} style={{ fill: "none", stroke: "var(--ink-bright)" }} strokeWidth={3} strokeLinejoin="round" />
       <circle cx={X(active.curve.at(-1)!.day)} cy={Y(active.curve.at(-1)!.md)} r={5} style={{ fill: "var(--ink-bright)" }} />
-      <text x={X(active.curve.at(-1)!.day) + 10} y={Y(active.curve.at(-1)!.md) + 4} className="num" fontSize={12} fontWeight={600} style={{ fill: "var(--ink-bright)", stroke: "var(--paper)", strokeWidth: 4, paintOrder: "stroke" }}>
+      <text
+        x={X(active.curve.at(-1)!.day) + 10}
+        y={Y(active.curve.at(-1)!.md) + 4}
+        className="num"
+        fontSize={12}
+        fontWeight={600}
+        style={{ fill: "var(--ink-bright)", stroke: "var(--paper)", strokeWidth: 4, paintOrder: "stroke" }}
+      >
         {`${model.activeWellId} now, ${metres(active.curve.at(-1)!.md)} m`}
       </text>
       {offsets.map((w, i) =>
@@ -108,10 +135,31 @@ function Chart({ model, width, height, hover, setHover }: { model: CompareModel;
           const y = Y(e.md);
           const big = e.nptHours >= 30;
           return (
-            <g key={e.id} onClick={() => openEvent(e)} onMouseEnter={() => setHover(w.id)} onMouseLeave={() => setHover(null)} style={{ cursor: "pointer" }} data-npt={e.id}>
-              <circle cx={x} cy={y} r={r} style={{ fill: INKS[i % INKS.length], stroke: INKS[i % INKS.length] }} fillOpacity={0.22} strokeWidth={1.2} opacity={hover && hover !== w.id ? 0.35 : 1} />
+            <g
+              key={e.id}
+              onClick={() => openEvent(e)}
+              onMouseEnter={() => setHover(w.id)}
+              onMouseLeave={() => setHover(null)}
+              style={{ cursor: "pointer" }}
+              data-npt={e.id}
+            >
+              <circle
+                cx={x}
+                cy={y}
+                r={r}
+                style={{ fill: INKS[i % INKS.length], stroke: INKS[i % INKS.length] }}
+                fillOpacity={0.22}
+                strokeWidth={1.2}
+                opacity={hover && hover !== w.id ? 0.35 : 1}
+              />
               {big && (
-                <text x={x + r + 4} y={y + 4} className="num" fontSize={10.5} style={{ fill: "var(--ink)", stroke: "var(--paper)", strokeWidth: 3, paintOrder: "stroke" }}>
+                <text
+                  x={x + r + 4}
+                  y={y + 4}
+                  className="num"
+                  fontSize={10.5}
+                  style={{ fill: "var(--ink)", stroke: "var(--paper)", strokeWidth: 3, paintOrder: "stroke" }}
+                >
                   {`${Math.round(e.nptHours)} h`}
                 </text>
               )}
@@ -143,7 +191,13 @@ function Program({ w, ink, height, top }: { w: CompareModel["wells"][number]; in
         <g key={c.sizeIn}>
           <line x1={c.inset} x2={c.inset} y1={Y(c.top)} y2={Y(c.shoeMd)} style={{ stroke: ink }} strokeWidth={1.6} />
           <path d={`M${c.inset} ${Y(c.shoeMd)} l6 0 l-6 -7 Z`} style={{ fill: ink }} />
-          <text x={c.inset + 8} y={Y(c.shoeMd) + 3.5} className="num" fontSize={9.5} style={{ fill: "var(--ink)", stroke: "var(--paper)", strokeWidth: 3, paintOrder: "stroke" }}>
+          <text
+            x={c.inset + 8}
+            y={Y(c.shoeMd) + 3.5}
+            className="num"
+            fontSize={9.5}
+            style={{ fill: "var(--ink)", stroke: "var(--paper)", strokeWidth: 3, paintOrder: "stroke" }}
+          >
             {c.casingIn.replace(" liner", " L")}
           </text>
         </g>
@@ -173,7 +227,9 @@ export function CompareScreen({ model }: { model: CompareModel }) {
         <div className="flex shrink-0 items-center justify-between gap-6 px-4 pt-3.5 pb-2.5">
           <h1 className="text-[16px] leading-none font-semibold text-ink-bright">
             Days versus depth
-            <span className="ml-2.5 text-[12.5px] font-normal text-ink-muted">section offsets as drilled, {model.activeWellId} plan and progress, NPT as bubbles</span>
+            <span className="ml-2.5 text-[12.5px] font-normal text-ink-muted">
+              section offsets as drilled, {model.activeWellId} plan and progress, NPT as bubbles
+            </span>
           </h1>
           <div className="flex items-center gap-4 text-[12px] text-ink-muted">
             {offsets.map((w) => (
@@ -198,12 +254,19 @@ export function CompareScreen({ model }: { model: CompareModel }) {
           {model.wells.map((w) => {
             const hrs = npt(w.events);
             return (
-              <div key={w.id} className="flex min-h-0 flex-col" onMouseEnter={() => setHover(w.id === model.activeWellId ? null : w.id)} onMouseLeave={() => setHover(null)}>
+              <div
+                key={w.id}
+                className="flex min-h-0 flex-col"
+                onMouseEnter={() => setHover(w.id === model.activeWellId ? null : w.id)}
+                onMouseLeave={() => setHover(null)}
+              >
                 <div className="h-[60px] px-1">
                   <div className="text-[14px] font-semibold" style={{ color: inkOf(w.id) }}>
                     {w.id}
                   </div>
-                  <div className="num text-[10.5px] text-ink-muted">{w.role === "active" ? "plan" : `${w.spudDate.slice(0, 4)} · NPT ${Math.round(hrs)} h`}</div>
+                  <div className="num text-[10.5px] text-ink-muted">
+                    {w.role === "active" ? "plan" : `${w.spudDate.slice(0, 4)} · NPT ${Math.round(hrs)} h`}
+                  </div>
                   <div className="num text-[10.5px] text-ink-dim">
                     MW {w.mud[0]?.ppg.toFixed(1)}–{Math.max(...w.mud.map((m) => m.ppg)).toFixed(1)}
                   </div>

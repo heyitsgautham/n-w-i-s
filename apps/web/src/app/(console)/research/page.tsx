@@ -17,7 +17,11 @@ export default function ResearchPage() {
   const a = stats.accuracy;
 
   const asks: [string, string, string][] = [
-    ["i", "Read the old reports with AI, NLP and OCR", `${n(stats.documents)} reports parsed, ${stats.ocrPages} scanned pages read by Tesseract, ${a.found} of ${a.truthEvents} incidents found`],
+    [
+      "i",
+      "Read the old reports with AI, NLP and OCR",
+      `${n(stats.documents)} reports parsed, ${stats.ocrPages} scanned pages read by Tesseract, ${a.found} of ${a.truthEvents} incidents found`,
+    ],
     ["ii", "Map the offset wells within a radius", `${inside} offsets inside a 5 km ring you set, on Google satellite terrain`],
     ["iii", "A searchable memory of drilling events", "Plain-English questions become filters, and every answer cites its report page"],
     ["iv", "Correlate the wells by depth and formation", "Tops tied across the section, every incident placed by the layer it happened in"],

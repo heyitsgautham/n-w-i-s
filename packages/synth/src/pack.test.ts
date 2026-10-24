@@ -103,9 +103,15 @@ describe("hero re-tie", () => {
   it("holds 13 h 30 m through the whole opening of the take", () => {
     for (let tick = pack.replay.openTick; tick < call.tick; tick++) {
       const t = pack.replay.ticks[tick]!;
-      const first = buildAlerts({ events: sectionEvents, wells: pack.wells, active, activeTops: active.tops, bitMd: t.bitMd, ropMph: t.ropAvg, bands: pack.bands }).find(
-        (a) => a.band !== "passed",
-      );
+      const first = buildAlerts({
+        events: sectionEvents,
+        wells: pack.wells,
+        active,
+        activeTops: active.tops,
+        bitMd: t.bitMd,
+        ropMph: t.ropAvg,
+        bands: pack.bands,
+      }).find((a) => a.band !== "passed");
       expect(first?.event.wellId).toBe("KN-117");
       expect(formatHours(first!.hours!)).toBe("13 h 30 m");
     }

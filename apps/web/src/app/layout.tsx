@@ -35,9 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: FILM_MODE }} />
       </head>
-      <body className="flex h-full min-h-0 flex-col overflow-hidden">
-        {children}
-      </body>
+      <body className="flex h-full min-h-0 flex-col overflow-hidden">{children}</body>
     </html>
   );
 }

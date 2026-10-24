@@ -37,15 +37,7 @@ export function Plate({
   return (
     <g>
       {box && box.label === label && (
-        <rect
-          x={x + box.dx - pad}
-          y={y + box.dy - pad + 1}
-          width={box.w + pad * 2}
-          height={box.h + pad * 2 - 2}
-          rx={2}
-          style={{ fill }}
-          opacity={opacity}
-        />
+        <rect x={x + box.dx - pad} y={y + box.dy - pad + 1} width={box.w + pad * 2} height={box.h + pad * 2 - 2} rx={2} style={{ fill }} opacity={opacity} />
       )}
       <g ref={ref} data-x={x} data-y={y}>
         {children}

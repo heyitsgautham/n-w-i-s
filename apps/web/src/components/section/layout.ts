@@ -46,13 +46,7 @@ const ACTIVE = { gr: 40, lith: 48, rop: 44, lane: 136 };
  * not to scale and the header gives the real distances. Offsets east of the active well are
  * mirrored so every lithology column faces the active well.
  */
-export function layoutSection(
-  width: number,
-  height: number,
-  wells: SectionWell[],
-  activeId: string,
-  window: { top: number; bottom: number },
-): SectionLayout {
+export function layoutSection(width: number, height: number, wells: SectionWell[], activeId: string, window: { top: number; bottom: number }): SectionLayout {
   const activeIndex = wells.findIndex((w) => w.id === activeId);
   const offsetCount = wells.length - 1;
   const fixed = RULER + offsetCount * (OFFSET.gr + OFFSET.lith) + ACTIVE.gr + ACTIVE.lith + ACTIVE.rop + PAD_RIGHT;

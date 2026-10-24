@@ -74,12 +74,7 @@ export function holeSections(tops: FormationTop[], tdMd: number): HoleSection[] 
 }
 
 /** Mud weight in use from each depth, section by section, with the offset's own practice and its events. */
-export function mudSchedule(
-  wellId: string,
-  sections: HoleSection[],
-  tops: FormationTop[],
-  events: { md: number; mudAfterPpg?: number }[],
-): MudStep[] {
+export function mudSchedule(wellId: string, sections: HoleSection[], tops: FormationTop[], events: { md: number; mudAfterPpg?: number }[]): MudStep[] {
   const steps: MudStep[] = [];
   sections.forEach((s, i) => {
     const program = HOLE_PROGRAM[i]!;
@@ -227,7 +222,13 @@ export function curveOf(sim: Simulation): CurvePoint[] {
 }
 
 /** Folds drilling and connections into report rows of at most six hours. */
-function reportRows(ops: Op[], from: number, to: number, sizeAt: (md: number) => string, flowText: string): { rows: OpRow[]; drilled: [number, number] | null } {
+function reportRows(
+  ops: Op[],
+  from: number,
+  to: number,
+  sizeAt: (md: number) => string,
+  flowText: string,
+): { rows: OpRow[]; drilled: [number, number] | null } {
   const rows: OpRow[] = [];
   let block: { t0: number; t1: number; md0: number; md1: number } | null = null;
   let drilled: [number, number] | null = null;
@@ -268,7 +269,15 @@ function reportRows(ops: Op[], from: number, to: number, sizeAt: (md: number) =>
       continue;
     }
     flush();
-    rows.push({ from: hhmm(t0 - from), to: hhmm(t1 - from), hours: round2(t1 - t0), code: op.code, md: round1(md1), text: op.text, ...(op.eventId ? { eventId: op.eventId } : {}) });
+    rows.push({
+      from: hhmm(t0 - from),
+      to: hhmm(t1 - from),
+      hours: round2(t1 - t0),
+      code: op.code,
+      md: round1(md1),
+      text: op.text,
+      ...(op.eventId ? { eventId: op.eventId } : {}),
+    });
   }
   flush();
   return { rows, drilled };
@@ -352,10 +361,16 @@ export function dailyReports(opts: {
     }
     let summary = parts.length ? `${capitalise(parts.join(", "))}.` : "Rig operations as per program.";
     if (nptHours > 0) summary += ` NPT ${round1(nptHours)} h: ${incidents.map((i) => i.title.toLowerCase()).join("; ") || "continuing from the previous day"}.`;
-    const nextOp = sim.ops.find((op) => op.t0 >= to && op.code !== "DRL") ;
+    const nextOp = sim.ops.find((op) => op.t0 >= to && op.code !== "DRL");
     const drillingNext = sim.ops.find((op) => op.t0 >= to)?.code === "DRL";
     const forecast =
-      to >= sim.endT ? "Rig released." : drillingNext ? `Drill ahead ${size} in hole.` : nextOp ? `${nextOp.text.split(/\.(?:\s|$)/)[0]}.` : "Continue operations.";
+      to >= sim.endT
+        ? "Rig released."
+        : drillingNext
+          ? `Drill ahead ${size} in hole.`
+          : nextOp
+            ? `${nextOp.text.split(/\.(?:\s|$)/)[0]}.`
+            : "Continue operations.";
     reports.push({
       id: `${opts.wellId}-${date}`,
       wellId: opts.wellId,
@@ -369,7 +384,10 @@ export function dailyReports(opts: {
       forecast,
       ops: timed,
       mud: {
-        weightPpg: mudAt(opts.mud, endMd + (opts.events.some((e) => Math.abs(e.md - endMd) < 0.05 && (sim.eventT.get(e.id) ?? Infinity) + e.nptHours <= to) ? 0.2 : 0)),
+        weightPpg: mudAt(
+          opts.mud,
+          endMd + (opts.events.some((e) => Math.abs(e.md - endMd) < 0.05 && (sim.eventT.get(e.id) ?? Infinity) + e.nptHours <= to) ? 0.2 : 0),
+        ),
         funnelVisS: Math.round(r.range(44, 62)),
         pv: Math.round(r.range(14, 24)),
         yp: Math.round(r.range(16, 26)),
@@ -386,7 +404,9 @@ export function dailyReports(opts: {
             hours: round1(bit.drillHours),
           }
         : null,
-      surveys: opts.surveys.filter((s) => s.md > startMd && s.md <= endMd).map((s) => ({ md: s.md, inc: round2(s.inc), azi: round1(s.azi), tvd: round1(s.tvd) })),
+      surveys: opts.surveys
+        .filter((s) => s.md > startMd && s.md <= endMd)
+        .map((s) => ({ md: s.md, inc: round2(s.inc), azi: round1(s.azi), tvd: round1(s.tvd) })),
       incidents,
       ...(incidents.some((i) => CLEAN_SCANS.includes(i.eventId)) ? { scan: "clean" as const } : {}),
     });

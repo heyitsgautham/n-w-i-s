@@ -24,7 +24,9 @@ export default async function BriefingPage() {
     <BriefingScreen
       wellId={active.id}
       radiusKm={RADIUS_KM}
-      offsets={offsets.map((w) => ({ id: w.id, km: Math.round(Math.hypot(w.x - active.x, w.y - active.y) / 100) / 10, year: Number(w.spudDate.slice(0, 4)) })).sort((a, b) => a.km - b.km)}
+      offsets={offsets
+        .map((w) => ({ id: w.id, km: Math.round(Math.hypot(w.x - active.x, w.y - active.y) / 100) / 10, year: Number(w.spudDate.slice(0, 4)) }))
+        .sort((a, b) => a.km - b.km)}
       sections={sections}
       events={inRing.filter((e) => cited.has(e.id))}
       pending={inRing.filter((e) => e.needsReview).length}

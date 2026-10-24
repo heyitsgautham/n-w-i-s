@@ -33,7 +33,14 @@ describe("depth conversion", () => {
 describe("re-tie", () => {
   const prognosis = [
     ...tops([["TPM", 1417]], "called"),
-    ...tops([["BCS", 2910], ["BMS", 3520], ["KPL", 3980]], "prognosed"),
+    ...tops(
+      [
+        ["BCS", 2910],
+        ["BMS", 3520],
+        ["KPL", 3980],
+      ],
+      "prognosed",
+    ),
   ];
 
   it("moves the called top and every deeper top by the same amount", () => {
@@ -49,8 +56,19 @@ describe("re-tie", () => {
 });
 
 describe("projection by formation", () => {
-  const offset = { surveys: vertical, tops: tops([["TPM", 1400], ["BCS", 2950], ["BMS", 3600]]) };
-  const activeTops = tops([["TPM", 1417], ["BCS", 2910], ["BMS", 3520]]);
+  const offset = {
+    surveys: vertical,
+    tops: tops([
+      ["TPM", 1400],
+      ["BCS", 2950],
+      ["BMS", 3600],
+    ]),
+  };
+  const activeTops = tops([
+    ["TPM", 1417],
+    ["BCS", 2910],
+    ["BMS", 3520],
+  ]);
   const event = (md: number): OffsetEvent => ({
     id: "E",
     wellId: "X",

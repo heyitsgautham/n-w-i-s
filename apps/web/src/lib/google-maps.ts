@@ -16,7 +16,7 @@ function bootstrap(key: string): Importer {
   // Google's documented dynamic loader: it defines google.maps.importLibrary and fetches the API on first use.
   const params = new URLSearchParams({ key, v: "weekly", callback: "google.maps.__ib__" });
   let loading: Promise<void> | null = null;
-  const g = ((w.google ??= {}) as { maps?: Record<string, unknown> }).maps ??= {};
+  const g = (((w.google ??= {}) as { maps?: Record<string, unknown> }).maps ??= {});
   const load = () =>
     (loading ??= new Promise<void>((resolve, reject) => {
       (g as Record<string, unknown>).__ib__ = resolve;

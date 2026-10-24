@@ -42,7 +42,8 @@ export default function AboutPage() {
         <h1 className="mt-4 text-[88px] leading-[0.9] font-bold tracking-[0.04em] text-ink-bright">{BRAND}</h1>
         <p className="mt-3 text-[30px] leading-tight text-ink">{TAGLINE}</p>
         <p className="mt-2 max-w-[760px] text-[19px] leading-snug text-ink-muted">
-          Offset-well memory for the active well. Alerts live on formations, re-tie when a top comes in off the prognosis, and open the report page they came from.
+          Offset-well memory for the active well. Alerts live on formations, re-tie when a top comes in off the prognosis, and open the report page they came
+          from.
         </p>
         <div className="mt-8 inline-flex items-center gap-3 rounded-[4px] border border-ink-muted/50 px-4 py-2.5">
           <span className="size-2 rounded-full bg-watch" />

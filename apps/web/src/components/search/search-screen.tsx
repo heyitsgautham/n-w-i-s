@@ -31,7 +31,12 @@ const KIND_LABEL: Record<string, string> = {
   "bit-balling": "Bit balling",
 };
 
-const SUGGESTIONS = ["losses in Tipam within 5 km since 2015", "stuck pipe in Barail coal-shale", "kicks in Kopili within 8 km", "tight hole in Girujan before 2014"];
+const SUGGESTIONS = [
+  "losses in Tipam within 5 km since 2015",
+  "stuck pipe in Barail coal-shale",
+  "kicks in Kopili within 8 km",
+  "tight hole in Girujan before 2014",
+];
 
 type SortKey = "date" | "md" | "lossRateBblH" | "mudWeightPpg" | "nptHours" | "distanceKm";
 
@@ -113,7 +118,9 @@ export function SearchScreen({ initialQuery }: { initialQuery: string }) {
             ? `From ${f.value}`
             : `To ${f.value}`;
   const pages = data ? new Set(data.results.map((r) => `${r.source.docId}#${r.source.page}`)).size : 0;
-  const highlight = data ? [...data.terms, ...data.filters.filter((f) => f.key === "kind").flatMap((f) => (f.value === "losses" ? ["losses", "loss"] : []))] : [];
+  const highlight = data
+    ? [...data.terms, ...data.filters.filter((f) => f.key === "kind").flatMap((f) => (f.value === "losses" ? ["losses", "loss"] : []))]
+    : [];
 
   return (
     <div className="flex h-full min-h-0 flex-col px-6 pt-5 pb-4">
@@ -134,7 +141,11 @@ export function SearchScreen({ initialQuery }: { initialQuery: string }) {
           data-search-input
           className="min-w-0 flex-1 bg-transparent text-[20px] text-ink-bright outline-none placeholder:text-ink-dim"
         />
-        <button type="submit" data-search-submit className="flex items-center gap-1.5 rounded-[3px] border border-rule-strong px-2.5 py-1.5 text-[12px] text-ink-muted hover:text-ink">
+        <button
+          type="submit"
+          data-search-submit
+          className="flex items-center gap-1.5 rounded-[3px] border border-rule-strong px-2.5 py-1.5 text-[12px] text-ink-muted hover:text-ink"
+        >
           Search <CornerDownLeft className="size-3.5" />
         </button>
       </form>
@@ -165,7 +176,11 @@ export function SearchScreen({ initialQuery }: { initialQuery: string }) {
           <div className="mt-4 flex shrink-0 flex-wrap items-center gap-2">
             <span className="label-caps mr-1 text-[10px] text-ink-dim">Read as</span>
             {data.filters.map((f) => (
-              <span key={`${f.key}-${f.value}`} className="rounded-[3px] border border-ink-muted/50 bg-accent px-2.5 py-1 text-[13px] text-ink-bright" data-filter={f.key}>
+              <span
+                key={`${f.key}-${f.value}`}
+                className="rounded-[3px] border border-ink-muted/50 bg-accent px-2.5 py-1 text-[13px] text-ink-bright"
+                data-filter={f.key}
+              >
                 {chip(f)}
               </span>
             ))}

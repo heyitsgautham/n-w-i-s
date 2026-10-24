@@ -15,6 +15,13 @@ writeFileSync(join(dir, "field.json"), `${JSON.stringify(field)}\n`);
 writeFileSync(join(dir, "reports.json"), `${JSON.stringify(reports)}\n`);
 
 const offsets = field.wells.filter((w) => w.role === "offset");
-console.log(`seed ${seed}: ${field.wells.length} wells, ${field.events.length} events, ${reports.length} daily reports, ${field.replay.ticks.length} replay ticks`);
-console.log(`spud ${offsets.map((w) => w.spudDate.slice(0, 4)).sort().join(" ")}`);
+console.log(
+  `seed ${seed}: ${field.wells.length} wells, ${field.events.length} events, ${reports.length} daily reports, ${field.replay.ticks.length} replay ticks`,
+);
+console.log(
+  `spud ${offsets
+    .map((w) => w.spudDate.slice(0, 4))
+    .sort()
+    .join(" ")}`,
+);
 console.log(`wrote ${dir}/field.json and reports.json`);

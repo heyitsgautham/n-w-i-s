@@ -154,17 +154,7 @@ export interface ActiveTrackState {
   rop: { d: number; v: number }[];
 }
 
-export function ActiveTracks({
-  L,
-  w,
-  state,
-  lithOf,
-}: {
-  L: SectionLayout;
-  w: WellLayout;
-  state: ActiveTrackState;
-  lithOf: (id: string) => Lithology;
-}) {
+export function ActiveTracks({ L, w, state, lithOf }: { L: SectionLayout; w: WellLayout; state: ActiveTrackState; lithOf: (id: string) => Lithology }) {
   const t = w.lith;
   const width = t.x1 - t.x0;
   const ySamples = L.y(state.samplesD);
@@ -183,14 +173,7 @@ export function ActiveTracks({
         {zone("active-ahead", yBit, L.drawBottom + 4)}
       </defs>
       {/* A faint column behind the active well so the eye finds it first. */}
-      <rect
-        x={w.gr.x0 - 6}
-        y={L.drawTop}
-        width={w.rop!.x1 - w.gr.x0 + 12}
-        height={L.drawBottom - L.drawTop}
-        style={{ fill: "var(--ink)" }}
-        opacity={0.035}
-      />
+      <rect x={w.gr.x0 - 6} y={L.drawTop} width={w.rop!.x1 - w.gr.x0 + 12} height={L.drawBottom - L.drawTop} style={{ fill: "var(--ink)" }} opacity={0.035} />
       <TrackFrame L={L} t={w.gr} />
       <Curve L={L} t={w.gr} pts={gamma} max={GR_MAX} ink="var(--ink)" />
       <TrackFrame L={L} t={w.rop!} />

@@ -15,14 +15,7 @@ const call = pack.replay.messages.find((m) => m.topCall)!;
 
 describe("bearingOf", () => {
   it("names the eight compass points from field offsets", () => {
-    expect([bearingOf(0, 1), bearingOf(1, 1), bearingOf(1, 0), bearingOf(0, -1), bearingOf(-1, 0), bearingOf(-1, 1)]).toEqual([
-      "N",
-      "NE",
-      "E",
-      "S",
-      "W",
-      "NW",
-    ]);
+    expect([bearingOf(0, 1), bearingOf(1, 1), bearingOf(1, 0), bearingOf(0, -1), bearingOf(-1, 0), bearingOf(-1, 1)]).toEqual(["N", "NE", "E", "S", "W", "NW"]);
   });
 });
 

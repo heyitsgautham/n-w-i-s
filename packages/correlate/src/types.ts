@@ -5,16 +5,7 @@
 //   tvdss    true vertical depth below mean sea level, metres, positive down
 //   display  true vertical depth below the active well's RT, the section's shared axis
 
-export type Lithology =
-  | "gravel"
-  | "sandy-clay"
-  | "clay"
-  | "sandstone"
-  | "shale"
-  | "coal"
-  | "siltstone"
-  | "limestone"
-  | "basement";
+export type Lithology = "gravel" | "sandy-clay" | "clay" | "sandstone" | "shale" | "coal" | "siltstone" | "limestone" | "basement";
 
 export interface Formation {
   id: string;
@@ -109,14 +100,7 @@ export interface CurvePoint {
   md: number;
 }
 
-export type EventKind =
-  | "caving"
-  | "stuck-pipe"
-  | "losses"
-  | "tight-hole"
-  | "bit-balling"
-  | "differential-sticking"
-  | "kick";
+export type EventKind = "caving" | "stuck-pipe" | "losses" | "tight-hole" | "bit-balling" | "differential-sticking" | "kick";
 
 export interface Lesson {
   kind: "raise-mud-weight" | "wiper-trip" | "limit-static-time";

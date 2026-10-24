@@ -56,7 +56,6 @@ interface Volve {
 
 type ReviewItem = OffsetEvent & { fieldConfidence: Record<string, number>; reviewed: "confirm" | "reject" | null };
 
-
 /** Volve report names run 15_9_19_BT2_1998_01_02: the wellbore, then the report date. */
 function volveReport(name: string) {
   const m = /^(.*)_(\d{4})_(\d{2})_(\d{2})$/.exec(name);
@@ -84,7 +83,12 @@ function Accuracy({ a }: { a: Ingestion["accuracy"] }) {
       </div>
       {allExact ? (
         <p className="mt-2 text-[13px] text-ink">
-          On all {a.found} found, the {fields.map(([k]) => k).join(", ").replace(/, ([^,]*)$/, " and $1")} match the report exactly.
+          On all {a.found} found, the{" "}
+          {fields
+            .map(([k]) => k)
+            .join(", ")
+            .replace(/, ([^,]*)$/, " and $1")}{" "}
+          match the report exactly.
         </p>
       ) : (
         <ul className="mt-2 grid grid-cols-4 gap-3">
@@ -100,8 +104,8 @@ function Accuracy({ a }: { a: Ingestion["accuracy"] }) {
       )}
       {a.missed.length > 0 && (
         <p className="mt-1.5 text-[12.5px] leading-snug text-ink-muted">
-          Missed {a.missed.map((m) => m.id).join(" and ")}, {a.missed.every((m) => m.scanned) ? "both scanned pages where" : "where"} OCR misread the
-          incident number, so the heading never parsed. They are counted here, not hidden.
+          Missed {a.missed.map((m) => m.id).join(" and ")}, {a.missed.every((m) => m.scanned) ? "both scanned pages where" : "where"} OCR misread the incident
+          number, so the heading never parsed. They are counted here, not hidden.
         </p>
       )}
     </div>
@@ -184,7 +188,14 @@ function Histogram({ title, bins, threshold, unit }: { title: string; bins: Bin[
           return (
             <div key={b.from} className="relative flex flex-1 flex-col items-center justify-end" style={{ height: h }}>
               {b.count > 0 && <span className="num mb-1 text-[10.5px] text-ink-muted">{b.count}</span>}
-              <div className="w-full rounded-t-[2px]" style={{ height: Math.max(b.count ? 3 : 0, (b.count / max) * (h - 18)), background: below ? "var(--watch)" : "var(--ink-muted)", opacity: below ? 0.9 : 0.6 }} />
+              <div
+                className="w-full rounded-t-[2px]"
+                style={{
+                  height: Math.max(b.count ? 3 : 0, (b.count / max) * (h - 18)),
+                  background: below ? "var(--watch)" : "var(--ink-muted)",
+                  opacity: below ? 0.9 : 0.6,
+                }}
+              />
             </div>
           );
         })}
@@ -196,9 +207,7 @@ function Histogram({ title, bins, threshold, unit }: { title: string; bins: Bin[
           </span>
         ))}
       </div>
-      <p className="mt-1.5 text-[11.5px] text-ink-dim">
-        Amber bars fall under the {threshold.toFixed(2)} review threshold.
-      </p>
+      <p className="mt-1.5 text-[11.5px] text-ink-dim">Amber bars fall under the {threshold.toFixed(2)} review threshold.</p>
     </div>
   );
 }
@@ -237,7 +246,11 @@ function ReviewCard({ e, onDecide }: { e: ReviewItem; onDecide: (id: string, d: 
   return (
     <li className="rounded-[4px] border border-rule-strong bg-[color-mix(in_srgb,var(--paper)_70%,transparent)] p-3.5" data-review={e.id}>
       <div className="flex items-baseline justify-between gap-3">
-        <button type="button" onClick={() => openEvent(e)} className="flex min-w-0 items-center gap-1 text-left text-[14.5px] font-semibold text-ink-bright hover:underline">
+        <button
+          type="button"
+          onClick={() => openEvent(e)}
+          className="flex min-w-0 items-center gap-1 text-left text-[14.5px] font-semibold text-ink-bright hover:underline"
+        >
           <span className="truncate">
             {e.wellId} · {e.title}
           </span>
@@ -267,10 +280,19 @@ function ReviewCard({ e, onDecide }: { e: ReviewItem; onDecide: (id: string, d: 
           </span>
         ) : (
           <>
-            <button type="button" onClick={() => onDecide(e.id, "confirm")} data-confirm={e.id} className="flex items-center gap-1.5 rounded-[3px] bg-ink-bright px-3 py-1.5 text-[13px] font-semibold text-[#0b0f19] hover:bg-ink">
+            <button
+              type="button"
+              onClick={() => onDecide(e.id, "confirm")}
+              data-confirm={e.id}
+              className="flex items-center gap-1.5 rounded-[3px] bg-ink-bright px-3 py-1.5 text-[13px] font-semibold text-[#0b0f19] hover:bg-ink"
+            >
               <Check className="size-4" /> Confirm
             </button>
-            <button type="button" onClick={() => onDecide(e.id, "reject")} className="flex items-center gap-1.5 rounded-[3px] border border-rule-strong px-3 py-1.5 text-[13px] text-ink-muted hover:text-ink">
+            <button
+              type="button"
+              onClick={() => onDecide(e.id, "reject")}
+              className="flex items-center gap-1.5 rounded-[3px] border border-rule-strong px-3 py-1.5 text-[13px] text-ink-muted hover:text-ink"
+            >
               <X className="size-4" /> Reject
             </button>
           </>
@@ -327,7 +349,11 @@ export function IngestionScreen() {
         </header>
         <ol className="grid grid-cols-3 gap-2" data-pipeline>
           {stages.map((s, i) => (
-            <li key={s.label} className="rounded-[4px] border border-rule-strong px-3.5 py-3" style={{ boxShadow: s.warn ? "inset 3px 0 0 var(--watch)" : undefined }}>
+            <li
+              key={s.label}
+              className="rounded-[4px] border border-rule-strong px-3.5 py-3"
+              style={{ boxShadow: s.warn ? "inset 3px 0 0 var(--watch)" : undefined }}
+            >
               <div className="flex items-baseline gap-2">
                 <span className="num text-[11px] text-ink-dim">{i + 1}</span>
                 <span className={`num text-[26px] leading-none font-semibold ${s.warn ? "text-watch" : "text-ink-bright"}`}>{s.n.toLocaleString("en-US")}</span>

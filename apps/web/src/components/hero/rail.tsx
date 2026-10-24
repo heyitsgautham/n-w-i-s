@@ -76,8 +76,7 @@ function AlertRow({ a, model, settled, onOpen }: { a: NumberedAlert; model: Hero
         <div className="mt-1 flex items-baseline justify-between gap-2 text-[11.5px] leading-tight">
           <span className="truncate text-ink-muted" data-film-hide>
             <span className="text-ink">
-              {metres(a.projection.offsetM)} m {a.projection.anchor === "top" ? "below" : "above"} {formation?.short}{" "}
-              {a.projection.anchor}
+              {metres(a.projection.offsetM)} m {a.projection.anchor === "top" ? "below" : "above"} {formation?.short} {a.projection.anchor}
             </span>
             {" · "}
             {a.event.wellId} · NPT {a.event.nptHours} h
@@ -97,12 +96,9 @@ export function AlertList({ model, scene, onOpen }: { model: HeroModel; scene: S
   const nextFormation = next && model.formations.find((f) => f.id === next.projection.formationId);
   return (
     <section className="flex flex-col gap-2.5">
-      <SectionTitle aside={`Prepare ≤ ${model.bands.prepareHours} h · Watch ≤ ${model.bands.watchHours} h`}>
-        Ahead of the bit
-      </SectionTitle>
+      <SectionTitle aside={`Prepare ≤ ${model.bands.prepareHours} h · Watch ≤ ${model.bands.watchHours} h`}>Ahead of the bit</SectionTitle>
       <p className="-mt-1 truncate text-[12px] text-ink-dim" data-film-hide>
-        Placed on {model.activeWellId} by formation · at the 10-min ROP,{" "}
-        <span className="num text-ink-muted">{scene.telemetry.ropAvg.toFixed(1)} m/h</span>
+        Placed on {model.activeWellId} by formation · at the 10-min ROP, <span className="num text-ink-muted">{scene.telemetry.ropAvg.toFixed(1)} m/h</span>
       </p>
       <ol className="flex flex-col gap-1.5">
         {scene.alerts.map((a) => (
@@ -124,9 +120,7 @@ export function RecommendationCard({ model, scene, onOpen }: { model: HeroModel;
   if (!rec) return null;
   const lead = rec.lead;
   const color = BAND_COLOR[lead.band];
-  const sources = [...new Set(rec.lines.map((l) => l.eventId))]
-    .map((id) => model.events.find((e) => e.id === id))
-    .filter((e) => e !== undefined);
+  const sources = [...new Set(rec.lines.map((l) => l.eventId))].map((id) => model.events.find((e) => e.id === id)).filter((e) => e !== undefined);
   return (
     <section
       data-recommendation
@@ -180,18 +174,19 @@ export function RigFeed({ model, scene }: { model: HeroModel; scene: Scene }) {
   const call = scene.call;
   const settled = call && (call.elapsedMs === null || call.elapsedMs >= RETIE_DELAY_MS + RETIE_MS);
   const formations = new Map<string, Formation>(model.formations.map((f) => [f.id, f]));
-  const items: { key: string; time: string; source: keyof typeof SOURCE_LABEL; text: string; hot?: boolean; fresh?: boolean }[] =
-    scene.messages.map((m) => ({
-      key: `${m.tick}-${m.source}`,
-      time: m.time,
-      source: m.source,
-      text: m.text,
-      hot: m.topCall !== undefined,
-      fresh: m.tick === scene.telemetry.tick,
-    }));
+  const items: { key: string; time: string; source: keyof typeof SOURCE_LABEL; text: string; hot?: boolean; fresh?: boolean }[] = scene.messages.map((m) => ({
+    key: `${m.tick}-${m.source}`,
+    time: m.time,
+    source: m.source,
+    text: m.text,
+    hot: m.topCall !== undefined,
+    fresh: m.tick === scene.telemetry.tick,
+  }));
   if (call && settled) {
     const f = formations.get(call.message.topCall!.formationId);
-    const flipText = call.flips.map((a) => `Alert ${a.n} is now ${BAND_LABEL[a.band].toUpperCase()}, ${a.hours === null ? "" : formatHours(a.hours)}.`).join(" ");
+    const flipText = call.flips
+      .map((a) => `Alert ${a.n} is now ${BAND_LABEL[a.band].toUpperCase()}, ${a.hours === null ? "" : formatHours(a.hours)}.`)
+      .join(" ");
     items.push({
       key: "retie",
       time: call.message.time,

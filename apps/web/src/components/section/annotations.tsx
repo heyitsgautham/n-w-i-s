@@ -81,17 +81,7 @@ export function ProjectionLines({ ctx, alerts }: { ctx: Ctx; alerts: NumberedAle
 }
 
 /** Event pins where each event happened in its offset, numbered like the alert list. */
-export function OffsetPins({
-  ctx,
-  alerts,
-  passed,
-  onOpen,
-}: {
-  ctx: Ctx;
-  alerts: NumberedAlert[];
-  passed: Scene["passed"];
-  onOpen: (e: OffsetEvent) => void;
-}) {
+export function OffsetPins({ ctx, alerts, passed, onOpen }: { ctx: Ctx; alerts: NumberedAlert[]; passed: Scene["passed"]; onOpen: (e: OffsetEvent) => void }) {
   const ai = ctx.wells.indexOf(ctx.active);
   return (
     <g>
@@ -157,21 +147,7 @@ export function ActivePins({ ctx, alerts, onOpen }: { ctx: Ctx; alerts: Numbered
 }
 
 /** A stacked, right-aligned label that fits the narrowest gap: formation, status, depth. */
-function TopLabel({
-  x,
-  y,
-  name,
-  status,
-  depth,
-  bright,
-}: {
-  x: number;
-  y: number;
-  name: string;
-  status: string;
-  depth: string;
-  bright?: boolean;
-}) {
+function TopLabel({ x, y, name, status, depth, bright }: { x: number; y: number; name: string; status: string; depth: string; bright?: boolean }) {
   return (
     <Plate x={x} y={y} label={`${name}|${status}|${depth}|${bright ? 1 : 0}`}>
       <text x={x} y={y - 30} textAnchor="end" fontSize={10} className="label-caps" style={halo(bright ? "var(--ink-bright)" : "var(--ink-muted)")}>
@@ -180,7 +156,15 @@ function TopLabel({
       <text x={x} y={y - 18} textAnchor="end" fontSize={11} style={halo(bright ? "var(--ink-bright)" : "var(--ink-muted)")}>
         {status}
       </text>
-      <text x={x} y={y - 5} textAnchor="end" className="num" fontSize={bright ? 14 : 12.5} fontWeight={bright ? 600 : 400} style={halo(bright ? "var(--ink-bright)" : "var(--ink)")}>
+      <text
+        x={x}
+        y={y - 5}
+        textAnchor="end"
+        className="num"
+        fontSize={bright ? 14 : 12.5}
+        fontWeight={bright ? 600 : 400}
+        style={halo(bright ? "var(--ink-bright)" : "var(--ink)")}
+      >
         {depth}
       </text>
     </Plate>
@@ -222,7 +206,14 @@ export function ActiveTops({ ctx, scene, formations }: { ctx: Ctx; scene: Scene;
     if (t.formationId === calledId) continue;
     const moved = call !== null && scene.prognosis.find((p) => p.formationId === t.formationId)!.md !== t.md;
     out.push(
-      <TopLabel key={`label-${t.formationId}`} x={labelX} y={y} name={nameOf(t.formationId)} status={moved ? "re-hung" : "prognosed"} depth={`${fmt(t.md)} m`} />,
+      <TopLabel
+        key={`label-${t.formationId}`}
+        x={labelX}
+        y={y}
+        name={nameOf(t.formationId)}
+        status={moved ? "re-hung" : "prognosed"}
+        depth={`${fmt(t.md)} m`}
+      />,
     );
   }
 
@@ -247,9 +238,7 @@ export function ActiveTops({ ctx, scene, formations }: { ctx: Ctx; scene: Scene;
             opacity={(1 - pulse) * 0.9}
           />
         )}
-        {current.status !== "called" && (
-          <line x1={x0 - 4} x2={x1 + 4} y1={yCall} y2={yCall} style={{ stroke: "var(--ink-bright)" }} strokeWidth={1.8} />
-        )}
+        {current.status !== "called" && <line x1={x0 - 4} x2={x1 + 4} y1={yCall} y2={yCall} style={{ stroke: "var(--ink-bright)" }} strokeWidth={1.8} />}
         <line x1={x0} x2={x1} y1={yProg} y2={yProg} style={{ stroke: "var(--ink-dim)" }} strokeWidth={1} strokeDasharray="3 3" />
         <TopLabel
           x={labelX}
@@ -309,11 +298,7 @@ export function CallCallout({ ctx, scene, fadeOutAt, endAt }: { ctx: Ctx; scene:
   const who = call.message.source === "mud-logger" ? "Mud logger" : "Driller";
   return (
     <g opacity={opacity}>
-      <path
-        d={`M${x + 18} ${top + boxH} V${yCall - 6} L${w.rop!.x1 + 3} ${yCall}`}
-        style={{ fill: "none", stroke: "var(--ink-bright)" }}
-        strokeWidth={1.2}
-      />
+      <path d={`M${x + 18} ${top + boxH} V${yCall - 6} L${w.rop!.x1 + 3} ${yCall}`} style={{ fill: "none", stroke: "var(--ink-bright)" }} strokeWidth={1.2} />
       <rect x={x} y={top} width={boxW} height={boxH} rx={2} style={{ fill: "var(--paper-deep)", stroke: "var(--ink-bright)" }} strokeWidth={1} />
       <rect x={x} y={top} width={3} height={boxH} style={{ fill: "var(--ink-bright)" }} />
       <text x={x + 12} y={top + 17} fontSize={10} className="label-caps" style={{ fill: "var(--ink-muted)" }}>

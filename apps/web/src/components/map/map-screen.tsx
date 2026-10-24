@@ -80,10 +80,13 @@ function StructureMap({
       // Label index contours where they cross the south-west quadrant, away from the wells.
       const anchor = { x: -7200, y: -5200 };
       const label = index
-        ? segs.reduce((b, s) => {
-            const m = { x: (s.x1 + s.x2) / 2, y: (s.y1 + s.y2) / 2 };
-            return Math.hypot(m.x - anchor.x, m.y - anchor.y) < Math.hypot(b.x - anchor.x, b.y - anchor.y) ? m : b;
-          }, { x: Infinity, y: Infinity })
+        ? segs.reduce(
+            (b, s) => {
+              const m = { x: (s.x1 + s.x2) / 2, y: (s.y1 + s.y2) / 2 };
+              return Math.hypot(m.x - anchor.x, m.y - anchor.y) < Math.hypot(b.x - anchor.x, b.y - anchor.y) ? m : b;
+            },
+            { x: Infinity, y: Infinity },
+          )
         : undefined;
       out.push({ level, d, index, ...(label && Number.isFinite(label.x) ? { label } : {}) });
     }
@@ -186,7 +189,16 @@ function StructureMap({
           const cy = Y(w.y) + (dy / len) * 26;
           return (
             <g key={label}>
-              <line x1={X(w.x)} y1={Y(w.y)} x2={cx - (dx / len) * 10} y2={cy - (dy / len) * 10} style={{ stroke: "var(--ink)" }} strokeWidth={1.3} strokeDasharray="3 3" opacity={0.7} />
+              <line
+                x1={X(w.x)}
+                y1={Y(w.y)}
+                x2={cx - (dx / len) * 10}
+                y2={cy - (dy / len) * 10}
+                style={{ stroke: "var(--ink)" }}
+                strokeWidth={1.3}
+                strokeDasharray="3 3"
+                opacity={0.7}
+              />
               <circle cx={cx} cy={cy} r={10} style={{ fill: "var(--paper)", stroke: "var(--ink-muted)" }} />
               <text x={cx} y={cy + 4} textAnchor="middle" fontSize={12} fontWeight={600} style={{ fill: "var(--ink)" }}>
                 {label}
@@ -195,7 +207,16 @@ function StructureMap({
           );
         })}
         {/* Radius ring */}
-        <circle cx={X(active.x)} cy={Y(active.y)} r={radiusKm * 1000 * k} style={{ fill: "var(--ink)", stroke: "var(--ink-bright)" }} fillOpacity={0.035} strokeWidth={1.4} strokeDasharray="6 5" data-ring={radiusKm} />
+        <circle
+          cx={X(active.x)}
+          cy={Y(active.y)}
+          r={radiusKm * 1000 * k}
+          style={{ fill: "var(--ink)", stroke: "var(--ink-bright)" }}
+          fillOpacity={0.035}
+          strokeWidth={1.4}
+          strokeDasharray="6 5"
+          data-ring={radiusKm}
+        />
         <text
           x={X(active.x) + radiusKm * 1000 * k * Math.SQRT1_2 + 6}
           y={Y(active.y) - radiusKm * 1000 * k * Math.SQRT1_2 - 6}
@@ -214,7 +235,9 @@ function StructureMap({
             const r = hot || isBest ? 6.5 : 4.5;
             return (
               <g key={w.id} onMouseEnter={() => onHover(w.id)} onMouseLeave={() => onHover(null)} style={{ cursor: "default" }} data-well={w.id}>
-                {(hot || isBest) && <circle cx={X(w.x)} cy={Y(w.y)} r={14} style={{ fill: "none", stroke: isBest ? "var(--watch)" : "var(--ink-bright)" }} strokeWidth={1.6} />}
+                {(hot || isBest) && (
+                  <circle cx={X(w.x)} cy={Y(w.y)} r={14} style={{ fill: "none", stroke: isBest ? "var(--watch)" : "var(--ink-bright)" }} strokeWidth={1.6} />
+                )}
                 <circle
                   cx={X(w.x)}
                   cy={Y(w.y)}
@@ -237,8 +260,18 @@ function StructureMap({
         <g>
           <circle cx={X(active.x)} cy={Y(active.y)} r={9} style={{ fill: "none", stroke: "var(--ink-bright)" }} strokeWidth={2} />
           <circle cx={X(active.x)} cy={Y(active.y)} r={3.5} style={{ fill: "var(--ink-bright)" }} />
-          <path d={`M${X(active.x) - 15} ${Y(active.y)}h8M${X(active.x) + 7} ${Y(active.y)}h8M${X(active.x)} ${Y(active.y) - 15}v8M${X(active.x)} ${Y(active.y) + 7}v8`} style={{ stroke: "var(--ink-bright)" }} strokeWidth={1.5} />
-          <text x={X(active.x) + 13} y={Y(active.y) + 20} fontSize={14} fontWeight={700} style={{ fill: "var(--ink-bright)", stroke: "var(--paper)", strokeWidth: 4, paintOrder: "stroke" }}>
+          <path
+            d={`M${X(active.x) - 15} ${Y(active.y)}h8M${X(active.x) + 7} ${Y(active.y)}h8M${X(active.x)} ${Y(active.y) - 15}v8M${X(active.x)} ${Y(active.y) + 7}v8`}
+            style={{ stroke: "var(--ink-bright)" }}
+            strokeWidth={1.5}
+          />
+          <text
+            x={X(active.x) + 13}
+            y={Y(active.y) + 20}
+            fontSize={14}
+            fontWeight={700}
+            style={{ fill: "var(--ink-bright)", stroke: "var(--paper)", strokeWidth: 4, paintOrder: "stroke" }}
+          >
             {model.activeWellId}
           </text>
         </g>
@@ -326,9 +359,27 @@ export function MapScreen({ model }: { model: MapModel }) {
         <div ref={ref} className="relative min-h-0 flex-1">
           {size.width > 0 &&
             (base === "satellite" ? (
-              <SatelliteMap model={model} radiusKm={radiusKm} inRing={inRing} highlight={hover} best={best} onHover={setHover} width={size.width} height={size.height} />
+              <SatelliteMap
+                model={model}
+                radiusKm={radiusKm}
+                inRing={inRing}
+                highlight={hover}
+                best={best}
+                onHover={setHover}
+                width={size.width}
+                height={size.height}
+              />
             ) : (
-              <StructureMap model={model} radiusKm={radiusKm} inRing={inRing} highlight={hover} best={best} onHover={setHover} width={size.width} height={size.height} />
+              <StructureMap
+                model={model}
+                radiusKm={radiusKm}
+                inRing={inRing}
+                highlight={hover}
+                best={best}
+                onHover={setHover}
+                width={size.width}
+                height={size.height}
+              />
             ))}
         </div>
       </section>
@@ -395,7 +446,10 @@ export function MapScreen({ model }: { model: MapModel }) {
                   data-rank={i + 1}
                   data-well={a.wellId}
                   className={`grid grid-cols-[22px_minmax(0,1fr)_auto] items-center gap-x-2.5 rounded-[3px] px-2.5 py-2 ${hover === a.wellId ? "bg-accent" : ""}`}
-                  style={{ boxShadow: top ? "inset 3px 0 0 var(--watch)" : undefined, background: top && hover !== a.wellId ? "color-mix(in srgb, var(--watch) 7%, transparent)" : undefined }}
+                  style={{
+                    boxShadow: top ? "inset 3px 0 0 var(--watch)" : undefined,
+                    background: top && hover !== a.wellId ? "color-mix(in srgb, var(--watch) 7%, transparent)" : undefined,
+                  }}
                 >
                   <span className="num text-[13px] text-ink-dim">{i + 1}</span>
                   <div className="min-w-0">

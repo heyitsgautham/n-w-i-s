@@ -70,9 +70,7 @@ describe("composeBriefing", () => {
     ];
     const main = compose(events)[1]!;
     expect(main.eventCount).toBe(4);
-    expect(main.lines[0]!.text).toBe(
-      "Coal-shale caving in the Barail Coal-Shale: 3 events in 2 wells, median NPT 6.0 h, at 9.8 to 10.4 ppg.",
-    );
+    expect(main.lines[0]!.text).toBe("Coal-shale caving in the Barail Coal-Shale: 3 events in 2 wells, median NPT 6.0 h, at 9.8 to 10.4 ppg.");
     expect(main.lines[0]!.cites[0]!.wellId).toBe("KN-109");
     expect(main.lines[1]!.text).toBe("Losses in the Tipam Sandstone: 1 event in 1 well, median NPT 3.0 h, at 9.2 ppg, 40 bbl/h.");
   });
@@ -90,8 +88,7 @@ describe("composeBriefing", () => {
   });
 
   it("writes one advice line per kind of lesson, quoting the newest offset", () => {
-    const lesson = (date: string, toPpg: number) =>
-      event({ date, lessons: [{ kind: "raise-mud-weight", toPpg, evidence: `Hole stable at ${toPpg} ppg.` }] });
+    const lesson = (date: string, toPpg: number) => event({ date, lessons: [{ kind: "raise-mud-weight", toPpg, evidence: `Hole stable at ${toPpg} ppg.` }] });
     const main = compose([lesson("2015-01-01", 10.2), lesson("2018-01-01", 10.4)])[1]!;
     const advice = main.lines.filter((l) => l.id.endsWith("raise-mud-weight"));
     expect(advice).toHaveLength(1);

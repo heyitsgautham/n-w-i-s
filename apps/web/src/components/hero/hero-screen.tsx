@@ -57,10 +57,7 @@ function TitleBlock({ model }: { model: HeroModel }) {
   return (
     <div className="flex shrink-0 border-t border-rule-strong" data-film-hide>
       {cells.map((c, i) => (
-        <div
-          key={c.k}
-          className={`flex min-w-0 flex-auto items-baseline gap-2 px-3 py-1.5 ${i > 0 ? "border-l border-rule" : ""}`}
-        >
+        <div key={c.k} className={`flex min-w-0 flex-auto items-baseline gap-2 px-3 py-1.5 ${i > 0 ? "border-l border-rule" : ""}`}>
           <span className="label-caps shrink-0 text-[9.5px] text-ink-dim">{c.k}</span>
           <span className="truncate text-[11.5px] text-ink-muted">{c.v}</span>
         </div>

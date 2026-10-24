@@ -212,10 +212,7 @@ export function EventDrawer() {
   const a = target?.alert;
 
   return (
-    <div
-      className={`fixed inset-x-0 top-[60px] bottom-7 z-40 transition-[visibility] duration-300 ${open ? "visible" : "invisible"}`}
-      aria-hidden={!open}
-    >
+    <div className={`fixed inset-x-0 top-[60px] bottom-7 z-40 transition-[visibility] duration-300 ${open ? "visible" : "invisible"}`} aria-hidden={!open}>
       <div className={`absolute inset-0 bg-[#01040b]/60 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`} onClick={closeDrawer} />
       <aside
         role="dialog"
@@ -251,7 +248,10 @@ export function EventDrawer() {
             <div className="grid min-h-0 flex-1 grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)] gap-5 px-5 py-4">
               <div className="flex min-h-0 flex-col gap-4 overflow-y-auto pr-1">
                 {a && (
-                  <div className="rounded-[3px] px-3 py-2.5" style={{ background: `color-mix(in srgb, ${BAND_COLOR[a.band]} 10%, transparent)`, boxShadow: `inset 3px 0 0 ${BAND_COLOR[a.band]}` }}>
+                  <div
+                    className="rounded-[3px] px-3 py-2.5"
+                    style={{ background: `color-mix(in srgb, ${BAND_COLOR[a.band]} 10%, transparent)`, boxShadow: `inset 3px 0 0 ${BAND_COLOR[a.band]}` }}
+                  >
                     <div className="label-caps text-[9.5px] text-ink-muted">On {model.activeWellId}, placed by formation</div>
                     <div className="num mt-1 text-[15px] text-ink-bright">
                       {metres(a.projection.md)} m · <span style={{ color: BAND_COLOR[a.band] }}>{a.hours === null ? "passed" : formatHours(a.hours)}</span> at{" "}

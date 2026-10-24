@@ -12,7 +12,15 @@ export function DepthGrid({ L }: { L: SectionLayout }) {
     const major = d % 50 === 0;
     lines.push(
       <g key={d}>
-        <line x1={L.ruler.x1} x2={L.width - 4} y1={y} y2={y} style={{ stroke: major ? "var(--rule-strong)" : "var(--rule)" }} strokeWidth={1} opacity={major ? 0.9 : 0.55} />
+        <line
+          x1={L.ruler.x1}
+          x2={L.width - 4}
+          y1={y}
+          y2={y}
+          style={{ stroke: major ? "var(--rule-strong)" : "var(--rule)" }}
+          strokeWidth={1}
+          opacity={major ? 0.9 : 0.55}
+        />
         <line x1={L.ruler.x1 - (major ? 9 : 4)} x2={L.ruler.x1} y1={y} y2={y} style={{ stroke: "var(--ink-dim)" }} strokeWidth={1} />
         {major && (
           <text x={L.ruler.x1 - 12} y={y + 3.8} textAnchor="end" className="num" fontSize={11} style={{ fill: "var(--ink-muted)" }}>
@@ -39,7 +47,9 @@ function TrackHead({ t, label, scale, y }: { t: Track; label: string; scale?: [n
       </text>
       {scale && (
         <g className="num" fontSize={9} style={{ fill: "var(--ink-faint)" }}>
-          <text x={t.x0 + 1} y={y + 12}>{scale[0]}</text>
+          <text x={t.x0 + 1} y={y + 12}>
+            {scale[0]}
+          </text>
           <text x={t.x1 - 1} y={y + 12} textAnchor="end">
             {scale[1]}
           </text>

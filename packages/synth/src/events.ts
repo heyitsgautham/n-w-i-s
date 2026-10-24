@@ -130,12 +130,7 @@ const DRAFT: Record<EventKind, (r: Rng, md: number, mw: number) => Draft> = {
  * Events are drafted in depth order against the live mud schedule, so a weight-up after a kick is the
  * weight the next report and the next event see. Returns the events and the schedule with their steps.
  */
-export function backgroundEventSpecs(
-  seed: number,
-  well: WellShape,
-  schedule: MudStep[],
-  keepClear: number[],
-): { events: EventSpec[]; mud: MudStep[] } {
+export function backgroundEventSpecs(seed: number, well: WellShape, schedule: MudStep[], keepClear: number[]): { events: EventSpec[]; mud: MudStep[] } {
   const r = rng(seed, `${well.id}/events`);
   const inSection = SECTION_ORDER.includes(well.id);
   const candidates: { md: number; hazard: (typeof HAZARDS)[string][number] }[] = [];
@@ -164,7 +159,15 @@ export function backgroundEventSpecs(
       mud.push({ fromMd: round1(c.md + 0.1), ppg: draft.mudAfterPpg });
       mud.sort((a, b) => a.fromMd - b.fromMd);
     }
-    return { id: `${well.id}-B${String(i + 1).padStart(2, "0")}`, wellId: well.id, kind: c.hazard.kind, title: c.hazard.title, md: c.md, mudWeightPpg: mw, ...draft };
+    return {
+      id: `${well.id}-B${String(i + 1).padStart(2, "0")}`,
+      wellId: well.id,
+      kind: c.hazard.kind,
+      title: c.hazard.title,
+      md: c.md,
+      mudWeightPpg: mw,
+      ...draft,
+    };
   });
   return { events, mud };
 }

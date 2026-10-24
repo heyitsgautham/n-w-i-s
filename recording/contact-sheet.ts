@@ -30,11 +30,26 @@ console.log(`duration ${duration}\nvideo ${stream}`);
 const label = "drawtext=text='%{pts\\:hms}':x=12:y=12:fontsize=28:fontcolor=white:box=1:boxcolor=black@0.6:boxborderw=6";
 const pick = `select='not(mod(n\\,${Math.round(every * FPS)}))'`;
 const sheet = (filters: string) =>
-  execFileSync(ffmpeg, ["-hide_banner", "-loglevel", "error", "-i", video, "-vf", `${pick},${filters}scale=640:-1,tile=3x4:padding=6:color=0x020617`, "-fps_mode", "vfr", join(dir, "sheet-%02d.png")]);
+  execFileSync(ffmpeg, [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-i",
+    video,
+    "-vf",
+    `${pick},${filters}scale=640:-1,tile=3x4:padding=6:color=0x020617`,
+    "-fps_mode",
+    "vfr",
+    join(dir, "sheet-%02d.png"),
+  ]);
 try {
   sheet(`${label},`);
 } catch {
   // Some ffmpeg builds have no drawtext; the tiles are still in time order, `every` seconds apart.
   sheet("");
 }
-console.log(readdirSync(dir).map((f) => join(dir, f)).join("\n"));
+console.log(
+  readdirSync(dir)
+    .map((f) => join(dir, f))
+    .join("\n"),
+);

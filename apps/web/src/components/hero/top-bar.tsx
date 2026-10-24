@@ -84,18 +84,29 @@ export function TopBar() {
           <div className="mt-1.5 text-[11px] text-ink-dim">IST · {dayLabel(t.time)}</div>
         </div>
         <div className="flex items-center gap-1.5 rounded-sm border border-rule-strong px-2 py-1">
-          <span
-            className="size-1.5 rounded-full bg-ink-bright"
-            style={{ opacity: replay.playing ? (replay.tick % 2 === 0 ? 1 : 0.4) : 0.3 }}
-          />
+          <span className="size-1.5 rounded-full bg-ink-bright" style={{ opacity: replay.playing ? (replay.tick % 2 === 0 ? 1 : 0.4) : 0.3 }} />
           <span className="label-caps text-[10px] text-ink-muted">Replay ×{model.replay.tickSeconds}</span>
         </div>
         <div className="flex items-center gap-1">
-          <Button variant="outline" size="sm" onClick={replay.toggle} disabled={replay.atEnd} aria-label={replay.playing ? "Pause replay" : "Play replay"} data-control="play">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={replay.toggle}
+            disabled={replay.atEnd}
+            aria-label={replay.playing ? "Pause replay" : "Play replay"}
+            data-control="play"
+          >
             {replay.playing ? <Pause /> : <Play />}
             {replay.playing ? "Pause" : "Play"}
           </Button>
-          <Button variant="outline" size="icon-sm" onClick={replay.step} disabled={replay.atEnd} aria-label={`Step ${model.replay.tickSeconds} seconds`} data-control="step">
+          <Button
+            variant="outline"
+            size="icon-sm"
+            onClick={replay.step}
+            disabled={replay.atEnd}
+            aria-label={`Step ${model.replay.tickSeconds} seconds`}
+            data-control="step"
+          >
             <StepForward />
           </Button>
           <Button variant="outline" size="icon-sm" onClick={replay.reset} aria-label="Reset replay" data-control="reset">

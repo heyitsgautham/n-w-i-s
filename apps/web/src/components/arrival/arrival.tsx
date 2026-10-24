@@ -73,10 +73,7 @@ export function Arrival({ data }: { data: ArrivalData }) {
   const byId = useMemo(() => new Map(data.wells.map((w) => [w.id, w])), [data.wells]);
   const sectionIds = data.sectionOrder;
   const lineEnds = useMemo(() => ({ a: byId.get(sectionIds[0]!)!, b: byId.get(sectionIds[sectionIds.length - 1]!)! }), [byId, sectionIds]);
-  const offsets = useMemo(
-    () => data.wells.filter((w) => w.role === "offset").sort((a, b) => Math.hypot(a.x, a.y) - Math.hypot(b.x, b.y)),
-    [data.wells],
-  );
+  const offsets = useMemo(() => data.wells.filter((w) => w.role === "offset").sort((a, b) => Math.hypot(a.x, a.y) - Math.hypot(b.x, b.y)), [data.wells]);
   const readIndex = useMemo(() => new Map(offsets.map((w, i) => [w.id, i])), [offsets]);
 
   const applyCamera = useCallback(
@@ -277,7 +274,10 @@ export function Arrival({ data }: { data: ArrivalData }) {
           transform: overlay ? groundTransform : undefined,
           transformOrigin: `${origin.x}px ${origin.y}px`,
           opacity: groundFade,
-          maskImage: cut > 0 ? `linear-gradient(to bottom, rgba(0,0,0,${1 - 0.9 * cut}) 0, #000 ${0.28 * H}px, #000 ${origin.y}px, rgba(0,0,0,${1 - cut}) ${origin.y + 0.5}px)` : undefined,
+          maskImage:
+            cut > 0
+              ? `linear-gradient(to bottom, rgba(0,0,0,${1 - 0.9 * cut}) 0, #000 ${0.28 * H}px, #000 ${origin.y}px, rgba(0,0,0,${1 - cut}) ${origin.y + 0.5}px)`
+              : undefined,
         }}
         data-ground
       >
@@ -293,8 +293,30 @@ export function Arrival({ data }: { data: ArrivalData }) {
             </defs>
             {/* The 5 km ring. */}
             <g opacity={ringK > 0 ? others : 0}>
-              <circle cx={ringCentre.x} cy={ringCentre.y} r={RING_M / mpp} fill="none" stroke="#f8fafc" strokeWidth={5} opacity={0.18} filter="url(#arr-glow)" pathLength={1} strokeDasharray={`${ringK} 1`} transform={`rotate(-90 ${ringCentre.x} ${ringCentre.y})`} />
-              <circle cx={ringCentre.x} cy={ringCentre.y} r={RING_M / mpp} fill="none" stroke="#f8fafc" strokeWidth={1.6} pathLength={1} strokeDasharray={`${ringK} 1`} transform={`rotate(-90 ${ringCentre.x} ${ringCentre.y})`} />
+              <circle
+                cx={ringCentre.x}
+                cy={ringCentre.y}
+                r={RING_M / mpp}
+                fill="none"
+                stroke="#f8fafc"
+                strokeWidth={5}
+                opacity={0.18}
+                filter="url(#arr-glow)"
+                pathLength={1}
+                strokeDasharray={`${ringK} 1`}
+                transform={`rotate(-90 ${ringCentre.x} ${ringCentre.y})`}
+              />
+              <circle
+                cx={ringCentre.x}
+                cy={ringCentre.y}
+                r={RING_M / mpp}
+                fill="none"
+                stroke="#f8fafc"
+                strokeWidth={1.6}
+                pathLength={1}
+                strokeDasharray={`${ringK} 1`}
+                transform={`rotate(-90 ${ringCentre.x} ${ringCentre.y})`}
+              />
               <g opacity={seg(ringK, 0.85, 1)}>
                 {/* On top of the ring, clear of the wells that sit near its east and west edges. */}
                 <rect x={ringCentre.x - 23} y={ringCentre.y - RING_M / mpp - 34} width={46} height={24} rx={3} fill="#020617" opacity={0.78} />
@@ -307,7 +329,10 @@ export function Arrival({ data }: { data: ArrivalData }) {
             {lineK > 0 && (
               <g>
                 <polyline
-                  points={sectionIds.map((id) => wellAt(byId.get(id)!)).map((p) => `${p.x},${p.y}`).join(" ")}
+                  points={sectionIds
+                    .map((id) => wellAt(byId.get(id)!))
+                    .map((p) => `${p.x},${p.y}`)
+                    .join(" ")}
                   fill="none"
                   stroke="#f8fafc"
                   strokeWidth={2 + 1.5 * cut}
@@ -446,7 +471,11 @@ export function Arrival({ data }: { data: ArrivalData }) {
         </div>
       )}
       {overlay && counterK > 0 && (
-        <div className="absolute top-8 right-9 w-[300px] rounded-[6px] bg-[#020617]/82 px-5 py-4 backdrop-blur-sm" style={{ opacity: counterK }} data-arrival-counter>
+        <div
+          className="absolute top-8 right-9 w-[300px] rounded-[6px] bg-[#020617]/82 px-5 py-4 backdrop-blur-sm"
+          style={{ opacity: counterK }}
+          data-arrival-counter
+        >
           <div className="label-caps text-[11px] text-ink-muted">Reading the offset reports</div>
           {(
             [
@@ -497,4 +526,3 @@ export function Arrival({ data }: { data: ArrivalData }) {
     </div>
   );
 }
-

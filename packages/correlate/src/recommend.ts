@@ -23,9 +23,7 @@ const depth = (md: number) => `${Math.round(md).toLocaleString("en-US")} m`;
  * Only alerts in PREPARE or WATCH contribute, nearest first, one line per kind of action.
  */
 export function recommend(alerts: Alert[], currentMudWeightPpg: number): Recommendation | undefined {
-  const upcoming = alerts
-    .filter((a) => a.band === "prepare" || a.band === "watch")
-    .sort((a, b) => (a.hours ?? 0) - (b.hours ?? 0));
+  const upcoming = alerts.filter((a) => a.band === "prepare" || a.band === "watch").sort((a, b) => (a.hours ?? 0) - (b.hours ?? 0));
   const lead = upcoming[0];
   if (!lead) return undefined;
 

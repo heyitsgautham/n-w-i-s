@@ -35,23 +35,8 @@ export function CorrelationPanel({ model, scene, onOpen }: { model: HeroModel; s
   );
 }
 
-function Section({
-  model,
-  scene,
-  width,
-  height,
-  onOpen,
-}: {
-  model: HeroModel;
-  scene: Scene;
-  width: number;
-  height: number;
-  onOpen: (e: OffsetEvent) => void;
-}) {
-  const L = useMemo(
-    () => layoutSection(width, height, model.wells, model.activeWellId, model.window),
-    [width, height, model],
-  );
+function Section({ model, scene, width, height, onOpen }: { model: HeroModel; scene: Scene; width: number; height: number; onOpen: (e: OffsetEvent) => void }) {
+  const L = useMemo(() => layoutSection(width, height, model.wells, model.activeWellId, model.window), [width, height, model]);
   const lithOf = useMemo(() => {
     const map = new Map(model.formations.map((f) => [f.id, f.lithology]));
     return (id: string) => map.get(id) ?? "shale";
@@ -77,10 +62,7 @@ function Section({
   const t = scene.telemetry;
   const d = (md: number) => display(active.well.id, md);
   const ticksSoFar = model.replay.ticks.filter((x) => x.tick <= t.tick);
-  const rop = [
-    ...model.replay.ropByDepth.map((s) => ({ d: d(s.md), v: s.value })),
-    ...ticksSoFar.map((x) => ({ d: d(x.bitMd), v: x.ropInstant })),
-  ];
+  const rop = [...model.replay.ropByDepth.map((s) => ({ d: d(s.md), v: s.value })), ...ticksSoFar.map((x) => ({ d: d(x.bitMd), v: x.ropInstant }))];
   const calledTop = scene.call?.message.topCall?.formationId;
   const highlight = scene.tops.find((x) => x.formationId === calledTop && x.status === "called")?.formationId;
 

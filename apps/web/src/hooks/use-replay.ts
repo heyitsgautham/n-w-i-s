@@ -28,13 +28,7 @@ export interface ReplayControls {
  * timer, a button or a key, so a scripted take lands the same frames on every run.
  * Stepping onto a call tick records the arrival, which starts the re-tie animation.
  */
-export function useReplay(
-  openTick: number,
-  lastTick: number,
-  initialTick: number,
-  autoplay: boolean,
-  callTicks: number[],
-): ReplayControls {
+export function useReplay(openTick: number, lastTick: number, initialTick: number, autoplay: boolean, callTicks: number[]): ReplayControls {
   const [state, setState] = useState<{ tick: number; arrival: Arrival | null }>({ tick: initialTick, arrival: null });
   const [playRequested, setPlayRequested] = useState(autoplay);
   const atEnd = state.tick >= lastTick;

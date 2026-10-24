@@ -8,5 +8,4 @@ export function dayLabel(iso: string) {
   return `${Number(d)} ${MONTHS[Number(m) - 1]} ${y}`;
 }
 
-export const metres = (v: number, decimals = 0) =>
-  v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+export const metres = (v: number, decimals = 0) => v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });

@@ -135,9 +135,7 @@ export function buildHeroModel(pack: Field, parsed: OffsetEvent[]): HeroModel {
       beds: w.beds
         .filter((b) => b.mdBase >= mdTop && b.mdTop <= mdBottom)
         .map((b) => ({ ...b, dTop: displayAtMd(w, b.mdTop, datumRt), dBase: displayAtMd(w, b.mdBase, datumRt) })),
-      gamma: w.gammaRay
-        .filter((s) => s.md >= mdTop && s.md <= mdBottom)
-        .map((s) => ({ md: s.md, d: displayAtMd(w, s.md, datumRt), v: s.value })),
+      gamma: w.gammaRay.filter((s) => s.md >= mdTop && s.md <= mdBottom).map((s) => ({ md: s.md, d: displayAtMd(w, s.md, datumRt), v: s.value })),
     };
   });
 

@@ -133,14 +133,7 @@ export function FaultTrace({ L, a, b, fault }: { L: SectionLayout; a: WellLayout
 }
 
 /** Formation names lettered into the wash of one gap, the way a drafter labels a section. */
-export function FormationNames({
-  L,
-  a,
-  b,
-  ia,
-  ib,
-  formations,
-}: Omit<GapProps, "lithOf" | "fault"> & { formations: Formation[] }) {
+export function FormationNames({ L, a, b, ia, ib, formations }: Omit<GapProps, "lithOf" | "fault"> & { formations: Formation[] }) {
   const cx = (a.right + b.left) / 2;
   return (
     <g>
