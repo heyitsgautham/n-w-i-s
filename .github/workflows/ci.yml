@@ -61,3 +61,19 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  docker:
+    name: Docker compose up
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and start
+        run: docker compose up --build --detach --wait --wait-timeout 180
+      - name: API and web answer
+        run: |
+          curl --fail --silent http://localhost:8121/health
+          curl --fail --silent --output /dev/null http://localhost:3000/section
+      - name: Logs on failure
+        if: failure()
+        run: docker compose logs
+      - run: docker compose down
