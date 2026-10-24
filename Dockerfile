@@ -20,7 +20,7 @@ HEALTHCHECK --interval=10s --timeout=3s --retries=5 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8121/health')"
 CMD ["uvicorn", "wells_api.main:app", "--host", "0.0.0.0", "--port", "8121"]
 
-FROM node:22-slim AS web
+FROM node:26-slim AS web
 RUN corepack enable
 WORKDIR /app
 COPY . .
