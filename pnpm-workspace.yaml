@@ -5,3 +5,8 @@ packages:
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+
+# Patched transitive versions the direct dependencies have not picked up yet.
+overrides:
+  source-map-js: ">=1.2.2"
+  zod: "^4.6.6"
