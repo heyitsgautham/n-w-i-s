@@ -20,6 +20,8 @@ jobs:
         run: pnpm typecheck
       - name: Lint
         run: pnpm --filter web lint
+      - name: Format
+        run: pnpm format:check
       - name: Tests with coverage
         run: pnpm test:cov
       - name: Production build
