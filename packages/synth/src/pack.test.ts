@@ -6,6 +6,29 @@ import { describe, expect, it } from "vitest";
 import { buildDemoPack } from "./index";
 
 const pack = buildDemoPack();
+
+/**
+ * The first place two JSON values differ, or undefined when they match.
+ * V8 releases differ in the last bit of Math.cos and friends, so the survey numbers in field.json
+ * match to a relative 1e-12 rather than bit for bit. Everything else must match exactly.
+ */
+function driftFrom(committed: unknown, built: unknown, path = "$"): string | undefined {
+  if (typeof committed === "number" && typeof built === "number") {
+    return Math.abs(committed - built) <= 1e-12 * Math.max(1, Math.abs(committed)) ? undefined : `${path}: ${committed} != ${built}`;
+  }
+  if (committed === null || built === null || typeof committed !== "object" || typeof built !== "object") {
+    return committed === built ? undefined : `${path}: ${String(committed)} != ${String(built)}`;
+  }
+  const a = committed as Record<string, unknown>;
+  const b = built as Record<string, unknown>;
+  const keys = Object.keys(a);
+  if (Array.isArray(a) !== Array.isArray(b) || keys.join() !== Object.keys(b).join()) return `${path}: keys differ`;
+  for (const k of keys) {
+    const drift = driftFrom(a[k], b[k], `${path}.${k}`);
+    if (drift) return drift;
+  }
+  return undefined;
+}
 const active = pack.wells.find((w) => w.id === pack.activeWellId)!;
 const sectionEvents = pack.events.filter((e) => pack.sectionOrder.includes(e.wellId));
 const call = pack.replay.messages.find((m) => m.topCall)!;
@@ -31,7 +54,7 @@ describe("demo pack", () => {
   it("matches the committed data/demo/field.json and reports.json", () => {
     const dir = join(dirname(fileURLToPath(import.meta.url)), "../../../data/demo");
     const { reports, ...field } = pack;
-    expect(readFileSync(join(dir, "field.json"), "utf8")).toBe(`${JSON.stringify(field)}\n`);
+    expect(driftFrom(JSON.parse(readFileSync(join(dir, "field.json"), "utf8")), JSON.parse(JSON.stringify(field)))).toBeUndefined();
     expect(readFileSync(join(dir, "reports.json"), "utf8")).toBe(`${JSON.stringify(reports)}\n`);
   });
 
