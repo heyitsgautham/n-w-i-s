@@ -1,5 +1,5 @@
 import { tvdAtMd } from "./depth";
-import { intervalOf } from "./tie";
+import { intervals } from "./tie";
 import type { Bed, Fault, FormationTop, Well } from "./types";
 
 type WellShape = Pick<Well, "id" | "x" | "y" | "rtElevation" | "surveys" | "tops" | "beds">;
@@ -33,9 +33,10 @@ export const ANALOGUE_WEIGHTS = {
 
 const half = (delta: number, at: number) => Math.pow(0.5, (delta / at) ** 2);
 
+/** The interval's top and base in TVDSS, or undefined when the well never drilled through it. */
 function interval(well: Pick<Well, "surveys" | "tops" | "rtElevation">, formationId: string) {
-  const iv = intervalOf(well.tops, formationId);
-  if (iv.base === undefined) return undefined;
+  const iv = intervals(well.tops).find((x) => x.formationId === formationId);
+  if (iv?.base === undefined) return undefined;
   const top = tvdAtMd(well, iv.top) - well.rtElevation;
   const base = tvdAtMd(well, iv.base) - well.rtElevation;
   return { top, base, mdTop: iv.top, mdBase: iv.base };
