@@ -38,3 +38,26 @@ jobs:
         run: uv run ruff check . && uv run ruff format --check .
       - name: Tests with coverage
         run: uv run pytest -q
+
+  security:
+    name: Dependency audit, secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: astral-sh/setup-uv@v5
+      - name: npm advisories
+        run: pnpm audit
+      - name: Python advisories
+        run: |
+          uv export --frozen --no-emit-workspace --all-packages --all-groups > requirements-audit.txt
+          uvx pip-audit --disable-pip -r requirements-audit.txt
+      - name: Secret scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
