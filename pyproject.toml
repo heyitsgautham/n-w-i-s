@@ -19,7 +19,7 @@ wells-ddr = { workspace = true }
 [dependency-groups]
 dev = [
     "pytest>=8",
-    "ruff>=0.6",
+    "ruff>=0.17.1",
     "httpx>=0.27",
     "imageio-ffmpeg>=0.5",
     "pyarrow>=25.0.1",
