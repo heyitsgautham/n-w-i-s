@@ -5,6 +5,7 @@ import { Check, ChevronRight, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useConsole } from "@/components/console/console-provider";
+import { usePageImage } from "@/hooks/use-page-image";
 import { API, fetchJson } from "@/lib/api";
 import { dayLabel, metres } from "@/lib/format";
 import { KIND_LABEL } from "@/lib/hazards";
@@ -168,19 +169,34 @@ function Histogram({ title, bins, threshold, unit }: { title: string; bins: Bin[
   );
 }
 
-function PageCrop({ e }: { e: OffsetEvent }) {
+export function PageCrop({ e }: { e: OffsetEvent }) {
+  const src = `${API}/documents/${e.source.docId}/pages/${e.source.page}.png?scale=2`;
+  const image = usePageImage(src);
   const b = e.source.bbox;
   if (!b) return null;
   const w = 360;
   const z = w / (b[2] - b[0] + 16);
   const h = (b[3] - b[1] + 12) * z;
+  if (image === "missing") {
+    return (
+      <div
+        className="flex items-center justify-center rounded-[2px] border border-dashed border-rule-strong px-4 text-center text-[12px] text-ink-muted"
+        style={{ width: w, height: h }}
+        data-page-missing
+      >
+        <span>
+          Not rendered in this checkout. Run <code className="num text-ink">make data</code> to render it.
+        </span>
+      </div>
+    );
+  }
   return (
     <div
       className="rounded-[2px] border border-rule-strong bg-white"
       style={{
         width: w,
         height: h,
-        backgroundImage: `url(${API}/documents/${e.source.docId}/pages/${e.source.page}.png?scale=2)`,
+        backgroundImage: `url(${src})`,
         backgroundSize: `${595.28 * z}px ${841.89 * z}px`,
         backgroundPosition: `${-(b[0] - 8) * z}px ${-(b[1] - 6) * z}px`,
       }}

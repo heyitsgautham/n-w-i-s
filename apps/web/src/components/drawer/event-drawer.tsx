@@ -4,6 +4,7 @@ import { formatHours, formationAtMd, intervalOf, type OffsetEvent } from "@wells
 import { ExternalLink, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useConsole } from "@/components/console/console-provider";
+import { usePageImage } from "@/hooks/use-page-image";
 import { BAND_COLOR } from "@/components/section/annotations";
 import { API, fetchJson } from "@/lib/api";
 import { dayLabel, metres } from "@/lib/format";
@@ -100,6 +101,7 @@ function PageViewer({ event }: { event: OffsetEvent }) {
   const [words, setWords] = useState<PageWords | null>(null);
   const page = event.source.page ?? 1;
   const src = `${API}/documents/${event.source.docId}/pages/${page}.png?scale=2`;
+  const image = usePageImage(src);
   useEffect(() => {
     const el = box.current;
     if (!el) return;
@@ -133,20 +135,37 @@ function PageViewer({ event }: { event: OffsetEvent }) {
         <span className="num truncate text-[12px] text-ink">
           DDR {event.source.docId} · page {page}
           <span className="ml-2 font-sans text-ink-muted" data-page-caption>
-            {event.source.ocr ? `· scanned page, ${wordCount || "…"} words read by OCR` : evidence ? "· highlighted: the sentence behind the lesson" : ""}
+            {image === "missing"
+              ? "· not rendered in this checkout"
+              : event.source.ocr
+                ? `· scanned page, ${wordCount || "…"} words read by OCR`
+                : evidence
+                  ? "· highlighted: the sentence behind the lesson"
+                  : ""}
           </span>
         </span>
-        <a
-          href={`${API}/documents/${event.source.docId}.pdf`}
-          target="_blank"
-          rel="noreferrer"
-          className="flex shrink-0 items-center gap-1 text-[12px] text-ink-muted hover:text-ink"
-        >
-          Open PDF <ExternalLink className="size-3.5" />
-        </a>
+        {image !== "missing" && (
+          <a
+            href={`${API}/documents/${event.source.docId}.pdf`}
+            target="_blank"
+            rel="noreferrer"
+            className="flex shrink-0 items-center gap-1 text-[12px] text-ink-muted hover:text-ink"
+          >
+            Open PDF <ExternalLink className="size-3.5" />
+          </a>
+        )}
       </div>
       <div ref={box} className="relative min-h-0 flex-1 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-page-viewer>
-        {width > 0 && (
+        {image === "missing" && (
+          <div className="flex h-full items-center justify-center px-8 text-center text-[13px] text-[#4a4f4b]" data-page-missing>
+            <p>
+              This report has not been rendered in this checkout, so its page cannot be shown.
+              <br />
+              Run <code className="num">make data</code> to render all of them.
+            </p>
+          </div>
+        )}
+        {image !== "missing" && width > 0 && (
           <div className="relative" style={{ width, height: A4.h * k }}>
             {/* eslint-disable-next-line @next/next/no-img-element -- served by the API, sized by the page box */}
             <img src={src} alt={`Report page ${page}`} width={width} height={A4.h * k} onLoad={() => setLoaded(src)} className="block" />
