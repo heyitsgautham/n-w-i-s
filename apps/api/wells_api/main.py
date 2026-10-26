@@ -23,21 +23,34 @@ from .routes import briefing, documents, review, wells
 from .schemas import Health
 from .store import PackMissing, StoreDep
 
-SETTINGS = config.load()
-
-app = FastAPI(title="Offset-well memory API", version=version("wells-api"), description="Synthetic demo pack")
-app.state.data_dir = SETTINGS.data_dir
-# Starlette runs the last middleware added first: request_log, then CORS, then the body cap.
-# CORS wraps the cap, so a browser can read a 413 instead of seeing a CORS failure.
-app.add_middleware(BodyLimit)
-app.add_middleware(
-    CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"], expose_headers=["X-Request-ID"]
-)
-log = logs.configure(SETTINGS.log_level)
-errors.init(SETTINGS.sentry_dsn, release=f"wells-api@{app.version}")
+log = logs.configure()
 
 
-@app.middleware("http")
+def create_app(settings: config.Settings) -> FastAPI:
+    """The API for one set of settings. `app` below is built from the environment; tests build their own."""
+    app = FastAPI(title="Offset-well memory API", version=version("wells-api"), description="Synthetic demo pack")
+    app.state.data_dir = settings.data_dir
+    logs.configure(settings.log_level)
+    errors.init(settings.sentry_dsn, release=f"wells-api@{app.version}")
+    # Starlette runs the last middleware added first: request_log, then CORS, then the body cap.
+    # CORS wraps the cap, so a browser can read a 413 instead of seeing a CORS failure.
+    app.add_middleware(BodyLimit)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=list(settings.cors_origins),
+        allow_methods=["*"],
+        allow_headers=["*"],
+        expose_headers=["X-Request-ID"],
+    )
+    app.middleware("http")(request_log)
+    app.add_exception_handler(PackMissing, pack_missing)
+    app.add_api_route("/health", health, methods=["GET"])
+    app.add_api_route("/metrics", prometheus_metrics, methods=["GET"], include_in_schema=False)
+    for module in (wells, documents, review, briefing):
+        app.include_router(module.router)
+    return app
+
+
 async def request_log(request: Request, call_next):
     """Logs every request as one JSON line, counts it in /metrics, and returns its id in X-Request-ID.
 
@@ -70,22 +83,19 @@ async def request_log(request: Request, call_next):
     return response
 
 
-@app.exception_handler(PackMissing)
-def pack_missing(request: Request, exc: PackMissing) -> JSONResponse:
+def pack_missing(request: Request, exc: Exception) -> JSONResponse:
+    """Registered for PackMissing: the pack is not there, so every route answers 503 with the fix."""
     log.error("demo pack missing", extra={"path": request.url.path, "detail": str(exc)})
     return JSONResponse({"detail": str(exc)}, status_code=503)
 
 
-@app.get("/health")
 def health(s: StoreDep) -> Health:
     return Health(ok=True, seed=s.field["seed"], wells=len(s.wells), events=len(s.events), documents=len(s.documents))
 
 
-@app.get("/metrics", include_in_schema=False)
 def prometheus_metrics() -> Response:
     """Request counts, latencies and unhandled errors by route, for a Prometheus scrape."""
     return metrics.exposition()
 
 
-for module in (wells, documents, review, briefing):
-    app.include_router(module.router)
+app = create_app(config.load())

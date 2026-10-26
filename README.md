@@ -63,6 +63,7 @@ Every environment variable is optional, and an empty value means the default.
 | `WEB_PORT` | `pnpm dev`, `pnpm start` | `3000` |
 | `WELLS_LOG_LEVEL` | API | `INFO` |
 | `WELLS_SENTRY_DSN` | API | none, unhandled errors are only logged |
+| `WELLS_CORS_ORIGINS` | API | any origin; a comma-separated list limits browser calls to those sites |
 | `NEXT_PUBLIC_BRAND`, `NEXT_PUBLIC_BRAND_TAGLINE`, `NEXT_PUBLIC_BRAND_LABEL` | browser | `N-W-I-S`, `Offset-well memory`, `Oil India Limited` |
 | `WELLS_PROD` | `pnpm dev` | unset, `pnpm start` sets it to serve the production build |
 

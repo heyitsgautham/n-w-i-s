@@ -28,15 +28,27 @@ class Settings(BaseModel, frozen=True):
     data_dir: Path = DEFAULT_DATA_DIR
     log_level: LogLevel = "INFO"
     sentry_dsn: str | None = None
+    cors_origins: tuple[str, ...] = ("*",)
 
     @field_validator("log_level", mode="before")
     @classmethod
     def _upper(cls, value: object) -> object:
         return value.upper() if isinstance(value, str) else value
 
+    @field_validator("cors_origins", mode="before")
+    @classmethod
+    def _split(cls, value: object) -> object:
+        """WELLS_CORS_ORIGINS is a comma-separated list, such as `https://wells.example,http://localhost:3000`."""
+        return tuple(o.strip() for o in value.split(",") if o.strip()) if isinstance(value, str) else value
+
 
 #: Setting name to the environment variable it comes from.
-ENV = {"data_dir": "WELLS_DATA_DIR", "log_level": "WELLS_LOG_LEVEL", "sentry_dsn": "WELLS_SENTRY_DSN"}
+ENV = {
+    "data_dir": "WELLS_DATA_DIR",
+    "log_level": "WELLS_LOG_LEVEL",
+    "sentry_dsn": "WELLS_SENTRY_DSN",
+    "cors_origins": "WELLS_CORS_ORIGINS",
+}
 
 
 def load(environ: Mapping[str, str] | None = None) -> Settings:
