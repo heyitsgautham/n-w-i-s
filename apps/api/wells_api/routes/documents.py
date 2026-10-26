@@ -82,9 +82,9 @@ def page_words(doc_id: str, s: StoreDep, page: int = PathParam(ge=1)) -> dict:
     For a scanned page these are Tesseract's own boxes, so the drawer can show where OCR read.
     """
     d = s.documents.get(doc_id)
-    pdf = s.pdf_path(d) if d else None
-    if not pdf or not pdf.exists():
+    if not d or not s.pdf_path(d).exists():
         raise HTTPException(404, f"no rendered document {doc_id}")
+    pdf = s.pdf_path(d)
     if page > d["pages"]:
         raise HTTPException(404, f"{doc_id} has {d['pages']} page(s), not {page}")
     return _page_words(str(pdf), page, str(s.root / ".cache" / "ocr"))

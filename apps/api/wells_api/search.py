@@ -65,8 +65,8 @@ class Query:
     year_to: int | None = None
     terms: list[str] = field(default_factory=list)
 
-    def filters(self) -> list[dict]:
-        out = []
+    def filters(self) -> list[dict[str, str | float]]:
+        out: list[dict[str, str | float]] = []
         for k in self.kinds:
             out.append({"key": "kind", "value": k})
         for f in self.formations:

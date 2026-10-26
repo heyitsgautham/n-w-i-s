@@ -299,8 +299,9 @@ def scan(pdf_bytes: bytes, doc_id: str, clean: bool = False) -> bytes:
         # About a third of scans arrive faxed or photocopied twice: softer, noisier, lossier.
         poor = rnd.random() < 0.35 and not clean
         if poor:
-            small = img.resize((int(img.width * 0.52), int(img.height * 0.52)), Image.BILINEAR)
-            img = small.resize(img.size, Image.BILINEAR).filter(ImageFilter.GaussianBlur(radius=rnd.uniform(0.5, 0.8)))
+            small = img.resize((int(img.width * 0.52), int(img.height * 0.52)), Image.Resampling.BILINEAR)
+            blur = ImageFilter.GaussianBlur(radius=rnd.uniform(0.5, 0.8))
+            img = small.resize(img.size, Image.Resampling.BILINEAR).filter(blur)
         else:
             img = img.filter(ImageFilter.GaussianBlur(radius=rnd.uniform(0.35, 0.6)))
         noise = Image.effect_noise(img.size, rnd.uniform(14, 22) if poor else rnd.uniform(6, 10)).point(

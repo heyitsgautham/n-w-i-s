@@ -44,7 +44,7 @@ def load(environ: Mapping[str, str] | None = None) -> Settings:
     environ = os.environ if environ is None else environ
     given = {key: environ[var].strip() for key, var in ENV.items() if environ.get(var, "").strip()}
     try:
-        return Settings(**given)
+        return Settings.model_validate(given)
     except ValidationError as exc:
         problems = "; ".join(f"{ENV[str(e['loc'][0])]}: {e['msg']}" for e in exc.errors())
         raise SettingsError(problems) from None

@@ -77,7 +77,7 @@ pytest measures coverage on every run and fails under 80%.
 vitest fails under 85% of lines with `pnpm test:cov`.
 The OCR tests need Tesseract on the path.
 
-`pnpm typecheck`, `pnpm lint`, `pnpm test` and `pnpm build` run the same checks as CI, and `make check` runs all four.
+`pnpm typecheck`, `uv run mypy`, `pnpm lint`, `pnpm test` and `pnpm build` run the same checks as CI, and `make check` runs them all.
 CI also audits both lockfiles with `pnpm audit` and pip-audit, scans the history with gitleaks, and starts the compose stack.
 
 ## Architecture

@@ -27,6 +27,7 @@ lint:
 
 typecheck:
 	pnpm typecheck
+	uv run mypy
 
 build:
 	pnpm build

@@ -13,6 +13,7 @@ It runs the same typecheck, lint, tests and production build as CI.
 | Command | What it checks |
 |---|---|
 | `pnpm typecheck` | `tsc` over correlate, synth, recording and the web app |
+| `uv run mypy` | mypy over the API, the parser and the renderer, configured in `pyproject.toml` |
 | `pnpm lint` | ESLint on the web app, `ruff check` and `ruff format --check` on the Python |
 | `pnpm test` | vitest, then pytest with coverage |
 | `pnpm test:cov` | vitest with coverage floors set in `vitest.config.ts` |

@@ -184,5 +184,6 @@ def parse_report(lines: list[Line], doc_id: str) -> list[dict]:
     date = "-".join(doc_id.split("-")[2:])
     header = " ".join(line.text for line in lines if line.page == 1)[:1200]
     m = HEADER_DEPTH.search(header)
-    depth_range = (_num(m.group(1)), _num(m.group(2))) if m else None
+    start, end = (_num(m.group(1)), _num(m.group(2))) if m else (None, None)
+    depth_range = (start, end) if start is not None and end is not None else None
     return [parse_block(b, doc_id, well_id, date, depth_range) for b in blocks(lines)]
