@@ -111,5 +111,8 @@ export const SearchResponse = typed<SearchResponse>(
 export const BriefingExport = z.looseObject({ id: z.string(), pages: count, bytes: count, url: z.string() });
 export type BriefingExport = z.infer<typeof BriefingExport>;
 
+/** POST /review/{id}: the call as the API recorded it. */
+export const Decided = z.looseObject({ id: z.string(), decision: z.enum(["confirm", "reject"]) });
+
 /** GET /review/decisions: event id to the reviewer's call. */
 export const Decisions = z.record(z.string(), z.enum(["confirm", "reject"]));

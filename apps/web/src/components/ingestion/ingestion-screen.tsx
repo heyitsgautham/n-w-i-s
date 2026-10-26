@@ -9,7 +9,7 @@ import { usePageImage } from "@/hooks/use-page-image";
 import { API, fetchJson } from "@/lib/api";
 import { dayLabel, metres } from "@/lib/format";
 import { KIND_LABEL } from "@/lib/hazards";
-import { Ingestion, ReviewQueue, type ReviewItem, type Volve } from "@/lib/schemas";
+import { Decided, Ingestion, ReviewQueue, type ReviewItem, type Volve } from "@/lib/schemas";
 
 type Bin = Ingestion["eventConfidence"][number];
 
@@ -295,7 +295,12 @@ export function IngestionScreen() {
     };
   }, [version]);
   const decide = async (id: string, decision: "confirm" | "reject") => {
-    await fetch(`${API}/review/${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ decision }) });
+    try {
+      await fetchJson(`${API}/review/${id}`, Decided, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ decision }) });
+    } catch (e) {
+      setError((e as Error).message);
+      return;
+    }
     setVersion((v) => v + 1);
     router.refresh();
   };
