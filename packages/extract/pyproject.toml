@@ -1,6 +1,6 @@
 [project]
 name = "wells-extract"
-version = "0.1.0"
+version = "0.2.0"
 description = "Daily drilling report parser: text layer, OCR fallback, WITSML, events with page citations"
 requires-python = ">=3.11"
 dependencies = ["pdfplumber>=0.11", "pytesseract>=0.3.10", "pillow>=13"]

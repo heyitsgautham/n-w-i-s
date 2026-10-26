@@ -1,6 +1,6 @@
 [project]
 name = "wells"
-version = "0.1.0"
+version = "0.2.0"
 description = "Python workspace: DDR renderer, report parser and API"
 requires-python = ">=3.11"
 dependencies = ["wells-api", "wells-extract", "wells-ddr"]

@@ -1,6 +1,6 @@
 [project]
 name = "wells-ddr"
-version = "0.1.0"
+version = "0.2.0"
 description = "Renders the demo pack's daily drilling reports to PDF, with one report in five scanned"
 requires-python = ">=3.11"
 dependencies = ["reportlab>=4", "pypdfium2>=5.14.0", "pillow>=13"]

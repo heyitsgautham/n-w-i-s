@@ -1,3 +1,5 @@
+from importlib.metadata import version
+
 from fastapi.testclient import TestClient
 from wells_api import main
 
@@ -36,3 +38,7 @@ def test_a_briefing_export_answers_its_key_size_and_url():
     body = client.post("/briefing/pdf", json=briefing).json()
     assert list(body) == ["id", "pages", "bytes", "url"]
     assert body["pages"] == 1 and body["bytes"] > 0 and body["url"] == f"/briefing/{body['id']}.pdf"
+
+
+def test_the_api_reports_its_package_version():
+    assert spec["info"]["version"] == version("wells-api") == "0.2.0"
