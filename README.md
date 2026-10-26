@@ -51,7 +51,7 @@ Put the Maps key in `.env` as `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` to build it into
 
 ### Configuration
 
-Every environment variable is optional.
+Every environment variable is optional, and an empty value means the default.
 [.env.example](.env.example) lists them all with their defaults, and [apps/web/.env.example](apps/web/.env.example) lists the browser-side ones.
 
 | Variable | Read by | Default |
@@ -62,6 +62,9 @@ Every environment variable is optional.
 | `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | browser | none, the app falls back to the drawn contour map |
 | `WEB_PORT` | `pnpm dev`, `pnpm start` | `3000` |
 | `WELLS_LOG_LEVEL` | API | `INFO` |
+| `WELLS_SENTRY_DSN` | API | none, unhandled errors are only logged |
+| `NEXT_PUBLIC_BRAND`, `NEXT_PUBLIC_BRAND_TAGLINE`, `NEXT_PUBLIC_BRAND_LABEL` | browser | `N-W-I-S`, `Offset-well memory`, `Oil India Limited` |
+| `WELLS_PROD` | `pnpm dev` | unset, `pnpm start` sets it to serve the production build |
 
 ## Test
 
@@ -96,6 +99,9 @@ The web app runs the correlation logic in the browser, so the re-tie animates.
 
 The API logs each request as one JSON line with a request id, which it also returns in `X-Request-ID`.
 `GET /health` reports the pack's seed and counts, and answers 503 when the demo pack is missing.
+`GET /metrics` serves Prometheus counters and latency histograms per route template, plus a count of unhandled errors.
+With `WELLS_SENTRY_DSN` set, each unhandled error also goes to Sentry, tagged with its request id.
+The API reads and checks its settings once at startup in `apps/api/wells_api/config.py`, and an unknown `WELLS_LOG_LEVEL` stops it with an error naming the variable.
 
 [docs/synthetic-data.md](docs/synthetic-data.md) says exactly what is real and what is not.
 
