@@ -3,7 +3,14 @@ name = "wells-api"
 version = "0.1.0"
 description = "API: wells, events, replay, search, document pages, review queue, briefing export"
 requires-python = ">=3.11"
-dependencies = ["fastapi>=0.159.0", "uvicorn>=0.29", "pypdfium2>=4", "reportlab>=4", "wells-extract"]
+dependencies = [
+    "fastapi>=0.159.0",
+    "uvicorn>=0.29",
+    "pypdfium2>=4",
+    "reportlab>=4",
+    "prometheus-client>=0.26",
+    "wells-extract",
+]
 
 [tool.uv.sources]
 wells-extract = { workspace = true }

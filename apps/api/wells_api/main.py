@@ -24,7 +24,7 @@ from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel, Field
 from wells_extract.pages import read_lines
 
-from . import config, logs
+from . import config, logs, metrics
 from .briefing import briefing_pdf
 from .search import formation_at, parse_query, search
 
@@ -40,19 +40,22 @@ log = logs.configure(SETTINGS.log_level)
 
 @app.middleware("http")
 async def request_log(request: Request, call_next):
-    """Logs every request as one JSON line and returns its id in X-Request-ID.
+    """Logs every request as one JSON line, counts it in /metrics, and returns its id in X-Request-ID.
 
     A caller's own X-Request-ID is kept, so a request can be traced from the web server through the API.
     An unhandled error is logged with its traceback and answered as JSON carrying the same id.
     """
     rid = request.headers.get("x-request-id") or uuid.uuid4().hex[:16]
     start = time.perf_counter()
+    failed = False
     try:
         response = await call_next(request)
     except Exception:
+        failed = True
         log.exception("unhandled error", extra={"request_id": rid, "method": request.method, "path": request.url.path})
         response = JSONResponse({"detail": "internal error", "requestId": rid}, status_code=500)
     response.headers["X-Request-ID"] = rid
+    metrics.observe(request, response.status_code, time.perf_counter() - start, failed=failed)
     log.info(
         "request",
         extra={
@@ -133,6 +136,12 @@ def health() -> dict:
         "events": len(s.events),
         "documents": len(s.documents),
     }
+
+
+@app.get("/metrics", include_in_schema=False)
+def prometheus_metrics() -> Response:
+    """Request counts, latencies and unhandled errors by route, for a Prometheus scrape."""
+    return metrics.exposition()
 
 
 @app.get("/wells")
