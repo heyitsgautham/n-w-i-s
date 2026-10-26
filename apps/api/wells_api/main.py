@@ -17,6 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
 
 from . import config, errors, logs, metrics
+from .limits import BodyLimit
 from .routes import briefing, documents, review, wells
 from .store import PackMissing, StoreDep
 
@@ -24,6 +25,9 @@ SETTINGS = config.load()
 
 app = FastAPI(title="Offset-well memory API", version="0.1.0", description="Synthetic demo pack")
 app.state.data_dir = SETTINGS.data_dir
+# Starlette runs the last middleware added first: request_log, then CORS, then the body cap.
+# CORS wraps the cap, so a browser can read a 413 instead of seeing a CORS failure.
+app.add_middleware(BodyLimit)
 app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"], expose_headers=["X-Request-ID"]
 )

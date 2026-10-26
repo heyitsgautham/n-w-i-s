@@ -105,6 +105,7 @@ The API logs each request as one JSON line with a request id, which it also retu
 The web server has its own `GET /api/health`, which answers 503 without the pack and reports whether it can reach the API, and docker compose waits on both.
 `GET /metrics` serves Prometheus counters and latency histograms per route template, plus a count of unhandled errors.
 With `WELLS_SENTRY_DSN` set, each unhandled error also goes to Sentry, tagged with its request id.
+A request body over 1 MiB gets 413 before any route reads it.
 The API reads and checks its settings once at startup in `apps/api/wells_api/config.py`, and an unknown `WELLS_LOG_LEVEL` stops it with an error naming the variable.
 
 [docs/synthetic-data.md](docs/synthetic-data.md) says exactly what is real and what is not.
