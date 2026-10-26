@@ -24,7 +24,7 @@ from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel, Field
 from wells_extract.pages import read_lines
 
-from . import config, logs, metrics
+from . import config, errors, logs, metrics
 from .briefing import briefing_pdf
 from .search import formation_at, parse_query, search
 
@@ -36,6 +36,7 @@ app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"], expose_headers=["X-Request-ID"]
 )
 log = logs.configure(SETTINGS.log_level)
+errors.init(SETTINGS.sentry_dsn, release=f"wells-api@{app.version}")
 
 
 @app.middleware("http")
@@ -43,16 +44,18 @@ async def request_log(request: Request, call_next):
     """Logs every request as one JSON line, counts it in /metrics, and returns its id in X-Request-ID.
 
     A caller's own X-Request-ID is kept, so a request can be traced from the web server through the API.
-    An unhandled error is logged with its traceback and answered as JSON carrying the same id.
+    An unhandled error is logged with its traceback, sent to Sentry when WELLS_SENTRY_DSN is set, and answered
+    as JSON carrying the same id.
     """
     rid = request.headers.get("x-request-id") or uuid.uuid4().hex[:16]
     start = time.perf_counter()
     failed = False
     try:
         response = await call_next(request)
-    except Exception:
+    except Exception as exc:
         failed = True
         log.exception("unhandled error", extra={"request_id": rid, "method": request.method, "path": request.url.path})
+        errors.report(exc, request_id=rid, method=request.method, route=metrics.route_of(request))
         response = JSONResponse({"detail": "internal error", "requestId": rid}, status_code=500)
     response.headers["X-Request-ID"] = rid
     metrics.observe(request, response.status_code, time.perf_counter() - start, failed=failed)

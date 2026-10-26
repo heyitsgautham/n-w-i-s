@@ -9,6 +9,7 @@ dependencies = [
     "pypdfium2>=4",
     "reportlab>=4",
     "prometheus-client>=0.26",
+    "sentry-sdk>=2.73",
     "wells-extract",
 ]
 

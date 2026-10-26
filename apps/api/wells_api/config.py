@@ -27,6 +27,7 @@ class SettingsError(ValueError):
 class Settings(BaseModel, frozen=True):
     data_dir: Path = DEFAULT_DATA_DIR
     log_level: LogLevel = "INFO"
+    sentry_dsn: str | None = None
 
     @field_validator("log_level", mode="before")
     @classmethod
@@ -35,7 +36,7 @@ class Settings(BaseModel, frozen=True):
 
 
 #: Setting name to the environment variable it comes from.
-ENV = {"data_dir": "WELLS_DATA_DIR", "log_level": "WELLS_LOG_LEVEL"}
+ENV = {"data_dir": "WELLS_DATA_DIR", "log_level": "WELLS_LOG_LEVEL", "sentry_dsn": "WELLS_SENTRY_DSN"}
 
 
 def load(environ: Mapping[str, str] | None = None) -> Settings:
