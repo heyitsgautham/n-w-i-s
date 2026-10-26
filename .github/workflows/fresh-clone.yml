@@ -16,6 +16,11 @@ jobs:
   bootstrap:
     name: Setup, build the pack, test
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # The parser runs eight Tesseract processes at once. Each one spinning up its own OpenMP threads on a
+      # four-core runner left the first run still OCRing after 15 minutes.
+      OMP_THREAD_LIMIT: "1"
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
