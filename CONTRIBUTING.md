@@ -29,11 +29,13 @@ It runs the same typecheck, lint, tests and production build as CI.
 | The seeded field, drilling histories, daily report content | `packages/synth` | `src/*.test.ts` |
 | PDF rendering of the reports | `packages/synth/ddr` | `tests/` |
 | Report parsing, OCR, hazard rules, Volve | `packages/extract` | `tests/` |
-| HTTP routes, search, briefing PDF export | `apps/api` | `tests/` |
-| Screens | `apps/web` | `src/lib/*.test.ts` for the pure logic |
+| HTTP routes, search, briefing PDF export | `apps/api/wells_api/routes/` | `apps/api/tests/` |
+| Settings, logging, metrics, error tracking, the body cap | `apps/api/wells_api/` | `apps/api/tests/` |
+| Screens | `apps/web` | `src/lib/*.test.ts` for the pure logic, `*.test.tsx` beside a component or hook, run in happy-dom |
 
 A change to `packages/synth` changes the demo pack.
 `packages/synth/src/pack.test.ts` compares the generated pack with the committed `data/demo/field.json` and `reports.json`, so run `make data` and commit the regenerated files with the change.
+The renderer writes byte-identical PDFs from the same seed, so `make data` only changes a committed PDF when its content changed.
 
 ## Commits
 
