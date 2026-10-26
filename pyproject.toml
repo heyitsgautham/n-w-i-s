@@ -35,7 +35,7 @@ addopts = "--cov --cov-report=term-missing:skip-covered"
 source = ["wells_api", "wells_extract", "wells_ddr"]
 
 [tool.coverage.report]
-fail_under = 80
+fail_under = 85
 
 [tool.ruff]
 line-length = 120

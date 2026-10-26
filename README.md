@@ -74,7 +74,7 @@ pnpm test      # vitest, then pytest
 pnpm test:cov  # vitest with v8 coverage
 ```
 
-pytest measures coverage on every run and fails under 80%.
+pytest measures coverage on every run and fails under 85%.
 vitest fails under 85% of lines with `pnpm test:cov`.
 The OCR tests need Tesseract on the path.
 
