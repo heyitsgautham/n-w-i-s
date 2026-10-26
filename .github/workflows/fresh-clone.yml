@@ -1,0 +1,40 @@
+name: fresh clone
+
+# Rebuilds the demo pack from nothing, the way a new contributor's `make setup && make data` does,
+# then checks the generator and renderer reproduced the committed files and runs every test on the result.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 3 * * 1"
+  pull_request:
+    paths:
+      - "packages/synth/**"
+      - "packages/extract/**"
+      - "Makefile"
+
+jobs:
+  bootstrap:
+    name: Setup, build the pack, test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: astral-sh/setup-uv@v5
+      - name: Tesseract for the OCR pass
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr
+      - name: Remove the committed pack
+        run: rm -rf data/demo/field.json data/demo/reports.json data/demo/ddr data/demo/extracted
+      - name: Setup
+        run: make setup
+      - name: Build the demo pack
+        run: make data
+      - name: Same pack as committed
+        # The parser's output carries OCR confidences that move in the third decimal between Tesseract builds,
+        # so only the generator's JSON and the rendered PDFs must match byte for byte.
+        run: git diff --stat --exit-code -- data/demo/field.json data/demo/reports.json data/demo/ddr
+      - name: Test
+        run: pnpm test

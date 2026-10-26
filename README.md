@@ -79,6 +79,7 @@ The OCR tests need Tesseract on the path.
 
 `pnpm typecheck`, `uv run mypy`, `pnpm lint`, `pnpm test` and `pnpm build` run the same checks as CI, and `make check` runs them all.
 CI also audits both lockfiles with `pnpm audit` and pip-audit, scans the history with gitleaks, and starts the compose stack.
+A weekly `fresh clone` workflow deletes the committed pack, runs `make setup` and `make data`, checks the generator and renderer reproduced the committed files byte for byte, and runs every test on the rebuilt pack.
 
 ## Architecture
 
