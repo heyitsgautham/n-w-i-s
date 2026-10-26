@@ -9,10 +9,10 @@ import { BASE_URL } from "./stage";
 
 const out = join(import.meta.dirname, "frames", "peek");
 mkdirSync(out, { recursive: true });
-const width = Number(process.env.W ?? 1920);
-const height = Number(process.env.H ?? 1080);
+const width = Number(process.env.W || 1920);
+const height = Number(process.env.H || 1080);
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: Number(process.env.DPR ?? 1) });
+const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: Number(process.env.DPR || 1) });
 page.on("pageerror", (e) => console.log("pageerror", e.message));
 page.on("console", (m) => m.type() === "error" && console.log("console", m.text().slice(0, 300)));
 for (const [i, arg] of process.argv.slice(2).entries()) {

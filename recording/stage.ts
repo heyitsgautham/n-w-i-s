@@ -1,6 +1,6 @@
 import type { Page } from "playwright";
 
-export const BASE_URL = process.env.WELLS_URL ?? "http://localhost:3000";
+export const BASE_URL = process.env.WELLS_URL || "http://localhost:3000";
 
 /** Timeline constants mirrored from apps/web/src/lib/scene.ts, checked against the page at run time. */
 export const RETIE_DELAY_MS = 700;

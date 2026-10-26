@@ -32,7 +32,7 @@ import { BASE_URL } from "./stage";
 import { ARRIVAL_AT, DURATION, SCENES, SPOKEN, voiceoverMarkdown } from "./storyboard";
 
 const HERE = import.meta.dirname;
-const API = process.env.WELLS_API_URL ?? "http://127.0.0.1:8121";
+const API = process.env.WELLS_API_URL || "http://127.0.0.1:8121";
 
 mkdirSync(OUT, { recursive: true });
 writeFileSync(join(HERE, "voiceover.md"), voiceoverMarkdown());

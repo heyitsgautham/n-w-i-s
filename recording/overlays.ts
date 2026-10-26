@@ -1,9 +1,9 @@
 /** The overlays the film script injects into the page: cursor, ring, lower third, title and end cards. */
 
 /** Title-card text. Neutral by default; FILM_BRAND, FILM_TAGLINE and FILM_LABEL put the submission's own on the cards. */
-const BRAND = process.env.FILM_BRAND ?? "N-W-I-S";
-const TAGLINE = process.env.FILM_TAGLINE ?? "Offset-well memory";
-const LABEL = (process.env.FILM_LABEL ?? "Oil India Limited").toUpperCase();
+const BRAND = process.env.FILM_BRAND || "N-W-I-S";
+const TAGLINE = process.env.FILM_TAGLINE || "Offset-well memory";
+const LABEL = (process.env.FILM_LABEL || "Oil India Limited").toUpperCase();
 
 /** What OVERLAYS and the arrival put on `window` for the film script to call. */
 export type FilmApi = {

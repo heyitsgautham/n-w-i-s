@@ -4,7 +4,7 @@
  * out of git. Without a key, `mapsKey()` is empty and screens fall back to the drawn contour map.
  */
 
-export const mapsKey = () => process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
+export const mapsKey = () => process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY?.trim() ?? "";
 
 type Importer = (name: string) => Promise<unknown>;
 

@@ -2,7 +2,7 @@
 // `pnpm dev` starts both; Ctrl-C stops both. Ports: API 8121, web WEB_PORT or 3000.
 import { spawn } from "node:child_process";
 
-const webPort = process.env.WEB_PORT ?? "3000";
+const webPort = process.env.WEB_PORT?.trim() || "3000";
 const procs = [
   { name: "api", color: 36, cmd: "uv", args: ["run", "uvicorn", "wells_api.main:app", "--port", "8121"] },
   process.env.WELLS_PROD

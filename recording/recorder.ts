@@ -9,8 +9,8 @@ import { ffmpegPath } from "./tools";
 /** The frame-by-frame recorder: clock stepping, screenshots into ffmpeg, cursor, camera and ring. */
 
 export const OUT = join(import.meta.dirname, "out");
-export const FROM = Number(process.env.FILM_FROM ?? 0);
-export const TO = Number(process.env.FILM_TO ?? DURATION);
+export const FROM = Number(process.env.FILM_FROM || 0);
+export const TO = Number(process.env.FILM_TO || DURATION);
 export const STILLS = process.env.FILM_STILLS === "1";
 export const VIEW = { width: 1600, height: 900 };
 const FRAME_MS = 1000 / FPS;

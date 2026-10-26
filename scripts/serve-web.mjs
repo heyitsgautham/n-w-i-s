@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const dir = fileURLToPath(new URL("../apps/web/", import.meta.url));
 const next = createRequire(new URL("../apps/web/package.json", import.meta.url))("next");
-const port = Number(process.env.WEB_PORT ?? 3000);
+const port = Number(process.env.WEB_PORT?.trim() || 3000);
 
 const app = next({ dev: false, dir });
 await app.prepare();

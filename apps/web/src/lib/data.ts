@@ -1,12 +1,13 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import type { DemoPack, OffsetEvent } from "@wells/correlate";
+import { envOr } from "./env";
 
 /**
  * Server-side access to the demo pack. The web app reads the same files the API reads:
  * data/demo/field.json from the generator and data/demo/extracted/ from the parser.
  */
-const DATA_DIR = process.env.WELLS_DATA_DIR ?? findDataDir(process.cwd());
+const DATA_DIR = process.env.WELLS_DATA_DIR?.trim() || findDataDir(process.cwd());
 
 /** Walks up from the working directory, so the app runs from apps/web or from the repo root. */
 function findDataDir(from: string): string {
@@ -18,7 +19,7 @@ function findDataDir(from: string): string {
 }
 
 /** Server-to-server address of the API. The browser uses NEXT_PUBLIC_API_URL. */
-export const API_URL = process.env.WELLS_API_URL ?? "http://127.0.0.1:8121";
+export const API_URL = envOr(process.env.WELLS_API_URL, "http://127.0.0.1:8121");
 
 export type Field = Omit<DemoPack, "reports">;
 
