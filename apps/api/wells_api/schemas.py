@@ -11,6 +11,8 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 Verdict = Literal["confirm", "reject"]
+#: The incident kinds the parser reads, as packages/correlate names them.
+EventKind = Literal["caving", "stuck-pipe", "losses", "tight-hole", "bit-balling", "differential-sticking", "kick"]
 
 
 class Health(BaseModel):

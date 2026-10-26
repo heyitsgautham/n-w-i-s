@@ -14,6 +14,7 @@ from fastapi.responses import Response
 from wells_extract.pages import read_lines
 
 from ..store import StoreDep
+from .wells import check_well
 
 router = APIRouter(tags=["documents"])
 
@@ -23,6 +24,7 @@ PDFIUM = threading.Lock()
 
 @router.get("/documents")
 def documents(s: StoreDep, well: str | None = None) -> list[dict]:
+    check_well(s, well)
     return [d for d in s.documents.values() if not well or d["wellId"] == well]
 
 
