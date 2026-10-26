@@ -33,11 +33,7 @@ def test_latency_is_observed_per_route():
     assert _sample("wells_api_request_duration_seconds_count", method="GET", route="/health") == count + 1
 
 
-def test_an_unhandled_error_is_counted(monkeypatch):
-    def broken():
-        raise RuntimeError("pack unreadable")
-
-    monkeypatch.setattr(main, "store", broken)
+def test_an_unhandled_error_is_counted(broken_store):
     before = _sample("wells_api_unhandled_errors_total", route="/replay")
     assert client.get("/replay").status_code == 500
     assert _sample("wells_api_unhandled_errors_total", route="/replay") == before + 1

@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
 from wells_api import main
 from wells_api.main import app
+from wells_api.routes import briefing
 
 client = TestClient(app)
 
@@ -88,18 +89,14 @@ def test_briefing_needs_a_title_and_a_section():
 
 
 def test_only_the_latest_briefings_are_kept(monkeypatch):
-    monkeypatch.setattr(main, "BRIEFINGS_KEPT", 2)
+    monkeypatch.setattr(briefing, "BRIEFINGS_KEPT", 2)
     urls = [client.post("/briefing/pdf", json=_briefing(text=f"Line {i}.")).json()["url"] for i in range(3)]
     assert client.get(urls[0]).status_code == 404
     assert [client.get(u).status_code for u in urls[1:]] == [200, 200]
 
 
 def test_a_missing_pack_answers_503_with_the_fix(tmp_path, monkeypatch):
-    monkeypatch.setattr(main, "DEMO", tmp_path)
-    main.store.cache_clear()
-    try:
-        res = client.get("/health")
-    finally:
-        main.store.cache_clear()
+    monkeypatch.setattr(main.app.state, "data_dir", tmp_path)
+    res = client.get("/health")
     assert res.status_code == 503
     assert str(tmp_path) in res.json()["detail"] and "make data" in res.json()["detail"]

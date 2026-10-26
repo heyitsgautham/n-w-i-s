@@ -31,11 +31,7 @@ def test_a_callers_request_id_is_kept(caplog):
     assert _request_records(caplog)[0].status == 404
 
 
-def test_an_unhandled_error_is_logged_and_answered_as_json(caplog, monkeypatch):
-    def broken():
-        raise RuntimeError("pack unreadable")
-
-    monkeypatch.setattr(main, "store", broken)
+def test_an_unhandled_error_is_logged_and_answered_as_json(caplog, broken_store):
     with caplog.at_level(logging.INFO, logger="wells_api"):
         res = client.get("/replay")
     assert res.status_code == 500

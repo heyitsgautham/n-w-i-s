@@ -29,11 +29,7 @@ def test_the_dsn_is_read_from_the_environment():
     assert load({"WELLS_SENTRY_DSN": dsn}).sentry_dsn == dsn
 
 
-def test_an_unhandled_error_is_sent_once_with_the_request_id(sent, monkeypatch):
-    def broken():
-        raise RuntimeError("pack unreadable")
-
-    monkeypatch.setattr(main, "store", broken)
+def test_an_unhandled_error_is_sent_once_with_the_request_id(sent, broken_store):
     res = client.get("/replay", headers={"X-Request-ID": "web-err-1"})
     assert res.status_code == 500
     [event] = sent

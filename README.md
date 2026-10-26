@@ -97,6 +97,9 @@ The API serves those events, the report pages and the OCR word boxes.
 The web app runs the correlation logic in the browser, so the re-tie animates.
 [docs/architecture.md](docs/architecture.md) walks through the pipeline, the routes and the arrival.
 
+The API's `main.py` builds the app, and its routes sit in `apps/api/wells_api/routes/`, one module each for wells, documents, review and briefing.
+Each route gets the pack through the `StoreDep` dependency in `store.py`, so a test can swap the pack with `app.dependency_overrides`.
+
 The API logs each request as one JSON line with a request id, which it also returns in `X-Request-ID`.
 `GET /health` reports the pack's seed and counts, and answers 503 when the demo pack is missing.
 `GET /metrics` serves Prometheus counters and latency histograms per route template, plus a count of unhandled errors.
