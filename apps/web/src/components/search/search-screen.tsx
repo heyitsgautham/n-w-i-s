@@ -1,25 +1,11 @@
 "use client";
 
-import type { OffsetEvent } from "@wells/correlate";
 import { ArrowDown, ArrowUp, CornerDownLeft, Search } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useConsole } from "@/components/console/console-provider";
-import { API } from "@/lib/api";
+import { API, fetchJson } from "@/lib/api";
 import { dayLabel, metres } from "@/lib/format";
-
-interface Result extends OffsetEvent {
-  formationId: string | null;
-  distanceKm: number;
-  score: number;
-}
-
-interface Response {
-  query: string;
-  filters: { key: "kind" | "formation" | "radius" | "yearFrom" | "yearTo"; value: string | number }[];
-  terms: string[];
-  count: number;
-  results: Result[];
-}
+import { SearchResponse } from "@/lib/schemas";
 
 const KIND_LABEL: Record<string, string> = {
   losses: "Losses",
@@ -75,16 +61,15 @@ export function SearchScreen({ initialQuery }: { initialQuery: string }) {
   const { model, openEvent } = useConsole();
   const [draft, setDraft] = useState(initialQuery);
   const [query, setQuery] = useState(initialQuery);
-  const [data, setData] = useState<Response | null>(null);
+  const [data, setData] = useState<SearchResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [sort, setSort] = useState<{ key: SortKey; dir: 1 | -1 } | null>(null);
 
   useEffect(() => {
     if (query.trim().length < 2) return;
     let live = true;
-    fetch(`${API}/search?q=${encodeURIComponent(query)}`)
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`API ${r.status}`))))
-      .then((d: Response) => {
+    fetchJson(`${API}/search?q=${encodeURIComponent(query)}`, SearchResponse)
+      .then((d) => {
         if (!live) return;
         setData(d);
         setError(null);
@@ -107,7 +92,7 @@ export function SearchScreen({ initialQuery }: { initialQuery: string }) {
   }, [data, sort]);
 
   const formationName = (id: string | null) => model.formations.find((f) => f.id === id)?.name ?? "n/a";
-  const chip = (f: Response["filters"][number]) =>
+  const chip = (f: SearchResponse["filters"][number]) =>
     f.key === "kind"
       ? `Event: ${KIND_LABEL[f.value as string]?.toLowerCase()}`
       : f.key === "formation"

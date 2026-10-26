@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import type { DemoPack, OffsetEvent } from "@wells/correlate";
 import { envOr } from "./env";
+import { Decisions } from "./schemas";
 
 /**
  * Server-side access to the demo pack. The web app reads the same files the API reads:
@@ -73,7 +74,8 @@ export function loadStats(): ExtractionStats {
 export async function reviewDecisions(): Promise<Record<string, "confirm" | "reject">> {
   try {
     const res = await fetch(`${API_URL}/review/decisions`, { cache: "no-store", signal: AbortSignal.timeout(800) });
-    return res.ok ? ((await res.json()) as Record<string, "confirm" | "reject">) : {};
+    const parsed = res.ok ? Decisions.safeParse(await res.json()) : null;
+    return parsed?.success ? parsed.data : {};
   } catch {
     return {};
   }

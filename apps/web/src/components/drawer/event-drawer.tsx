@@ -5,8 +5,9 @@ import { ExternalLink, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useConsole } from "@/components/console/console-provider";
 import { BAND_COLOR } from "@/components/section/annotations";
-import { API } from "@/lib/api";
+import { API, fetchJson } from "@/lib/api";
 import { dayLabel, metres } from "@/lib/format";
+import { PageWords } from "@/lib/schemas";
 
 const A4 = { w: 595.28, h: 841.89 };
 const LESSON_LABEL = { "raise-mud-weight": "Mud weight", "wiper-trip": "Wiper trip", "limit-static-time": "Static time" } as const;
@@ -48,12 +49,6 @@ function Prose({ label, children }: { label: string; children: React.ReactNode }
 function evidenceOf(event: OffsetEvent) {
   const lesson = event.lessons.find((l) => l.source && l.source.page === event.source.page);
   return lesson ? { text: lesson.evidence, rects: lesson.source!.rects } : undefined;
-}
-
-/** Tesseract's words for a page, line by line from the top, in PDF points: text, x0, top, x1, bottom. */
-interface PageWords {
-  ocr: boolean;
-  lines: { conf: number; words: [string, number, number, number, number][] }[];
 }
 
 /** How long the scan line takes to run down the whole page, and when the highlight follows it. */
@@ -115,9 +110,8 @@ function PageViewer({ event }: { event: OffsetEvent }) {
   useEffect(() => {
     if (!event.source.ocr) return;
     let live = true;
-    fetch(`${API}/documents/${event.source.docId}/pages/${page}/words`)
-      .then((r) => r.json())
-      .then((w: PageWords) => live && setWords(w))
+    fetchJson(`${API}/documents/${event.source.docId}/pages/${page}/words`, PageWords)
+      .then((w) => live && setWords(w))
       .catch(() => undefined);
     return () => {
       live = false;

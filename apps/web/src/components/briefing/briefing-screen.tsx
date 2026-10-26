@@ -5,8 +5,9 @@ import { BRAND } from "@/lib/brand";
 import { Download, FileDown, Loader2, PencilLine, X } from "lucide-react";
 import { useState } from "react";
 import { useConsole } from "@/components/console/console-provider";
-import { API } from "@/lib/api";
+import { API, fetchJson } from "@/lib/api";
 import { dayLabel, metres } from "@/lib/format";
+import { BriefingExport } from "@/lib/schemas";
 
 interface Props {
   wellId: string;
@@ -24,7 +25,7 @@ export function BriefingScreen({ wellId, radiusKm, offsets, sections, events, pe
   const { openEvent } = useConsole();
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [exporting, setExporting] = useState(false);
-  const [exported, setExported] = useState<{ id: string; pages: number; url: string } | null>(null);
+  const [exported, setExported] = useState<BriefingExport | null>(null);
   const [preview, setPreview] = useState(false);
   const name = (id: string) => formations.find((f) => f.id === id)?.name ?? id;
   const textOf = (id: string, fallback: string) => edits[id] ?? fallback;
@@ -42,11 +43,12 @@ export function BriefingScreen({ wellId, radiusKm, offsets, sections, events, pe
       })),
     };
     try {
-      const res = await fetch(`${API}/briefing/pdf`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-      if (res.ok) {
-        setExported(await res.json());
-        setPreview(true);
-      }
+      setExported(
+        await fetchJson(`${API}/briefing/pdf`, BriefingExport, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }),
+      );
+      setPreview(true);
+    } catch {
+      // The export button stays as it was, and the reader can try again.
     } finally {
       setExporting(false);
     }

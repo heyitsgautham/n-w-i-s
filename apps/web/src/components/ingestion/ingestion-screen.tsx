@@ -5,56 +5,12 @@ import { Check, ChevronRight, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useConsole } from "@/components/console/console-provider";
-import { API } from "@/lib/api";
+import { API, fetchJson } from "@/lib/api";
 import { dayLabel, metres } from "@/lib/format";
 import { KIND_LABEL } from "@/lib/hazards";
+import { Ingestion, ReviewQueue, type ReviewItem, type Volve } from "@/lib/schemas";
 
-interface Bin {
-  from: number;
-  to: number;
-  count: number;
-}
-
-interface Ingestion {
-  documents: number;
-  pages: number;
-  ocrPages: number;
-  textPages: number;
-  wells: number;
-  events: number;
-  needsReview: number;
-  reviewThreshold: number;
-  eventConfidence: Bin[];
-  ocrPageConfidence: Bin[];
-  accuracy: {
-    truthEvents: number;
-    extractedEvents: number;
-    found: number;
-    kindRight: number;
-    depthExact: number;
-    mudWeightExact: number;
-    nptExact: number;
-    missed: { id: string; docId: string; scanned: boolean }[];
-  };
-  pendingReview: number;
-  confirmed: number;
-  rejected: number;
-  scannedDocuments: number;
-  volve: Volve | null;
-}
-
-interface Volve {
-  reports: number;
-  wells: number;
-  activities: number;
-  hazardActivities: number;
-  reportsWithHazard: number;
-  byKind: Record<string, number>;
-  examples: Record<string, { text: string; report: string; md: number }>;
-  handCheck: { sample: number; seed: number; right: number; otherHazard: number; notAHazard: number };
-}
-
-type ReviewItem = OffsetEvent & { fieldConfidence: Record<string, number>; reviewed: "confirm" | "reject" | null };
+type Bin = Ingestion["eventConfidence"][number];
 
 /** Volve report names run 15_9_19_BT2_1998_01_02: the wellbore, then the report date. */
 function volveReport(name: string) {
@@ -310,11 +266,11 @@ export function IngestionScreen() {
   const [version, setVersion] = useState(0);
   useEffect(() => {
     let live = true;
-    Promise.all([fetch(`${API}/ingestion`).then((r) => r.json()), fetch(`${API}/review`).then((r) => r.json())])
+    Promise.all([fetchJson(`${API}/ingestion`, Ingestion), fetchJson(`${API}/review`, ReviewQueue)])
       .then(([i, q]) => {
         if (!live) return;
-        setData(i as Ingestion);
-        setQueue(q as ReviewItem[]);
+        setData(i);
+        setQueue(q);
         setError(null);
       })
       .catch((e: Error) => live && setError(e.message));
