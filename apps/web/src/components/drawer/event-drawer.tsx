@@ -93,7 +93,7 @@ function OcrLayer({ words, k }: { words: PageWords; k: number }) {
   );
 }
 
-function PageViewer({ event }: { event: OffsetEvent }) {
+export function PageViewer({ event }: { event: OffsetEvent }) {
   const evidence = evidenceOf(event);
   const box = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
