@@ -10,7 +10,7 @@ export default defineConfig({
     include: ["packages/*/src/**/*.test.ts", "apps/web/src/**/*.test.{ts,tsx}"],
     coverage: {
       provider: "v8",
-      include: ["packages/*/src/**/*.ts", "apps/web/src/lib/**/*.ts", "apps/web/src/hooks/**/*.ts"],
+      include: ["packages/*/src/**/*.ts", "apps/web/src/lib/**/*.ts", "apps/web/src/hooks/**/*.ts", "apps/web/src/app/api/**/*.ts"],
       // The CLI only writes files, and types.ts holds no runtime code.
       exclude: ["**/*.test.{ts,tsx}", "packages/synth/src/cli.ts", "packages/correlate/src/types.ts"],
       reporter: ["text-summary", "lcov"],

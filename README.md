@@ -102,6 +102,7 @@ Each route gets the pack through the `StoreDep` dependency in `store.py`, so a t
 
 The API logs each request as one JSON line with a request id, which it also returns in `X-Request-ID`.
 `GET /health` reports the pack's seed and counts, and answers 503 when the demo pack is missing.
+The web server has its own `GET /api/health`, which answers 503 without the pack and reports whether it can reach the API, and docker compose waits on both.
 `GET /metrics` serves Prometheus counters and latency histograms per route template, plus a count of unhandled errors.
 With `WELLS_SENTRY_DSN` set, each unhandled error also goes to Sentry, tagged with its request id.
 The API reads and checks its settings once at startup in `apps/api/wells_api/config.py`, and an unknown `WELLS_LOG_LEVEL` stops it with an error naming the variable.

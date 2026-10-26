@@ -74,6 +74,7 @@ jobs:
       - name: API and web answer
         run: |
           curl --fail --silent http://localhost:8121/health
+          curl --fail --silent http://localhost:3000/api/health
           curl --fail --silent --output /dev/null http://localhost:3000/section
       - name: Logs on failure
         if: failure()

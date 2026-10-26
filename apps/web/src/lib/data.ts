@@ -8,7 +8,13 @@ import { Decisions } from "./schemas";
  * Server-side access to the demo pack. The web app reads the same files the API reads:
  * data/demo/field.json from the generator and data/demo/extracted/ from the parser.
  */
-const DATA_DIR = process.env.WELLS_DATA_DIR?.trim() || findDataDir(process.cwd());
+let dataDirCache: string | null = null;
+
+/** WELLS_DATA_DIR, or the nearest data/demo above the working directory. Found on first use, so a missing pack fails a read, not the import. */
+export function dataDir(): string {
+  dataDirCache ??= process.env.WELLS_DATA_DIR?.trim() || findDataDir(process.cwd());
+  return dataDirCache;
+}
 
 /** Walks up from the working directory, so the app runs from apps/web or from the repo root. */
 function findDataDir(from: string): string {
@@ -57,17 +63,17 @@ let field: Field | null = null;
 let extracted: ExtractedEvent[] | null = null;
 
 export function loadField(): Field {
-  field ??= JSON.parse(readFileSync(path.join(DATA_DIR, "field.json"), "utf8")) as Field;
+  field ??= JSON.parse(readFileSync(path.join(dataDir(), "field.json"), "utf8")) as Field;
   return field;
 }
 
 export function loadExtracted(): ExtractedEvent[] {
-  extracted ??= JSON.parse(readFileSync(path.join(DATA_DIR, "extracted", "events.json"), "utf8")) as ExtractedEvent[];
+  extracted ??= JSON.parse(readFileSync(path.join(dataDir(), "extracted", "events.json"), "utf8")) as ExtractedEvent[];
   return extracted;
 }
 
 export function loadStats(): ExtractionStats {
-  return JSON.parse(readFileSync(path.join(DATA_DIR, "extracted", "stats.json"), "utf8")) as ExtractionStats;
+  return JSON.parse(readFileSync(path.join(dataDir(), "extracted", "stats.json"), "utf8")) as ExtractionStats;
 }
 
 /** Review decisions live in the API. Without it, nothing counts as reviewed. */
@@ -101,7 +107,7 @@ export interface DocumentRow {
 }
 
 export function loadDocuments(): DocumentRow[] {
-  return JSON.parse(readFileSync(path.join(DATA_DIR, "extracted", "documents.json"), "utf8")) as DocumentRow[];
+  return JSON.parse(readFileSync(path.join(dataDir(), "extracted", "documents.json"), "utf8")) as DocumentRow[];
 }
 
 /** What the arrival draws: every well on the ground, its reports, and the incidents read from them. */
@@ -155,7 +161,7 @@ export interface VolveMetrics {
 }
 
 export function loadVolve(): VolveMetrics | null {
-  const file = path.join(DATA_DIR, "..", "volve", "metrics.json");
+  const file = path.join(dataDir(), "..", "volve", "metrics.json");
   return existsSync(file) ? (JSON.parse(readFileSync(file, "utf8")) as VolveMetrics) : null;
 }
 
@@ -167,5 +173,5 @@ export interface PriorWork {
 }
 
 export function loadPriorWork(): PriorWork {
-  return JSON.parse(readFileSync(path.join(DATA_DIR, "..", "prior-work.json"), "utf8")) as PriorWork;
+  return JSON.parse(readFileSync(path.join(dataDir(), "..", "prior-work.json"), "utf8")) as PriorWork;
 }
