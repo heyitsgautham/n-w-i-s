@@ -1,5 +1,6 @@
 import io
 import json
+import time
 from pathlib import Path
 
 import pdfplumber
@@ -43,3 +44,15 @@ def test_casing_sizes_print_without_missing_glyphs():
     with pdfplumber.open(io.BytesIO(pdf)) as doc:
         text = "\n".join(p.extract_text() for p in doc.pages)
     assert "13 3/8 in casing" in text and "⅜" not in text
+
+
+def test_the_same_report_renders_to_the_same_bytes_a_second_later():
+    # reportlab stamps the wall clock into each PDF unless it runs invariant, so `make data` rewrote
+    # every committed report even though nothing in it had changed.
+    r = REPORTS[0]
+    args = (r, WELLS[r["wellId"]], FIELD["field"], FIELD["seed"])
+    first = build_pdf(*args)
+    first_scan = scan(first, r["id"])
+    time.sleep(1.1)
+    assert build_pdf(*args) == first
+    assert scan(build_pdf(*args), r["id"]) == first_scan

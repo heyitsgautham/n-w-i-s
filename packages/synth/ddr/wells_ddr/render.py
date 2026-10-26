@@ -159,6 +159,7 @@ def build_pdf(report: dict, well: dict, field: dict, seed: int) -> bytes:
         bottomMargin=18 * mm,
         title=f"DDR {report['id']}",
         author="Synthetic demo pack",
+        invariant=True,
     )
     days = report["reportNo"]
     header = [
@@ -292,7 +293,7 @@ def scan(pdf_bytes: bytes, doc_id: str, clean: bool = False) -> bytes:
     rnd = random.Random(doc_id)
     pdf = pdfium.PdfDocument(pdf_bytes)
     out = io.BytesIO()
-    c = rl_canvas.Canvas(out, pagesize=A4)
+    c = rl_canvas.Canvas(out, pagesize=A4, invariant=True)
     for i in range(len(pdf)):
         page = pdf[i]
         img = page.render(scale=SCAN_DPI / 72).to_pil().convert("L")
