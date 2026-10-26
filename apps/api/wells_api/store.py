@@ -11,6 +11,8 @@ from typing import Annotated
 
 from fastapi import Depends, Request
 
+from .schemas import Verdict
+
 
 class PackMissing(Exception):
     """The demo pack has not been generated, or WELLS_DATA_DIR points somewhere else."""
@@ -31,7 +33,7 @@ class Store:
         self.documents = {d["docId"]: d for d in json.loads((root / "extracted" / "documents.json").read_text())}
         self.stats = json.loads((root / "extracted" / "stats.json").read_text())
         self.wells = {w["id"]: w for w in self.field["wells"]}
-        self.decisions: dict[str, str] = {}
+        self.decisions: dict[str, Verdict] = {}
         self.briefings: dict[str, bytes] = {}
         self.lock = threading.Lock()
 

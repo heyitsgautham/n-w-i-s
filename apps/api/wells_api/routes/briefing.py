@@ -13,6 +13,7 @@ from fastapi.responses import Response
 from pydantic import BaseModel, Field
 
 from ..briefing import briefing_pdf
+from ..schemas import BriefingExport
 from ..store import StoreDep
 from .documents import PDFIUM
 
@@ -44,7 +45,7 @@ BRIEFINGS_KEPT = 32
 
 
 @router.post("/briefing/pdf")
-def export_briefing(body: Briefing, s: StoreDep) -> dict:
+def export_briefing(body: Briefing, s: StoreDep) -> BriefingExport:
     pdf = briefing_pdf(body.model_dump())
     key = uuid.uuid5(uuid.NAMESPACE_URL, json.dumps(body.model_dump(), sort_keys=True)).hex[:12]
     with s.lock:
@@ -54,7 +55,7 @@ def export_briefing(body: Briefing, s: StoreDep) -> dict:
             del s.briefings[next(iter(s.briefings))]
     with PDFIUM:
         pages = len(pdfium.PdfDocument(pdf))
-    return {"id": key, "pages": pages, "bytes": len(pdf), "url": f"/briefing/{key}.pdf"}
+    return BriefingExport(id=key, pages=pages, bytes=len(pdf), url=f"/briefing/{key}.pdf")
 
 
 @router.get("/briefing/{key}.pdf")

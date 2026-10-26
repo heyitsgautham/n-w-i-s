@@ -19,6 +19,7 @@ from fastapi.responses import JSONResponse, Response
 from . import config, errors, logs, metrics
 from .limits import BodyLimit
 from .routes import briefing, documents, review, wells
+from .schemas import Health
 from .store import PackMissing, StoreDep
 
 SETTINGS = config.load()
@@ -75,14 +76,8 @@ def pack_missing(request: Request, exc: PackMissing) -> JSONResponse:
 
 
 @app.get("/health")
-def health(s: StoreDep) -> dict:
-    return {
-        "ok": True,
-        "seed": s.field["seed"],
-        "wells": len(s.wells),
-        "events": len(s.events),
-        "documents": len(s.documents),
-    }
+def health(s: StoreDep) -> Health:
+    return Health(ok=True, seed=s.field["seed"], wells=len(s.wells), events=len(s.events), documents=len(s.documents))
 
 
 @app.get("/metrics", include_in_schema=False)

@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Literal
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
+from ..schemas import Decided, Reset, Verdict
 from ..store import StoreDep
 
 router = APIRouter(tags=["review"])
@@ -38,25 +38,25 @@ def review_queue(s: StoreDep) -> list[dict]:
 
 
 @router.get("/review/decisions")
-def review_decisions(s: StoreDep) -> dict[str, str]:
+def review_decisions(s: StoreDep) -> dict[str, Verdict]:
     return dict(s.decisions)
 
 
 @router.post("/review/reset")
-def reset_review(s: StoreDep) -> dict:
+def reset_review(s: StoreDep) -> Reset:
     with s.lock:
         s.decisions.clear()
-    return {"ok": True}
+    return Reset(ok=True)
 
 
 class Decision(BaseModel):
-    decision: Literal["confirm", "reject"]
+    decision: Verdict
 
 
 @router.post("/review/{event_id}")
-def decide(event_id: str, body: Decision, s: StoreDep) -> dict:
+def decide(event_id: str, body: Decision, s: StoreDep) -> Decided:
     if not any(e["id"] == event_id for e in s.events):
         raise HTTPException(404, f"no event {event_id}")
     with s.lock:
         s.decisions[event_id] = body.decision
-    return {"id": event_id, "decision": body.decision}
+    return Decided(id=event_id, decision=body.decision)
