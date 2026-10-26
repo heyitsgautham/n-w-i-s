@@ -9,7 +9,6 @@ from __future__ import annotations
 import io
 import json
 import math
-import os
 import threading
 import time
 import uuid
@@ -25,17 +24,18 @@ from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel, Field
 from wells_extract.pages import read_lines
 
-from . import logs
+from . import config, logs
 from .briefing import briefing_pdf
 from .search import formation_at, parse_query, search
 
-DEMO = Path(os.environ.get("WELLS_DATA_DIR", Path(__file__).resolve().parents[3] / "data" / "demo"))
+SETTINGS = config.load()
+DEMO = SETTINGS.data_dir
 
 app = FastAPI(title="Offset-well memory API", version="0.1.0", description="Synthetic demo pack")
 app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"], expose_headers=["X-Request-ID"]
 )
-log = logs.configure()
+log = logs.configure(SETTINGS.log_level)
 
 
 @app.middleware("http")

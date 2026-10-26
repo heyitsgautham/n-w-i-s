@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 import time
 
 #: Attributes every LogRecord carries. Anything else on a record came from `extra=` and is logged as a field.
@@ -25,10 +24,10 @@ class JsonFormatter(logging.Formatter):
         return json.dumps(out, default=str)
 
 
-def configure(level: str | None = None) -> logging.Logger:
-    """Sends the `wells_api` logger to stderr as JSON. WELLS_LOG_LEVEL sets the level, INFO by default."""
+def configure(level: str = "INFO") -> logging.Logger:
+    """Sends the `wells_api` logger to stderr as JSON at `level`, which the app reads from WELLS_LOG_LEVEL."""
     logger = logging.getLogger("wells_api")
-    logger.setLevel((level or os.environ.get("WELLS_LOG_LEVEL", "INFO")).upper())
+    logger.setLevel(level.upper())
     if not any(isinstance(h.formatter, JsonFormatter) for h in logger.handlers):
         handler = logging.StreamHandler()
         handler.setFormatter(JsonFormatter())
