@@ -54,23 +54,22 @@ def histogram(values: list[float], lo: float = 0.5, step: float = 0.05) -> list[
 
 
 def accuracy(extracted: list[dict], truth: list[dict], scanned: dict[str, bool]) -> dict:
-    """Matches each true event to the parsed event in the same report nearest in depth.
+    """Pairs each true event with a parsed event from the same report, nearest in depth first.
 
-    Fields are scored over the events found, so a miss counts once, as a miss, and is named.
+    Each parsed event pairs with one true event at most, so a report with two incidents and one parsed
+    counts one found and one missed. Fields are scored over the events found, so a miss counts once,
+    as a miss, and is named.
     """
-    by_doc: dict[str, list[dict]] = {}
-    for e in extracted:
-        by_doc.setdefault(e["source"]["docId"], []).append(e)
+    match = _pair_by_depth(extracted, truth)
     found = kind = depth = mw = npt = 0
     missed = []
     for t in truth:
-        cands = by_doc.get(t["source"]["docId"], [])
-        if not cands:
+        best = match.get(t["id"])
+        if best is None:
             missed.append(
                 {"id": t["id"], "docId": t["source"]["docId"], "scanned": scanned.get(t["source"]["docId"], False)}
             )
             continue
-        best = min(cands, key=lambda e: abs((e["md"] or -1e9) - t["md"]))
         found += 1
         kind += best["kind"] == t["kind"]
         depth += best["md"] is not None and abs(best["md"] - t["md"]) < 0.05
@@ -86,6 +85,28 @@ def accuracy(extracted: list[dict], truth: list[dict], scanned: dict[str, bool])
         "nptExact": npt,
         "missed": missed,
     }
+
+
+def _pair_by_depth(extracted: list[dict], truth: list[dict]) -> dict[str, dict]:
+    """True event id to its parsed event. Within a report, the closest pair in depth is taken first."""
+    parsed: dict[str, list[dict]] = {}
+    for e in extracted:
+        parsed.setdefault(e["source"]["docId"], []).append(e)
+    planted: dict[str, list[dict]] = {}
+    for t in truth:
+        planted.setdefault(t["source"]["docId"], []).append(t)
+    match: dict[str, dict] = {}
+    for doc, ts in planted.items():
+        cands = parsed.get(doc, [])
+        pairs = sorted((abs((e["md"] or -1e9) - t["md"]), i, j) for i, t in enumerate(ts) for j, e in enumerate(cands))
+        used_t: set[int] = set()
+        used_e: set[int] = set()
+        for _, i, j in pairs:
+            if i not in used_t and j not in used_e:
+                used_t.add(i)
+                used_e.add(j)
+                match[ts[i]["id"]] = cands[j]
+    return match
 
 
 def main(argv: list[str] | None = None) -> None:
