@@ -30,7 +30,7 @@
     "eslint-config-next": "16.4.2",
     "shadcn": "4.22.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^7"
   },
   "packageManager": "pnpm@10.26.2"
 }
