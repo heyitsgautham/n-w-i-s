@@ -4,7 +4,7 @@ version = "0.2.0"
 description = "API: wells, events, replay, search, document pages, review queue, briefing export"
 requires-python = ">=3.11"
 dependencies = [
-    "fastapi>=0.159.0",
+    "fastapi>=0.162.0",
     "uvicorn>=0.29",
     "pypdfium2>=4",
     "reportlab>=4",
