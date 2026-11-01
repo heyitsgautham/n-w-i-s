@@ -1,7 +1,7 @@
 # One Dockerfile, two targets: `api` (FastAPI, Tesseract) and `web` (Next.js production build).
 # docker-compose.yml builds both. The committed demo pack in data/ is baked into each image.
 
-FROM python:3.12-slim AS api
+FROM python:3.15-slim AS api
 RUN apt-get update \
     && apt-get install -y --no-install-recommends tesseract-ocr \
     && rm -rf /var/lib/apt/lists/*
